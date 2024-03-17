@@ -242,5 +242,9 @@
     "Your email address is unverified.": "Su dirección de correo electrónico no está verificada.",
     "What's on your mind?": "¿Que estás pensando?",
     "Chirp Created": "Chirp credado exitosamente",
-    "Edit Chirp": "Editar Chirp"
+    "Edit Chirp": "Editar Chirp",
+    "Chirp updated successfully": "Chirp actualizado exitosamente",
+    "Edited": "Editado",
+    "Chirp deleted successfully": "Chrip elimidado exitosamente",
+    "Delete Chirp": "Eliminar Chirp"
 }

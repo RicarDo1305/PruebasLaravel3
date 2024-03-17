@@ -6,7 +6,8 @@
     </x-slot>
  <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <x-form route="chirps.store" nameButton="Edit" textAreaDev="{{$chirp->message}}" />
+    <x-form route="chirps.update" chirp="{{ $chirp->id }}" nameButton="Edit" 
+    textAreaDev="{{$chirp->message}}" placeholder="" method="PUT"/>
     </div>
  </div>
 </x-app-layout>

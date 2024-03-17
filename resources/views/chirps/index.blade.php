@@ -8,7 +8,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <x-form route="chirps.store" nameButton="Chirp" textAreaDev="" />
+            <x-form route="chirps.store" chirp="" nameButton="Chirp" textAreaDev="" 
+            placeholder="{{ __('What\'s on your mind?') }}" method=""/>
 
             <div class="mt-6 bg-white dark:bg-slate-800 shadow-sm rounded-lg divide-y
             dark:divide-gray-900">
@@ -24,10 +25,14 @@
                                 {{ $chirp->user->name }}
                             </span>
                             <small class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ $chirp->created_at->format('j M Y, g:i a') }}</small>
+                            @if($chirp->created_at != $chirp->updated_at)
+                            <small class="text-sm text-gray-600 dark:text-gray-400"> &middot; {{ __('Edited') }}</small>
+                            @endif
                         </div>
                     </div>
                     <p class="mt-4 text-lg text-gray-900 dark:text-gray-100">{{ $chirp->message }}</p>
                 </div>
+                @can('update', $chirp)
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button>
@@ -40,8 +45,16 @@
                         <x-dropdown-link :href="route('chirps.edit', $chirp)">
                             {{ __('Edit Chirp') }}
                         </x-dropdown-link>
+                        <form method="POST" action="{{ route('chirps.destroy', $chirp) }}">
+                            @csrf @method('DELETE')
+                            <x-dropdown-link :href="route('chirps.destroy', $chirp)" onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                            {{ __('Delete Chirp') }}
+                        </x-dropdown-link>
+                        </form>
                     </x-slot>
                 </x-dropdown>
+                @endcan
             </div>
             @endforeach
             </div>
