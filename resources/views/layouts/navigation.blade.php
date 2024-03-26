@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
                         {{ __('Chirps') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
+                        {{ __('Egresados y empleadores') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -78,6 +81,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
                 {{ __('Chirps') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
+                {{ __('Egresados y empleadores') }}
             </x-responsive-nav-link>
         </div>
 

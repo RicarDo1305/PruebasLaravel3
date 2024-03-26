@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeguimientoController;
 use App\Models\Chirp;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+#ruta de inicio, pagina welcome
 Route::view('/', 'welcome')->name('welcome');
 
 #Route::get('/chirps/{chirp}', function($chirp){
@@ -27,7 +28,8 @@ Route::view('/', 'welcome')->name('welcome');
 #});
 
 Route::middleware('auth')->group(function () {
-
+ 
+    #rutas de ejemplo
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -43,6 +45,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/chirps/{chirp}', [ChirpController::class, 'update'])->name('chirps.update');
 
     Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirps.destroy');
+
+    #rutas para el modulo de seguimiento a egresados y empleadores
+    Route::get('/seguimiento', [SeguimientoController::class, 'index'])->name('seguimiento.index');
+    Route::post('/seguimiemto', [SeguimientoController::class, 'store'])->name('seguimiento.store');
+
 
 });
 
