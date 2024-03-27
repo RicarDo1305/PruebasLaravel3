@@ -3,10 +3,8 @@
                     <form action="{{ route($route, $chirp ?? null) }}" method="POST">
                         @csrf
                         @method($method)
-                        <div class="space-y-2">
-                        <x-text-area name="nombre" placeholder="Nombre" textAreaDev=""/>
-                        <x-text-area name="carrera" placeholder="Carrera" textAreaDev=""/>
-                        </div>
+                      
+                        {{$slot}}
 
                         <x-primary-button class="mt-4">
                             {{ __($nameButton) }}

@@ -7,7 +7,7 @@
  <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     <x-form route="chirps.update" chirp="{{ $chirp->id }}" nameButton="Edit" 
-    textAreaDev="{{$chirp->message}}" placeholder="" method="PUT"/>
+    textAreaDev="{{$chirp->message}}" method="PUT"/>
     </div>
  </div>
 </x-app-layout>

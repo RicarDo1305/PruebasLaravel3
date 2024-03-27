@@ -17,12 +17,8 @@ class ChirpController extends Controller
         return view('chirps.index', [
             'chirps' => Chirp::with('user')->latest()->get()
         ]);
-<<<<<<< HEAD
-    
-=======
         return view('chirps.index');
 
->>>>>>> 5dd1dc901c635303fb86b940b163e47054b3bf09
     }
 
     /**

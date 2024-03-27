@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
 
+#Este controlador es para egresados
 class SeguimientoController extends Controller
 {
     public function index()
@@ -24,6 +25,7 @@ class SeguimientoController extends Controller
             'carrera' => ['required', 'min:3', 'max:255'],
         ]);
     }
+    
 
 
 }
