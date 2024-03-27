@@ -1,5 +1,5 @@
-<div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-10 text-gray-900 dark:text-gray-100">
+<div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-10 text-gray-100">
                     <form action="{{ route($route, $chirp ?? null) }}" method="POST">
                         @csrf
                         @method($method)
