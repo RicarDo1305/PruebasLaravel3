@@ -1,7 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex mx-auto items-center justify-between">
-        <h2 class="font-semibold text-xl dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-200 leading-tight">
             {{ __('Seguimiento a agresados y empleadores') }}
         </h2>
         <div class="space-x-3">
@@ -15,7 +14,7 @@
         </div>
     </x-slot>
 
-  <h2 class="mt-3 -mb-4 text-center font-semibold text-xl dark:text-gray-200 leading-tight">Agregar alumno</h2>
+    <h2 class="mt-3 -mb-4 text-center font-semibold text-xl text-gray-200 leading-tight">Agregar alumno</h2>
 
   <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 #ruta de inicio, pagina welcome
 Route::view('/', 'welcome')->name('welcome');
 
@@ -31,7 +30,6 @@ Route::view('/', 'welcome')->name('welcome');
 #});
 
 Route::middleware('auth')->group(function () {
-
  
     #rutas de ejemplo
     Route::view('/dashboard', 'dashboard')->name('dashboard');
