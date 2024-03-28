@@ -8,6 +8,7 @@ use App\Http\Controllers\SeguimientoEmpleadoresController;
 use App\Models\Chirp;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,18 @@ Route::middleware('auth')->group(function () {
     Route::put('/chirps/{chirp}', [ChirpController::class, 'update'])->name('chirps.update');
 
     Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirps.destroy');
+
+    Route::get('/extraEscolares/admextraescolares', function () {
+        Gate::authorize('see-extraescolares');
+
+        return view('/extraEscolares/admextraescolares');
+    })->name('/extraEscolares/admextraescolares');
+
+    Route::get('/extraEscolares/paselista', function () {
+        Gate::authorize('see-clubs');
+
+        return view('/extraEscolares/paselista');
+    })->name('/extraEscolares/paselista');
 
     Route::get('/extraEscolares',[ExtraEscolaresController::class, 'index'])->name('extraEscolares.index');
 
