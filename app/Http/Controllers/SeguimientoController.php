@@ -25,6 +25,13 @@ class SeguimientoController extends Controller
             'carrera' => ['required', 'min:3', 'max:255'],
         ]);
     }
+    public function show()
+    {
+        return view('seguimiento.showEg', [
+            'chirps' => Chirp::with('user')->latest()->get()
+        ]);
+        return view('seguimiento.showEg');
+    }
     
 
 

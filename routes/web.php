@@ -53,8 +53,14 @@ Route::middleware('auth')->group(function () {
     #rutas para el modulo de seguimiento a egresados y empleadores
     #retorna la vista de agregar nuevos egresados y empleadores
     Route::get('/seguimiento', [SeguimientoController::class, 'index'])->name('seguimiento.index');
+
+    #Ruta que lleva a la vista para mostrar lista de alumnos
+    Route::get('/seguimiento/egresados/lista', [SeguimientoController::class, 'show'])->name('seguimiento.show');
     #lleva a cabo el proceso de almacenar los datos de un alumno agresado en BD
     Route::post('/seguimiemto/egresados', [SeguimientoController::class, 'store'])->name('seguimiento.store');
+
+    #Muestra la lista de empleadores
+    Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimientoEg.show');
     #lleva a cabo el proceso de almacenar los datos de un empleador en BD
     Route::post('/seguimiemto/empleadores', [SeguimientoEmpleadoresController::class, 'store'])->name('seguimientoEg.store');
 
