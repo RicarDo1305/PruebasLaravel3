@@ -21,6 +21,19 @@
                     <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
                         {{ __('Chirps') }}
                     </x-nav-link>
+
+                    @can('see-extraescolares')
+                    <x-nav-link :href="route('/extraEscolares/admextraescolares')" :active="request()->routeIs('/extraEscolares/admextraescolares')">
+                        {{ __('ExtraEscolares') }}
+                    </x-nav-link>
+                    @endcan
+
+                    @can('see-clubs')
+                    <x-nav-link :href="route('/extraEscolares/paselista')" :active="request()->routeIs('/extraEscolares/paselista')">
+                        {{ __('Listas') }}
+                    </x-nav-link>
+                    @endcan
+
                     <x-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.*')">
                         {{ __('ExtraEscolares') }}
                     </x-nav-link>
