@@ -6,7 +6,7 @@
                       
                         {{$slot}}
 
-                        <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-800">
+                        <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
                             {{ __($nameButton) }}
                         </x-primary-button>
                     </form>

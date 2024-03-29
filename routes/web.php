@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExtraEscolaresController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\SeguimientoEmpleadoresController;
+use App\Http\Controllers\EncuestaController;
 use App\Models\Chirp;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -76,6 +77,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimientoEg.show');
     #lleva a cabo el proceso de almacenar los datos de un empleador en BD
     Route::post('/seguimiemto/empleadores', [SeguimientoEmpleadoresController::class, 'store'])->name('seguimientoEg.store');
+    Route::get('/seguimiento/encuesta', [EncuestaController::class, 'index'])->name('seguimiento.encuesta.index');
+    Route::post('/seguimiento/encuesta', [EncuestaController::class, 'store'])->name('questions.store');
 
 
 });

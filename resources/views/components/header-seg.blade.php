@@ -4,10 +4,10 @@
             {{ __($titulo) }}
         </h2>
         <div class="space-x-3">
-        <x-primary-button class="{{ $hidden }}">
-            <a href="" class="">Crear encuesta</a>
+        <x-primary-button class="{{ $hidden }} bg-green-900 text-white hover:bg-green-700">
+            <a href="{{ route('seguimiento.encuesta.index') }}" class="">Crear encuesta</a>
         </x-primary-button>
-        <x-primary-button class="{{ $hidden }}">
+        <x-primary-button class="{{ $hidden }} bg-green-900 text-white hover:bg-green-700">
             <a href="">Generar muestra</a>
         </x-primary-button>
         </div>
