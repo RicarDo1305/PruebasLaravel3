@@ -25,11 +25,17 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Gate::define('see-all', fn (User $user) =>
+            $user->rol == User::ROLE_ADM
+        );
         Gate::define('see-extraescolares', fn (User $user) =>
             $user->rol == User::ROLE_ADMEXT
         );
         Gate::define('see-clubs', fn (User $user) =>
             $user->rol == User::ROLE_TEACHER
+        );
+        Gate::define('clubs', fn (User $user) =>
+            $user->rol == User::ROLE_STUDENT
         );
         
     }
