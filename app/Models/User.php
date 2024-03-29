@@ -14,8 +14,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    const ROLE_ADM = 1;
     const ROLE_ADMEXT = 2;
     const ROLE_TEACHER =3;
+    const ROLE_STUDENT = 4;
 
 
     /**
@@ -26,8 +29,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'noControl',
         'password',
+        'noControl',
+        'rol',
     ];
 
     /**

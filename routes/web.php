@@ -61,6 +61,12 @@ Route::middleware('auth')->group(function () {
         return view('/extraEscolares/paselista');
     })->name('/extraEscolares/paselista');
 
+    Route::get('/extraEscolares/index', function () {
+        Gate::authorize('clubs');
+
+        return view('/extraEscolares/index');
+    })->name('/extraEscolares/paselista');
+
     Route::get('/extraEscolares',[ExtraEscolaresController::class, 'index'])->name('extraEscolares.index');
 
     #rutas para el modulo de seguimiento a egresados y empleadores

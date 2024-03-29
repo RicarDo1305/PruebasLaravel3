@@ -24,7 +24,7 @@
 
                     @can('see-extraescolares')
                     <x-nav-link :href="route('/extraEscolares/admextraescolares')" :active="request()->routeIs('/extraEscolares/admextraescolares')">
-                        {{ __('ExtraEscolares') }}
+                        {{ __('RegistrarEncargado') }}
                     </x-nav-link>
                     @endcan
 
@@ -34,9 +34,13 @@
                     </x-nav-link>
                     @endcan
 
+                    @can('clubs')
                     <x-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.*')">
                         {{ __('ExtraEscolares') }}
                     </x-nav-link>
+                    @endcan
+
+                   
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                         {{ __('Egresados y empleadores') }}
                     </x-nav-link>
