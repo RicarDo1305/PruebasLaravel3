@@ -26,6 +26,9 @@
                     <x-nav-link :href="route('/extraEscolares/admextraescolares')" :active="request()->routeIs('/extraEscolares/admextraescolares')">
                         {{ __('RegistrarEncargado') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('/extraEscolares/agregarclub')" :active="request()->routeIs('/extraEscolares/agregarclub')">
+                        {{ __('RegistrarClub') }}
+                    </x-nav-link>
                     @endcan
 
                     @can('see-clubs')

@@ -6,6 +6,7 @@ use App\Http\Controllers\ExtraEscolaresController;
 use App\Http\Controllers\SeguimientoController;
 use App\Http\Controllers\SeguimientoEmpleadoresController;
 use App\Http\Controllers\EncuestaController;
+use App\Http\Controllers\RegistroclubsController;
 use App\Models\Chirp;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +57,12 @@ Route::middleware('auth')->group(function () {
         return view('/extraEscolares/admextraescolares');
     })->name('/extraEscolares/admextraescolares');
 
+    Route::get('/extraEscolares/agregarclub', function () {
+        Gate::authorize('see-extraescolares');
+
+        return view('/extraEscolares/agregarclub');
+    })->name('/extraEscolares/agregarclub');
+
     Route::get('/extraEscolares/paselista', function () {
         Gate::authorize('see-clubs');
 
@@ -67,6 +74,11 @@ Route::middleware('auth')->group(function () {
 
         return view('/extraEscolares/index');
     })->name('/extraEscolares/paselista');
+
+    Route::get('agregarclub', [RegistroclubsController::class, 'create'])
+    ->name('agregarclub');
+
+Route::post('agregarclub', [RegistroclubsController::class, 'store']);
 
     Route::get('/extraEscolares',[ExtraEscolaresController::class, 'index'])->name('extraEscolares.index');
 

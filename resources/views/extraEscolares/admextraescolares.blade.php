@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-10 text-gray-100">
+
     <form method="POST" action="{{ route('register2') }}">
         @csrf
 
@@ -59,9 +64,13 @@
 
         <div class="flex items-center justify-end mt-4">
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-3 bg-green-900 text-white hover:bg-green-700">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
     </form>
+        </div>
+    </div>
+        </div>
+    </div>
 </x-app-layout>
