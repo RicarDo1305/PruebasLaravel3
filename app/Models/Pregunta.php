@@ -9,6 +9,7 @@ class Pregunta extends Model
 {
     protected $fillable = [
         'pregunta',
+        'tipo',
     ];
 
     public function opciones(): HasMany
