@@ -61,7 +61,7 @@ class User extends Authenticatable
 
     public function encuestas(): HasMany
     {
-        return $this->hasMany(Encuesta::class);
+        return $this->hasMany(Pregunta::class);
     }
     
 }

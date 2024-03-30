@@ -15,9 +15,10 @@
                     <x-text-area name="carrera" placeholder="Carrera" textAreaDev=""/>
                 </div>
             </x-formSeg>
-
+            <div class="flex space-x-5">
             <x-button-seg name="Lista alumnos" ruta="seguimiento.show"/>
-
+            <x-button-seg name="Crear encuesta" ruta="seguimiento.encuesta.index"/>
+            </div>
         </div>
         
   </div>
@@ -33,9 +34,10 @@
                 <x-text-area name="ubicacion" placeholder="Ubicacion" textAreaDev=""/>
                 </div>
             </x-formSeg>
-
+            <div class="flex space-x-5">
             <x-button-seg name="Lista empleadores" ruta="seguimientoEg.show"/>
-
+            <x-button-seg name="Crear encuesta" ruta="seguimiento.encuestaEm.index"/>
+            </div>
         </div>
         
   </div>

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pregunta;
 use App\Models\Opcion;
+use App\Models\Pregunta;
 use Illuminate\Http\Request;
 
-class EncuestaController extends Controller
+class EncuestaEmpleadoresController extends Controller
 {
     public function index()
     {
-        return view('seguimiento.encuestaCrear');
+        return view('seguimiento.encuestaEmCrear');
     }
 
     public function store(Request $request)
@@ -28,7 +28,7 @@ class EncuestaController extends Controller
     // Crear la pregunta
     $pregunta = Pregunta::create([
         'pregunta' => $validatedData['Pregunta'],
-        'tipo' => 1,
+        'tipo' => 2,
     ]);
 
     Opcion::create([
@@ -56,7 +56,4 @@ class EncuestaController extends Controller
 
     return to_route('seguimiento.encuesta.index')->with('status', __('Pregunta agregada'));// Redireccionar o devolver alguna respuesta
 } 
-
 }
-
-
