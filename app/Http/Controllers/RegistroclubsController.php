@@ -17,8 +17,12 @@ class RegistroclubsController extends Controller
 {
     public function index()
     {
-        return view('agregarclub');
+        return view('extraEscolares.index', [
+            'tarjetas' => Clubs::all(),
+        ]);
+        return view('extraEscolares.index');
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -29,6 +33,8 @@ class RegistroclubsController extends Controller
         ]);
 
         $clubs = Clubs::create([
+            
+
             'img' => $request->img,
             'title' => $request->title,
             'incharge' =>$request->incharge,
@@ -37,4 +43,5 @@ class RegistroclubsController extends Controller
 
        return back();
     }
+
 }

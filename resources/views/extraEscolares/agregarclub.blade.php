@@ -8,9 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <x-formSeg route="agregarclub" chirp="" nameButton="Crear Club" method="">
+            <x-formSeg route="agregarclub" chirp="" nameButton="Crear Club" method="" enctype="multipart/form-data">
                 <div class="space-y-2">
-                    <input name="img" id="img" type="file" accept=".jpg, .jpeg, .png"/>
+                    <x-text-area name="img" placeholder="Url de imagen" textAreaDev=""/>
                     <x-text-area name="title" placeholder="Titulo" textAreaDev=""/>
                     <x-text-area name="incharge" placeholder="Encargado" textAreaDev=""/>
                     <x-text-area name="description" placeholder="Descripcion" textAreaDev=""/>

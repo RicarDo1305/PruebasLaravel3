@@ -70,18 +70,13 @@ Route::middleware('auth')->group(function () {
         return view('/extraEscolares/paselista');
     })->name('/extraEscolares/paselista');
 
-    Route::get('/extraEscolares/index', function () {
-        Gate::authorize('clubs');
-
-        return view('/extraEscolares/index');
-    })->name('/extraEscolares/paselista');
+    Route::get('/extraEscolares', [RegistroclubsController::class, 'index'])->name('extraEscolares.index');
 
     Route::get('agregarclub', [RegistroclubsController::class, 'create'])
     ->name('agregarclub');
 
 Route::post('agregarclub', [RegistroclubsController::class, 'store']);
 
-    Route::get('/extraEscolares',[ExtraEscolaresController::class, 'index'])->name('extraEscolares.index');
 
     #rutas para el modulo de seguimiento a egresados y empleadores
     #retorna la vista de agregar nuevos egresados y empleadores
