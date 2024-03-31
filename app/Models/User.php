@@ -59,9 +59,12 @@ class User extends Authenticatable
         return $this->hasMany(Chirp::class);
     }
 
-    public function encuestas(): HasMany
+    public function Preguntas(): HasMany
     {
         return $this->hasMany(Pregunta::class);
     }
-    
+    public function Opciones(): HasMany
+    {
+        return $this->hasMany(Pregunta::class);
+    }
 }

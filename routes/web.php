@@ -95,16 +95,20 @@ Route::post('agregarclub', [RegistroclubsController::class, 'store']);
     Route::get('/seguimiento/encuesta/egresados', [EncuestaController::class, 'index'])->name('seguimiento.encuesta.index');
     #Almacena las preguntas y opciones en la base de datos
     Route::post('/seguimiento/encuesta/agresados', [EncuestaController::class, 'store'])->name('questions.store');
+    #muestra la vista para ver las preguntas de una encuesta a egresados
+    Route::get('/seguimiento/encuesta/egresados/mostrar', [EncuestaController::class, 'show'])->name('seguimiento.encuesta.show');
+
 
     #Muestra la lista de empleadores
-    Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimientoEg.show');
+    Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimiento.empleadores.show');
     #lleva a cabo el proceso de almacenar los datos de un empleador en BD
     Route::post('/seguimiemto/empleadores', [SeguimientoEmpleadoresController::class, 'store'])->name('seguimientoEg.store');
     #lleva a la vista para crear la encuesta de empleadores
     Route::get('/seguimiento/encuesta/empleadores', [EncuestaEmpleadoresController::class, 'index'])->name('seguimiento.encuestaEm.index');
     #Almacena las preguntas y opciones en la base de datos
     Route::post('/seguimiento/encuesta/empleadores', [EncuestaEmpleadoresController::class, 'store'])->name('questionsEm.store');
-    
+    #muestra la vista para ver las preguntas de una encuesta a empleadores
+    Route::get('/seguimiento/encuesta/empleadores/mostrar', [EncuestaEmpleadoresController::class, 'show'])->name('seguimiento.encuestaEm.show');
 
 
 });

@@ -55,7 +55,23 @@ class EncuestaController extends Controller
    
 
     return to_route('seguimiento.encuesta.index')->with('status', __('Pregunta agregada'));// Redireccionar o devolver alguna respuesta
-} 
+}
+
+    public function show(){
+        $preguntas = Pregunta::with('user')->where('tipo', 1)->latest()->get();
+
+        // Obtener las opciones relacionadas con las preguntas
+        $opciones = [];
+        foreach ($preguntas as $pregunta) {
+            $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
+        }
+    
+        return view('seguimiento.encuestaLista', [
+        'preguntas' => $preguntas,
+        ]);
+       
+
+     }
 
 }
 

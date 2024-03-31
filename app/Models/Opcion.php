@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Opcion extends Model
 {
@@ -14,5 +15,10 @@ class Opcion extends Model
     public function pregunta()
     {
         return $this->belongsTo(Pregunta::class);
+    }
+
+    public function user():BelongsTo{
+
+        return $this->belongsTo(User::class);
     }
 }

@@ -18,6 +18,7 @@
             <div class="flex space-x-5">
             <x-button-seg name="Lista alumnos" ruta="seguimiento.show"/>
             <x-button-seg name="Crear encuesta" ruta="seguimiento.encuesta.index"/>
+            <x-button-seg name="Ver encuesta para egresados" ruta="seguimiento.encuesta.show"/>
             </div>
         </div>
         
@@ -35,8 +36,9 @@
                 </div>
             </x-formSeg>
             <div class="flex space-x-5">
-            <x-button-seg name="Lista empleadores" ruta="seguimientoEg.show"/>
+            <x-button-seg name="Lista empleadores" ruta="seguimiento.empleadores.show"/>
             <x-button-seg name="Crear encuesta" ruta="seguimiento.encuestaEm.index"/>
+            <x-button-seg name="Ver encuesta para empladores" ruta="seguimiento.encuestaEm.show"/>
             </div>
         </div>
         
