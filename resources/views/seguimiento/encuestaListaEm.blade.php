@@ -2,7 +2,7 @@
 <x-header-seg hidden="hidden" titulo="Seguimiento a agresados y empleadores"/>
 
 <h2 class="mt-3 -mb-4 text-center font-semibold text-xl text-gray-200 leading-tight">
-    Encuesta Egresados
+    Encuesta Empleadores
 </h2>
 
 <div class="py-12">
@@ -44,7 +44,7 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('seguimiento.encuesta.edit', $Pregunta)">
+                        <x-dropdown-link :href="route('seguimiento.encuestaEm.edit', $Pregunta)">
                             {{ __('Editar pregunta') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('chirps.destroy', $Pregunta) }}">

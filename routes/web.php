@@ -97,7 +97,10 @@ Route::post('agregarclub', [RegistroclubsController::class, 'store']);
     Route::post('/seguimiento/encuesta/agresados', [EncuestaController::class, 'store'])->name('questions.store');
     #muestra la vista para ver las preguntas de una encuesta a egresados
     Route::get('/seguimiento/encuesta/egresados/mostrar', [EncuestaController::class, 'show'])->name('seguimiento.encuesta.show');
-
+    #Editar una pregunta
+    Route::get('/seguimiento/encuesta/egresados/{pregunta}/editar', [EncuestaController::class, 'edit'])->name('seguimiento.encuesta.edit');
+    #Actualiza la pregunta editada y lo sube a la base de datos
+    Route::put('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'update'])->name('seguimiento.encuesta.update');
 
     #Muestra la lista de empleadores
     Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimiento.empleadores.show');
@@ -109,7 +112,9 @@ Route::post('agregarclub', [RegistroclubsController::class, 'store']);
     Route::post('/seguimiento/encuesta/empleadores', [EncuestaEmpleadoresController::class, 'store'])->name('questionsEm.store');
     #muestra la vista para ver las preguntas de una encuesta a empleadores
     Route::get('/seguimiento/encuesta/empleadores/mostrar', [EncuestaEmpleadoresController::class, 'show'])->name('seguimiento.encuestaEm.show');
-
+    Route::get('/seguimiento/encuesta/empleadores/{pregunta}/editar', [EncuestaEmpleadoresController::class, 'edit'])->name('seguimiento.encuestaEm.edit');
+    #Actualiza la pregunta editada y lo sube a la base de datos
+    Route::put('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'update'])->name('seguimiento.encuestaEm.update');
 
 });
 

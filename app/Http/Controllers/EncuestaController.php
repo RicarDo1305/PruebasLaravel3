@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pregunta;
 use App\Models\Opcion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use LaravelLang\Publisher\Console\Update;
 
 class EncuestaController extends Controller
 {
@@ -24,10 +26,11 @@ class EncuestaController extends Controller
         'Opcion4' => 'max:255',  
     ]);
 
-
+    $user = Auth::user();
     // Crear la pregunta
     $pregunta = Pregunta::create([
         'pregunta' => $validatedData['Pregunta'],
+        'user_id' => $user->id,
         'tipo' => 1,
     ]);
 
@@ -72,6 +75,44 @@ class EncuestaController extends Controller
        
 
      }
+
+     public function edit(Pregunta $pregunta)
+    {
+        $this->authorize('update', $pregunta);
+
+       return view('seguimiento.encuestaEditar', [
+            'pregunta' => $pregunta
+       ]);
+    }
+
+    public function update(Request $request, Pregunta $pregunta)
+    {
+        $this->authorize('update', $pregunta);
+
+        $validatedData = $request->validate([
+            'Pregunta' => 'required|string|max:255',
+            'Opcion1' => 'required|string|max:255',
+            'Opcion3' => 'required|string|max:255', 
+            'Opcion5' => 'max:255', 
+            'Opcion7' => 'max:255',  
+        ]);
+
+        $pregunta->update([
+            'pregunta' => $validatedData['Pregunta'],
+        ]);
+
+        $i=1;
+        foreach ($pregunta->opciones as $opcion) {
+        $opcion->update([
+            'opcion' => $validatedData['Opcion'.$i],
+        ]);
+        $i=$i+2;
+    }
+
+      
+
+        return to_route('seguimiento.encuesta.show')->with('status', __('Pregunta editada exitosamente'));
+    }
 
 }
 

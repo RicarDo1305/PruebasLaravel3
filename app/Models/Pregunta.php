@@ -11,6 +11,7 @@ class Pregunta extends Model
     protected $fillable = [
         'pregunta',
         'tipo',
+        'user_id',
     ];
 
     public function opciones(): HasMany

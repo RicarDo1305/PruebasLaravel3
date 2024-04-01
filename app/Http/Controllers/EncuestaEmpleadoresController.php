@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Opcion;
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class EncuestaEmpleadoresController extends Controller
 {
@@ -24,10 +26,11 @@ class EncuestaEmpleadoresController extends Controller
         'Opcion4' => 'max:255',  
     ]);
 
-
+    $user = Auth::user();
     // Crear la pregunta
     $pregunta = Pregunta::create([
         'pregunta' => $validatedData['Pregunta'],
+        'user_id' => $user->id,
         'tipo' => 2,
     ]);
 
@@ -65,10 +68,50 @@ class EncuestaEmpleadoresController extends Controller
             $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
         }
     
-        return view('seguimiento.encuestaLista', [
+        return view('seguimiento.encuestaListaEm', [
         'preguntas' => $preguntas,
         ]);
        
 
      }
+
+      public function edit(Pregunta $pregunta)
+    {
+        $this->authorize('update', $pregunta);
+
+
+       return view('seguimiento.encuestaEditarEm', [
+            'pregunta' => $pregunta
+       ]);
+    }
+
+    public function update(Request $request, Pregunta $pregunta)
+    {
+        $this->authorize('update', $pregunta);
+
+        $validatedData = $request->validate([
+            'Pregunta' => 'required|string|max:255',
+            'Opcion1' => 'required|string|max:255',
+            'Opcion3' => 'required|string|max:255', 
+            'Opcion5' => 'max:255', 
+            'Opcion7' => 'max:255',  
+        ]);
+
+
+        $pregunta->update([
+            'pregunta' => $validatedData['Pregunta'],
+        ]);
+
+        $i=1;
+        foreach ($pregunta->opciones as $opcion) {
+        $opcion->update([
+            'opcion' => $validatedData['Opcion'.$i],
+        ]);
+        $i=$i+2;
+    }
+
+      
+
+        return to_route('seguimiento.encuestaEm.show')->with('status', __('Pregunta editada exitosamente'));
+    }
 }
