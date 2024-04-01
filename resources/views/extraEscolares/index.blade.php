@@ -6,8 +6,6 @@
 @foreach($tarjetas as $club)
 <div class="flex flex-col">
     <x-tarjet-ex img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}"/>
-       
-    
 @endforeach
     </div>
 </div>
