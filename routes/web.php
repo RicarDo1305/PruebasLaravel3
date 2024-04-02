@@ -101,6 +101,8 @@ Route::post('agregarclub', [RegistroclubsController::class, 'store']);
     Route::get('/seguimiento/encuesta/egresados/{pregunta}/editar', [EncuestaController::class, 'edit'])->name('seguimiento.encuesta.edit');
     #Actualiza la pregunta editada y lo sube a la base de datos
     Route::put('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'update'])->name('seguimiento.encuesta.update');
+    #Elimina una pregunta de la encuesta y de la BD
+    Route::delete('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'destroy'])->name('seguimiento.encuesta.destroy');
 
     #Muestra la lista de empleadores
     Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimiento.empleadores.show');
@@ -115,7 +117,8 @@ Route::post('agregarclub', [RegistroclubsController::class, 'store']);
     Route::get('/seguimiento/encuesta/empleadores/{pregunta}/editar', [EncuestaEmpleadoresController::class, 'edit'])->name('seguimiento.encuestaEm.edit');
     #Actualiza la pregunta editada y lo sube a la base de datos
     Route::put('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'update'])->name('seguimiento.encuestaEm.update');
-
+    #Elimina una pregunta de la base de datos
+    Route::delete('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'destroy'])->name('seguimiento.encuestaEm.destroy');
 });
 
 require __DIR__.'/auth.php';

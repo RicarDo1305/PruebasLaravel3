@@ -114,4 +114,13 @@ class EncuestaEmpleadoresController extends Controller
 
         return to_route('seguimiento.encuestaEm.show')->with('status', __('Pregunta editada exitosamente'));
     }
+
+    public function destroy(Pregunta $pregunta)
+    {
+        $this->authorize('delete', $pregunta);
+
+        $pregunta->delete();
+
+        return to_route('seguimiento.encuestaEm.show')->with('status', __('Pregunta elimindada exitosamente'));
+    }
 }
