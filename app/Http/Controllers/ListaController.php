@@ -14,8 +14,10 @@ class ListaController extends Controller
         
 
         $alumnos = User::
-        where('name','LIKE','%'.$texto.'%')
-        ->where('noControl','LIKE','%'.$texto.'%')
+        where(function($query) use ($texto) {
+            $query->where('name', 'LIKE', '%' . $texto . '%')
+                  ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+        })
         ->where('rol', '4')
         ->get();
         return view('extraEscolares.alumnos', [

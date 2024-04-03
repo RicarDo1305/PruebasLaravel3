@@ -8,10 +8,10 @@
     <div>
         <form action="{{route('extraEscolares.alumnos')}}" method="get">
             <div>
-                <input type="text" name="search" value="{{$texto}}">
+                <input type="search" name="search" value="{{$texto}}">
             </div>
             <div>
-                <input type="submit" value="Buscar">
+                <input type="submit" value="Buscar"  class="bg-white">
             </div>
         </form>
     </div>

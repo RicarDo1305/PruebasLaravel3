@@ -77,10 +77,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/extraEscolares', [RegistroclubsController::class, 'index'])->name('extraEscolares.index');
 
-    Route::get('agregarclub', [RegistroclubsController::class, 'create'])
+    Route::get('/extraEscolares/agregarclub', [RegistroclubsController::class, 'create'])
     ->name('agregarclub');
 
-Route::post('agregarclub', [RegistroclubsController::class, 'store']);
+    Route::post('/extraEscolares/agregarclub', [RegistroclubsController::class, 'store'])->name('agregarclub.store');
 
 
     #rutas para el modulo de seguimiento a egresados y empleadores

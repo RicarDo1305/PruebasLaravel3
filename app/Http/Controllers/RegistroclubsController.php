@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Clubs;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -22,6 +23,14 @@ class RegistroclubsController extends Controller
             'tarjetas' => Clubs::all(),
         ]);
         return view('extraEscolares.index');
+    }
+
+    public function create(){
+        $encargados=User::where('rol',3)->get();
+         return view('/extraEscolares/agregarclub', [
+            'encargados' => $encargados
+        ]);
+        return view('/extraEscolares/agregarclub');
     }
 
     public function store(Request $request)
