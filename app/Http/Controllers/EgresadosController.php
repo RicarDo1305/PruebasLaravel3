@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class EgresadosController extends Controller
+{
+
+    public function store(Request $request)
+    {
+        // Validar los datos de la pregunta
+    $validatedData = $request->validate([
+        'nombre' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
+        'noControl' => 'required|string|max:255',
+    ]);
+
+    //$user = Auth::user(); //Esto se usa para obtener los datos del usuario autentificado
+    
+    User::create([
+        'name' => $validatedData['nombre'],
+        'email' => $validatedData['email'],
+        'password' => $validatedData['noControl'],
+        'noControl' => $validatedData['noControl'],
+        'rol' => '5',
+    ]);
+
+
+   
+
+    return to_route('seguimiento.index')->with('status', __('Egresado agregado exitosamente'));// Redireccionar a la vista de inicio (de seguimiento)
+}
+
+ public function show(){
+        $egresados = User::where('rol', 5)->latest()->get();
+
+        return view('seguimiento.showEg', [
+        'egresados' => $egresados,
+        ]);
+       
+
+     }
+
+      public function edit(User $egresado)
+      {
+
+       return view('seguimiento.egresadoEditar', [
+            'egresado' => $egresado,
+       ]);
+    }
+
+    public function update(Request $request, User $egresado)
+    {
+        //$this->authorize('update', $pregunta);
+
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'noControl' => 'required|string|max:255', 
+        ]);
+
+        $egresado->update([
+            'name' => $validatedData['nombre'],
+            'email' => $validatedData['email'],
+            'noControl' => $validatedData['noControl'],
+        ]);
+
+
+        return to_route('seguimiento.lista.show')->with('status', __('Egresado editado exitosamente'));
+    }
+
+    public function destroy(User $egresado)
+    {
+        //$this->authorize('delete', $pregunta);
+
+        $egresado->delete();
+
+        return to_route('seguimiento.lista.show')->with('status', __('Egresado elimindado exitosamente'));
+    }
+
+}

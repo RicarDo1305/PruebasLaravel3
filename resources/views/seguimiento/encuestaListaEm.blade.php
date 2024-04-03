@@ -8,7 +8,7 @@
 <div class="py-12">
  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     
-<x-button-seg name="Regresar" ruta="seguimiento.index"/>
+  <x-button-seg name="Regresar" ruta="seguimiento.index"/>
  
    <x-encuesta-lista rutaEdit="seguimiento.encuestaEm.edit"
    rutaDestroy="seguimiento.encuestaEm.destroy" :preguntas=$preguntas/>
