@@ -12,7 +12,7 @@
 
      <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y
             divide-gray-900">
-            @foreach($chirps as $chirp)
+            @foreach($egresados as $egresado)
              <div class="p-6 flex space-x-2">
                 <svg class="h-6 w-6 text-gray-400 -scale-x-100" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -21,17 +21,17 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <span class="text-gray-200">
-                                {{ $chirp->user->name }}
+                                {{ $egresado->name }}
                             </span>
-                            <small class="ml-2 text-sm text-gray-400">{{ $chirp->created_at->format('j M Y, g:i a') }}</small>
-                            @if($chirp->created_at != $chirp->updated_at)
+                            <small class="ml-2 text-sm text-gray-400">{{ $egresado->created_at->format('j M Y, g:i a') }}</small>
+                            @if($egresado->created_at != $egresado->updated_at)
                             <small class="text-sm text-gray-400"> &middot; {{ __('Edited') }}</small>
                             @endif
                         </div>
                     </div>
-                    <p class="mt-4 text-lg text-gray-100">{{ $chirp->message }}</p>
+                    <p class="mt-4 text-lg text-gray-100">{{ $egresado->noControl }}</p>
                 </div>
-                @can('update', $chirp)
+                
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button>
@@ -41,19 +41,19 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('chirps.edit', $chirp)">
-                            {{ __('Edit Chirp') }}
+                        <x-dropdown-link :href="route('seguimiento.lista.edit', $egresado)">
+                            {{ __('Edit') }}
                         </x-dropdown-link>
-                        <form method="POST" action="{{ route('chirps.destroy', $chirp) }}">
+                        <form method="POST" action="{{ route('seguimiento.lista.destroy', $egresado) }}">
                             @csrf @method('DELETE')
-                            <x-dropdown-link :href="route('chirps.destroy', $chirp)" onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('seguimiento.lista.destroy', $egresado)" onclick="event.preventDefault();
                             this.closest('form').submit();">
-                            {{ __('Delete Chirp') }}
+                            {{ __('Delete') }}
                         </x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
-                @endcan
+                
             </div>
             @endforeach
             </div>
