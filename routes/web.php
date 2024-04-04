@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\EgresadosController;
+use App\Http\Controllers\EmpleadoresController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExtraEscolaresController;
 use App\Http\Controllers\SeguimientoController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\ListaController;
 use App\Models\Chirp;
+use App\Models\Empleador;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
@@ -84,20 +86,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/extraEscolares/agregarclub', [RegistroclubsController::class, 'store'])->name('agregarclub.store');
 
     #RUTAS PARA LISTAS DE EGRESADOS
-    #rutas para el modulo de seguimiento a egresados y empleadores
+
     #retorna la vista de agregar nuevos egresados y empleadores
     Route::get('/seguimiento', [SeguimientoController::class, 'index'])->name('seguimiento.index');
     #Agrega los datos de un nuevo egresado a la lista en la base de datos
-    Route::post('/seguimiemto/egresados', [EgresadosController::class, 'store'])->name('seguimiento.agregar.store');
+    Route::post('/seguimiemto/agregar/egresados', [EgresadosController::class, 'store'])->name('seguimiento.agregar.store');
     #Ruta que lleva a mostrar la lista de egresados
     Route::get('/seguimiemto/egresados/lista', [EgresadosController::class, 'show'])->name('seguimiento.lista.show');
     #Recupera los datos del agresado a editar
     Route::get('/seguimiento/egresados/{egresado}/editar', [EgresadosController::class, 'edit'])->name('seguimiento.lista.edit');
     #Actualiza el egresado editado y lo sube a la base de datos
     Route::put('/seguimiento/egresados/{egresado}', [EgresadosController::class, 'update'])->name('seguimiento.lista.update');
+    #Ruta que elimina un egresado de la BD
     Route::delete('/seguimiento/egresados/{egresado}', [EgresadosController::class, 'destroy'])->name('seguimiento.lista.destroy');
    
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EGRESADOS
+
     #muestra la vista para crear una encuesta para egresados
     Route::get('/seguimiento/encuesta/egresados', [EncuestaController::class, 'index'])->name('seguimiento.encuesta.index');
     #Almacena las preguntas y opciones en la base de datos
@@ -111,8 +115,18 @@ Route::middleware('auth')->group(function () {
     #Elimina una pregunta de la encuesta y de la BD
     Route::delete('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'destroy'])->name('seguimiento.encuesta.destroy');
 
-    #RUTAS PARA LISTAS DE EGRESADOS
-       #POR HACER
+    #RUTAS PARA LISTAS DE EMPLEADORES
+
+    #Ruta por la cual se lleva a cabo el proceso de almacenar los datos de un empleador en BD
+    Route::post('/seguimiemto/agregar/empleadores', [EmpleadoresController::class, 'store'])->name('seguimiento.agregarEm.store');
+    #Muestra la lista de empleadores
+    Route::get('/seguimiemto/empleadores/lista', [EmpleadoresController::class, 'show'])->name('seguimiento.listaEm.show');
+    #Ruta que lleva al formulario para editar los datos de un empleador
+    Route::get('/seguimiento/empleadores/{empleador}/editar', [EmpleadoresController::class, 'edit'])->name('seguimiento.listaEm.edit');
+    #Ruta donde que se usa para almacenar los datos editados en la BD
+    Route::put('/seguimiento/empleadores/{empleador}', [EmpleadoresController::class, 'update'])->name('seguimiento.listaEm.update');
+    #Ruta que elimina un empleador de la BD
+    Route::delete('/seguimiento/empleadores/{empleador}', [EmpleadoresController::class, 'destroy'])->name('seguimiento.listaEm.destroy');
 
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EMPLEADORES
     #Muestra la lista de empleadores
