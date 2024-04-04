@@ -15,7 +15,9 @@
                 </p>
                 <br>
                 <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
-                    Registrarme
+                <x-nav-link :href="route('registroaclub.index')">
+                    {{ __('Registrarme') }}
+                </x-nav-link>
                 </x-primary-button>
             </div>
 </article>

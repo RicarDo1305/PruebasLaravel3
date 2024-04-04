@@ -9,6 +9,7 @@ use App\Http\Controllers\SeguimientoEmpleadoresController;
 use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
+use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\ListaController;
 use App\Models\Chirp;
 use Faker\Guesser\Name;
@@ -68,6 +69,11 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/extraEscolares/alumnos', [ListaController::class, 'index'])->name('extraEscolares.alumnos');
+
+    Route::get('/extraEscolare/registroaclub',[FormularioclubController::class,'index'])->name('registroaclub.index');
+    Route::get('/extraEscolares/registroaclub',[FormularioclubController::class,'store'])->name('registroaclub.store');
+
+    Route::post('/extraEscolares/registroaclub',[FormularioclubController::class,'store'])->name('registroaclub.store');
 
 
     Route::get('/extraEscolares/paselista', function () {
