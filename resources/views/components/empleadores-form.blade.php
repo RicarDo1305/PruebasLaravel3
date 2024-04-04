@@ -4,16 +4,20 @@
   <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-            <x-formSeg route="{{ $ruta }}" chirp="" nameButton="Añadir empleador" method="">
+           <div class="{{$hidden2}}">
+           <x-button-seg name="Regresar" ruta="{{$rutaBack}}"/>
+           </div>
+
+            <x-formSeg route="{{ $ruta }}" :pregunta=$empleador nameButton="{{$button}}" method="{{$metodo}}">
                 <div class="space-y-2">
-                <x-text-area name="nombreEmpresa" placeholder="Nombre de la empresa" textAreaDev=""/>
-                <x-text-area name="ubicacion" placeholder="Ubicacion" textAreaDev=""/>
+                <x-text-area name="nombreEm" placeholder="Nombre de la empresa" textAreaDev="{{$empleador->nombre ?? null}}"/>
+                <x-text-area name="ubicacion" placeholder="Ubicacion" textAreaDev="{{$empleador->ubicacion ?? null}}"/>
                 </div>
             </x-formSeg>
-            <div class="flex space-x-5">
-            <x-button-seg name="Lista empleadores" ruta="seguimiento.empleadores.show"/>
+            <div class="{{$hidden}} flex space-x-5">
+            <x-button-seg name="Lista empleadores" ruta="seguimiento.listaEm.show"/>
             <x-button-seg name="Crear encuesta" ruta="seguimiento.encuestaEm.index"/>
-            <x-button-seg name="Ver encuesta para empladores" ruta="seguimiento.encuestaEm.show"/>
+            <x-button-seg name="Ver encuesta para empleadores" ruta="seguimiento.encuestaEm.show"/>
             </div>
         </div>
         

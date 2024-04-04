@@ -12,6 +12,14 @@
   metodo=""
   />
 
-  <x-empleadores-form titulo="Añadir egresado" ruta="seguimientoEg.store" />
+  <x-empleadores-form titulo="Añadir empleador" 
+  ruta="seguimiento.agregarEm.store"
+  :empleador=null
+  hidden=""
+  button="Agregar empleador"
+  rutaBack="dashboard"
+  hidden2="hidden"
+  metodo=""
+  />
   
 </x-app-layout>
