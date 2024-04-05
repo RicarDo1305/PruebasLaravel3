@@ -10,27 +10,33 @@ class SeguimientoController extends Controller
 {
     public function index()
     {
-        #return view('chirps.index', [
-        #    'chirps' => Chirp::with('user')->latest()->get()
-        #]); de esta forma atribuyes a un usuario con sus repectivos datos
-        #ademas de sus creaciones
-
         return view('seguimiento.index');
     
     }
     public function store(Request $request){
-
-         $validate = $request->validate([
-            'nombre' => ['required', 'min:3', 'max:255'],
-            'carrera' => ['required', 'min:3', 'max:255'],
+    
+         $validatedData = $request->validate([
+            'poblacion' => 'required|numeric|max:999',
         ]);
+
+        $n = 0;
+        $N = $validatedData['poblacion'];
+        $Z = 1.96;
+        $p = 0.5;
+        $q = (1-$p);
+        $E = 0.09;
+
+        $up = $N*($Z*$Z)*$p*$q;
+        $down =($N-1)*($E*$E)+($Z*$Z)*$p*$q;
+        $res = ceil($up/$down);
+
+        return view('seguimiento.muestra', [
+            'resultado' => $res]);
     }
+
     public function show()
     {
-        return view('seguimiento.showEg', [
-            'chirps' => Chirp::with('user')->latest()->get()
-        ]);
-        return view('seguimiento.showEg');
+        return view('seguimiento.muestra');
     }
     
 
