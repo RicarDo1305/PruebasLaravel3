@@ -26,8 +26,11 @@
                     <x-nav-link :href="route('/extraEscolares/admextraescolares')" :active="request()->routeIs('/extraEscolares/admextraescolares')">
                         {{ __('RegistrarEncargado') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('agregarclub')" :active="request()->routeIs('/extraEscolares.*')">
+                    <x-nav-link :href="route('agregarclub')" :active="request()->routeIs('agregarclub')">
                         {{ __('RegistrarClub') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('club.editar')" :active="request()->routeIs('club.editar')">
+                        {{ __('EditarClub') }}
                     </x-nav-link>
                     <x-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.*')">
                         {{ __('Alumnos') }}

@@ -32,6 +32,7 @@ class Clubs extends Authenticatable
     {
         return $this->hasMany(Clubs::class);
     }
+    
 
     /**
      * The attributes that should be hidden for serialization.

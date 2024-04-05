@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ChirpController;
+use App\Http\Controllers\clubsController;
 use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpleadoresController;
 use App\Http\Controllers\ProfileController;
@@ -71,6 +72,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/extraEscolares/alumnos', [ListaController::class, 'index'])->name('extraEscolares.alumnos');
+
+    //ruta para editar clubs
+    Route::get('/extraEscolares/editarclub',[clubsController::class,'index'])->name('club.editar');
+    Route::put('/extraEscolares/editarclub/{club}',[clubsController::class,'edit'])->name('club.editform');
 
     Route::get('/extraEscolare/registroaclub',[FormularioclubController::class,'index'])->name('registroaclub.index');
     Route::get('/extraEscolares/registroaclub',[FormularioclubController::class,'store'])->name('registroaclub.store');
