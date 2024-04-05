@@ -5,7 +5,7 @@
         </h2>
         <div class="space-x-3">
         <x-primary-button class="{{ $hidden }} bg-green-900 text-white hover:bg-green-700">
-            <a href="">Generar muestra</a>
+            <a href="{{ route('seguimiento.muestra.show') }}">Generar muestra</a>
         </x-primary-button>
         </div>
         </div>
