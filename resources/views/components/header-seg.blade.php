@@ -1,6 +1,6 @@
 <x-slot name="header">
         <div class="flex mx-auto items-center justify-between">
-        <h2 class="font-semibold text-xl text-gray-200 leading-tight">
+    <h2 class="font-semibold text-gray-200 leading-tight text-sm sm:text-base lg:text-lg">
             {{ __($titulo) }}
         </h2>
         <div class="space-x-3">
