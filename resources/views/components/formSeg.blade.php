@@ -1,4 +1,4 @@
-<div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+<div class="bg-gray-800 overflow-hidden shadow-sm p-0 m-2 rounded-lg sm:rounded-lg sm:m-0">
                 <div class="p-10 text-gray-100">
                     <form action="{{ route($route, $pregunta ?? null) }}" method="POST">
                         @csrf

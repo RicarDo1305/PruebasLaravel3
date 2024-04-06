@@ -159,7 +159,7 @@ Route::middleware('auth')->group(function () {
     #RUTAS PARA MUESTRAS
     #Lleva a la vista donde se crea la muestra para egresados
     Route::get('/seguimiento/egresados/muestra', [SeguimientoController::class, 'show'])->name('seguimiento.muestra.show');
-     Route::post('/seguimiento/egresados', [SeguimientoController::class, 'store'])->name('seguimiento.muestra.store');
+    Route::post('/seguimiento/egresados', [SeguimientoController::class, 'store'])->name('seguimiento.muestra.store');
 });
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,6 @@
 <x-app-layout>
     
-  <x-header-seg hidden="" titulo="Seguimiento a agresados y empleadores"/>
+  <x-header-seg hidden="" titulo="Egresados y empleadores"/>
 
   <x-egresados-form titulo="Añadir egresado" 
   ruta="seguimiento.agregar.store"

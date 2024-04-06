@@ -1,6 +1,6 @@
 <x-app-layout>
     
-  <x-header-seg hidden="hidden" titulo="Seguimiento a agresados y empleadores"/>
+  <x-header-seg hidden="hidden" titulo="Egresados y empleadores"/>
 
   <h2 class="mt-3 text-center font-semibold text-xl text-gray-200 leading-tight">
     Generar muestra
@@ -13,7 +13,9 @@
       <x-text-area name="poblacion" placeholder="Poblacion" textAreaDev=""/>
   </x-formSeg>
 
+  <div class="ml-2 md:ml-0">
   <x-button-seg name="Regresar" ruta="seguimiento.index"/>
+  </div>
 
 <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y divide-gray-900">
 <div class="p-6 flex space-x-2">
