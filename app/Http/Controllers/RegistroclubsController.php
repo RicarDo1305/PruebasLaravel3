@@ -51,7 +51,7 @@ class RegistroclubsController extends Controller
             'description'=>$request->description,
         ]);
 
-       return back();
+        return to_route('agregarclub.store')->with('status', __('Registrado exitosamente'));
     }
 
 }

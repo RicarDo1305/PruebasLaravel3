@@ -46,6 +46,6 @@ class RegisteredController extends Controller
             'rol'=> $request->rol,
         ]);
 
-       return back();
+        return to_route('/extraEscolares/admextraescolares')->with('status', __('Registrado exitosamente'));
     }
 }
