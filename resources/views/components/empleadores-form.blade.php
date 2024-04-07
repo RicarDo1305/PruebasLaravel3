@@ -4,7 +4,7 @@
   <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-           <div class="{{$hidden2}}">
+           <div class="{{$hidden2}} ml-2 md:ml-0">
            <x-button-seg name="Regresar" ruta="{{$rutaBack}}"/>
            </div>
 

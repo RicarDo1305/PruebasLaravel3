@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Gate;
 |
 */
 #ruta de inicio, pagina welcome
-Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'auth.login')->name('welcome');
 
 #Route::get('/chirps/{chirp}', function($chirp){
 #    if ($chirp == '2'){
