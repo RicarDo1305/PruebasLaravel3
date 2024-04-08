@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\clubsController;
 use App\Http\Controllers\EgresadosController;
 use App\Http\Controllers\EmpleadoresController;
@@ -13,7 +12,6 @@ use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\ListaController;
-use App\Models\Chirp;
 use App\Models\Empleador;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -47,16 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::get('/chirps', [ChirpController::class, 'index'])->name('chirps.index');
-
-    Route::post('/chirps', [ChirpController::class, 'store'])->name('chirps.store');
-
-    Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit'])->name('chirps.edit');
-
-    Route::put('/chirps/{chirp}', [ChirpController::class, 'update'])->name('chirps.update');
-
-    Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])->name('chirps.destroy');
 
     Route::get('/extraEscolares/admextraescolares', function () {
         Gate::authorize('see-extraescolares');

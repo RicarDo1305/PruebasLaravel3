@@ -1,6 +1,16 @@
-<h2 class="mt-3 -mb-10 md:-mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
+<div class="flex items-stretch justify-center">
+  <h2 class="mt-2 md:mt-3 -mb-10 md:-mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
     {{ $titulo }}
-  </h2>
+  </h2> 
+
+    <x-dropdown-seg 
+    rutaLista="seguimiento.listaEm.show"
+    rutaEncuesta="seguimiento.encuestaEm.index"
+    rutaEncuestaLista="seguimiento.encuestaEm.show"
+    />
+
+</div>
+  
   <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
@@ -14,11 +24,7 @@
                 <x-text-area name="ubicacion" placeholder="Ubicacion" textAreaDev="{{$empleador->ubicacion ?? null}}"/>
                 </div>
             </x-formSeg>
-            <div class="{{$hidden}} flex space-x-4 ml-2 md:ml-0">
-            <x-button-seg name="Lista" ruta="seguimiento.listaEm.show"/>
-            <x-button-seg name="Crear encuesta" ruta="seguimiento.encuestaEm.index"/>
-            <x-button-seg name="Ver encuesta para empleadores" ruta="seguimiento.encuestaEm.show"/>
-            </div>
+
         </div>
         
   </div>
