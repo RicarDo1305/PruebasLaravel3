@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Chirp;
 
 class User extends Authenticatable
 {
@@ -61,10 +60,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function chirps(): HasMany
-    {
-        return $this->hasMany(Chirp::class);
-    }
 
     public function Preguntas(): HasMany
     {

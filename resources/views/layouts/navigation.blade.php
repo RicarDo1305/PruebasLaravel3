@@ -18,9 +18,6 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-                        {{ __('Chirps') }}
-                    </x-nav-link>
                     @include('layouts.partials.links-extraescolares');                   
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                         {{ __('Egresados y empleadores') }}
@@ -80,10 +77,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
-                {{ __('Chirps') }}
-            </x-responsive-nav-link>
-            @include('layouts.partials.links-extraescolares-responsive'); 
+            @include('layouts.partials.links-extraescolares-responsive');
             <x-responsive-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                 {{ __('Egresados y empleadores') }}
             </x-responsive-nav-link>
