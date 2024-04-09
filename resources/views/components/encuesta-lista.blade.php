@@ -19,7 +19,7 @@
                       <div class="flex space-x-5">
                       @foreach($Pregunta->opciones as $opcion)
                          <div>
-                         <p class="mt-4 text-sm md:text-lg text-gray-100">{{ $opcion->opcion }}</p>
+                         <p class="mt-4 text-xs md:text-lg text-gray-100">{{ $opcion->opcion }}</p>
                          </div>
                       @endforeach
                       </div>

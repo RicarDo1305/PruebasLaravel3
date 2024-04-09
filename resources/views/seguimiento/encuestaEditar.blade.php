@@ -6,7 +6,7 @@
 </h2>
 
 <div class="py-12">
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
     
        <x-editar-encuesta ruta="seguimiento.encuesta.update" :pregunta=$pregunta/>
 
