@@ -3,15 +3,16 @@
     {{ $titulo }}
   </h2> 
 
+  <div class="{{ $hidden }}">
     <x-dropdown-seg 
     rutaLista="seguimiento.listaEm.show"
     rutaEncuesta="seguimiento.encuestaEm.index"
     rutaEncuestaLista="seguimiento.encuestaEm.show"
     />
-
+  </div>
 </div>
   
-  <div class="py-12">
+  <div class="py-12 {{ $hidden == 'hidden' ? 'mt-2' : '-mt-10' }}">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
            <div class="{{$hidden2}} ml-2 md:ml-0">

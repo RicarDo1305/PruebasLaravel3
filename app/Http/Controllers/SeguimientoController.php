@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
+use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
 #Este controlador es para egresados
@@ -10,7 +11,8 @@ class SeguimientoController extends Controller
 {
     public function index()
     {
-        return view('seguimiento.index');
+    
+        //return view('seguimiento.index');
     
     }
     public function store(Request $request){
@@ -36,7 +38,7 @@ class SeguimientoController extends Controller
 
     public function show()
     {
-        return view('seguimiento.muestra');
+        //return view('seguimiento.muestra');
     }
     
 

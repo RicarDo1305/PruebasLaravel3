@@ -16,9 +16,6 @@ class SeguimientoEmpleadoresController extends Controller
     }
     public function show()
     {
-        return view('seguimiento.showEm', [
-            'chirps' => Chirp::with('user')->latest()->get()
-        ]);
         return view('seguimiento.showEm');
     }
 }

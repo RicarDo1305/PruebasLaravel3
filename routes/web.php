@@ -12,7 +12,10 @@ use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\ListaController;
+use App\Models\Egresado;
 use App\Models\Empleador;
+use App\Models\Pregunta;
+use App\Models\User;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
@@ -87,13 +90,24 @@ Route::middleware('auth')->group(function () {
     #RUTAS PARA LISTAS DE EGRESADOS
 
     #retorna la vista de agregar nuevos egresados y empleadores
-    Route::get('/seguimiento', [SeguimientoController::class, 'index'])->name('seguimiento.index');
+    Route::get('/seguimiento', function(){ 
+        Gate::authorize('see-all');
+        return view('seguimiento.index');
+    })->name('seguimiento.index');
     #Agrega los datos de un nuevo egresado a la lista en la base de datos
     Route::post('/seguimiemto/agregar/egresados', [EgresadosController::class, 'store'])->name('seguimiento.agregar.store');
     #Ruta que lleva a mostrar la lista de egresados
-    Route::get('/seguimiemto/egresados/lista', [EgresadosController::class, 'show'])->name('seguimiento.lista.show');
+    Route::get('/seguimiemto/egresados/lista', function(){ 
+        Gate::authorize('see-all');
+        $egresadosController = new EgresadosController();
+        return $egresadosController->show();
+    })->name('seguimiento.lista.show');
     #Recupera los datos del agresado a editar
-    Route::get('/seguimiento/egresados/{egresado}/editar', [EgresadosController::class, 'edit'])->name('seguimiento.lista.edit');
+    Route::get('/seguimiento/egresados/{egresado}/editar', function(User $egresado){ 
+        Gate::authorize('see-all');
+        $egresadoController = new EgresadosController();
+        return $egresadoController->edit($egresado);
+    })->name('seguimiento.lista.edit');
     #Actualiza el egresado editado y lo sube a la base de datos
     Route::put('/seguimiento/egresados/{egresado}', [EgresadosController::class, 'update'])->name('seguimiento.lista.update');
     #Ruta que elimina un egresado de la BD
@@ -102,13 +116,24 @@ Route::middleware('auth')->group(function () {
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EGRESADOS
 
     #muestra la vista para crear una encuesta para egresados
-    Route::get('/seguimiento/encuesta/egresados', [EncuestaController::class, 'index'])->name('seguimiento.encuesta.index');
+    Route::get('/seguimiento/encuesta/egresados', function(){ 
+        Gate::authorize('see-all');
+        return view('seguimiento.encuestaCrear');
+    })->name('seguimiento.encuesta.index');
     #Almacena las preguntas y opciones en la base de datos
     Route::post('/seguimiento/encuesta/agresados', [EncuestaController::class, 'store'])->name('questions.store');
     #muestra la vista para ver las preguntas de una encuesta a egresados
-    Route::get('/seguimiento/encuesta/egresados/mostrar', [EncuestaController::class, 'show'])->name('seguimiento.encuesta.show');
+    Route::get('/seguimiento/encuesta/egresados/mostrar', function(){ 
+        Gate::authorize('see-all');
+        $encuestaController = new EncuestaController();
+        return $encuestaController->show();
+    })->name('seguimiento.encuesta.show');
     #Editar una pregunta
-    Route::get('/seguimiento/encuesta/egresados/{pregunta}/editar', [EncuestaController::class, 'edit'])->name('seguimiento.encuesta.edit');
+    Route::get('/seguimiento/encuesta/egresados/{pregunta}/editar', function(Pregunta $pregunta){ 
+        Gate::authorize('see-all');
+        $encuestaController = new EncuestaController();
+        return $encuestaController->edit($pregunta);
+    })->name('seguimiento.encuesta.edit');
     #Actualiza la pregunta editada y lo sube a la base de datos
     Route::put('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'update'])->name('seguimiento.encuesta.update');
     #Elimina una pregunta de la encuesta y de la BD
@@ -119,9 +144,17 @@ Route::middleware('auth')->group(function () {
     #Ruta por la cual se lleva a cabo el proceso de almacenar los datos de un empleador en BD
     Route::post('/seguimiemto/agregar/empleadores', [EmpleadoresController::class, 'store'])->name('seguimiento.agregarEm.store');
     #Muestra la lista de empleadores
-    Route::get('/seguimiemto/empleadores/lista', [EmpleadoresController::class, 'show'])->name('seguimiento.listaEm.show');
+    Route::get('/seguimiemto/empleadores/lista', function(){ 
+        Gate::authorize('see-all');
+        $empleadoresController = new EmpleadoresController();
+        return $empleadoresController->show();
+    })->name('seguimiento.listaEm.show');
     #Ruta que lleva al formulario para editar los datos de un empleador
-    Route::get('/seguimiento/empleadores/{empleador}/editar', [EmpleadoresController::class, 'edit'])->name('seguimiento.listaEm.edit');
+    Route::get('/seguimiento/empleadores/{empleador}/editar', function(Empleador $empleador){ 
+        Gate::authorize('see-all');
+        $EmpleadoresController = new EmpleadoresController();
+        return $EmpleadoresController->edit($empleador);
+    })->name('seguimiento.listaEm.edit');
     #Ruta donde que se usa para almacenar los datos editados en la BD
     Route::put('/seguimiento/empleadores/{empleador}', [EmpleadoresController::class, 'update'])->name('seguimiento.listaEm.update');
     #Ruta que elimina un empleador de la BD
@@ -129,16 +162,32 @@ Route::middleware('auth')->group(function () {
 
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EMPLEADORES
     #Muestra la lista de empleadores
-    Route::get('/seguimiento/empleadores/lista', [SeguimientoEmpleadoresController::class, 'show'])->name('seguimiento.empleadores.show');
+    Route::get('/seguimiento/empleadores/lista', function(){ 
+        Gate::authorize('see-all');
+        return view('seguimiento.showEm');
+    })->name('seguimiento.empleadores.show');
     #lleva a cabo el proceso de almacenar los datos de un empleador en BD
     Route::post('/seguimiemto/empleadores', [SeguimientoEmpleadoresController::class, 'store'])->name('seguimientoEg.store');
     #lleva a la vista para crear la encuesta de empleadores
-    Route::get('/seguimiento/encuesta/empleadores', [EncuestaEmpleadoresController::class, 'index'])->name('seguimiento.encuestaEm.index');
+    Route::get('/seguimiento/encuesta/empleadores',function(){ 
+        Gate::authorize('see-all');
+        $encuestaEmpleadoresController = new EncuestaEmpleadoresController();
+        return $encuestaEmpleadoresController->index();
+    })->name('seguimiento.encuestaEm.index');
     #Almacena las preguntas y opciones en la base de datos
     Route::post('/seguimiento/encuesta/empleadores', [EncuestaEmpleadoresController::class, 'store'])->name('questionsEm.store');
     #muestra la vista para ver las preguntas de una encuesta a empleadores
-    Route::get('/seguimiento/encuesta/empleadores/mostrar', [EncuestaEmpleadoresController::class, 'show'])->name('seguimiento.encuestaEm.show');
-    Route::get('/seguimiento/encuesta/empleadores/{pregunta}/editar', [EncuestaEmpleadoresController::class, 'edit'])->name('seguimiento.encuestaEm.edit');
+    Route::get('/seguimiento/encuesta/empleadores/mostrar', function(){ 
+        Gate::authorize('see-all');
+        $encuestaEmpleadoresController = new EncuestaEmpleadoresController();
+        return $encuestaEmpleadoresController->show();
+    })->name('seguimiento.encuestaEm.show');
+    #lleva a la vista donde se podra editar una pregunta de la encuesta
+    Route::get('/seguimiento/encuesta/empleadores/{pregunta}/editar', function(Pregunta $pregunta){ 
+        Gate::authorize('see-all');
+        $encuestaEmpleadoresController = new EncuestaEmpleadoresController();
+        return $encuestaEmpleadoresController->edit($pregunta);
+    })->name('seguimiento.encuestaEm.edit');
     #Actualiza la pregunta editada y lo sube a la base de datos
     Route::put('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'update'])->name('seguimiento.encuestaEm.update');
     #Elimina una pregunta de la base de datos
@@ -146,7 +195,11 @@ Route::middleware('auth')->group(function () {
 
     #RUTAS PARA MUESTRAS
     #Lleva a la vista donde se crea la muestra para egresados
-    Route::get('/seguimiento/egresados/muestra', [SeguimientoController::class, 'show'])->name('seguimiento.muestra.show');
+    Route::get('/seguimiento/egresados/muestra', function(){ 
+        Gate::authorize('see-all');
+        return view('seguimiento.muestra');
+    })->name('seguimiento.muestra.show');
+    #obtiene los datos
     Route::post('/seguimiento/egresados', [SeguimientoController::class, 'store'])->name('seguimiento.muestra.store');
 });
 

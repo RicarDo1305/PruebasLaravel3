@@ -11,8 +11,8 @@ use LaravelLang\Publisher\Console\Update;
 class EncuestaController extends Controller
 {
     public function index()
-    {
-        return view('seguimiento.encuestaCrear');
+    {   
+        //return view('seguimiento.encuestaCrear');
     }
 
     public function store(Request $request)
