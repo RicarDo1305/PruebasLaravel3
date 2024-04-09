@@ -18,6 +18,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+<<<<<<< HEAD
 
                     @can('see-extraescolares')
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -84,6 +85,9 @@
                     @endcan
 
                    @can('see-all')
+=======
+                    @include('layouts.partials.links-extraescolares');                   
+>>>>>>> 95bb429971362bad7975373407d90cc3492933e5
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                         {{ __('Egresados y empleadores') }}
                     </x-nav-link>
@@ -143,7 +147,11 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+<<<<<<< HEAD
             @can('see-all')
+=======
+            @include('layouts.partials.links-extraescolares-responsive');
+>>>>>>> 95bb429971362bad7975373407d90cc3492933e5
             <x-responsive-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                 {{ __('Egresados y empleadores') }}
             </x-responsive-nav-link>
