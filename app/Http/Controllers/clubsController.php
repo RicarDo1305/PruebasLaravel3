@@ -35,4 +35,5 @@ return to_route('club.editar')->with('status', __('Editado exitosamente'));
     public function update(){
         return view('/extraEscolares/editarclub');
     }
+
 }

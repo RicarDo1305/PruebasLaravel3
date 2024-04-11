@@ -2,7 +2,7 @@
             <div class="h-52">
                 <img 
                 class="h-full w-full object-cover object-center"
-                src="{{$img}}"
+                src="img/{{$img}}"
                 alt="Imagen de referencia">
             </div>
             <div class="p-5 space-x-3 flex-1">

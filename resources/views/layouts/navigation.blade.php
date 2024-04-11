@@ -18,8 +18,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inicio') }}
                     </x-nav-link>
+
                     @include('layouts.partials.links-extraescolares');
-                    @can('see-all')                   
+
+                   @can('see-all')                   
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                         {{ __('Egresados y empleadores') }}
                     </x-nav-link>
