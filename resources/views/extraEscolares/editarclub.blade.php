@@ -22,7 +22,9 @@
             
             <br>
             <br>
-            <x-text-area name="img" placeholder="Url de imagen: " textAreaDev=""/>
+            <label for="">Imagen:</label>
+            <input type="file" name="img">
+            <br>
             <br>
             <label for="">Seleccione un encargado:</label>
                 <select name="incharge" class="text-black">
@@ -32,7 +34,7 @@
             </select>
             <br>
             <br>
-            <x-text-area name="description" Placeholder="" textAreaDev=""/>
+            <x-text-area name="description" Placeholder="Descripcion" textAreaDev=""/>
             <button type="submit" class="mt-4 bg-green-900 text-white hover:bg-green-700 inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition ease-in-out duration-150">
                 Editar
             </button>

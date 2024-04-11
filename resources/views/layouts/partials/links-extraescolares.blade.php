@@ -40,13 +40,13 @@
             <x-dropdown-link :href="route('agregarclub')">
                 {{ __('Registrar club') }}
             </x-dropdown-link>
-            <x-dropdown-link :href="route('club.editar')">
-                {{ __('Editar club') }}
+            <x-dropdown-link :href="route('extraEscolares.index')">
+                {{ __('Clubs') }}
             </x-dropdown-link>
         </x-slot>
     </x-dropdown>
 </div>
-<x-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.*')">
+<x-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.alumnos')">
     {{ __('Alumnos') }}
 </x-nav-link>
 @endcan
