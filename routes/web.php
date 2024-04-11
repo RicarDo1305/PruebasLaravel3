@@ -12,6 +12,7 @@ use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\ListaController;
+use App\Http\Controllers\RespuestasController;
 use App\Models\Egresado;
 use App\Models\Empleador;
 use App\Models\Pregunta;
@@ -138,6 +139,17 @@ Route::middleware('auth')->group(function () {
     Route::put('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'update'])->name('seguimiento.encuesta.update');
     #Elimina una pregunta de la encuesta y de la BD
     Route::delete('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'destroy'])->name('seguimiento.encuesta.destroy');
+    
+    #RUTAS QUE PUEDE USAR UN AGRESADO
+    #Muestra la encuesta
+    Route::get('/seguimiento/egresado/encuesta', function(){ 
+         Gate::authorize('egresados');
+         $RespuestasController = new RespuestasController();
+        return $RespuestasController->index();
+    })->name('seguimiento.responder.encuesta.index');
+    #Realiza la accion de almacenar en BD
+    #Almacena las preguntas y opciones en la base de datos
+    Route::post('/seguimiento/egresado/encuesta/enviar', [RespuestasController::class, 'store'])->name('seguimiento.responder.encuesta.store');
 
     #RUTAS PARA LISTAS DE EMPLEADORES
 
@@ -159,7 +171,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/seguimiento/empleadores/{empleador}', [EmpleadoresController::class, 'update'])->name('seguimiento.listaEm.update');
     #Ruta que elimina un empleador de la BD
     Route::delete('/seguimiento/empleadores/{empleador}', [EmpleadoresController::class, 'destroy'])->name('seguimiento.listaEm.destroy');
-
+    
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EMPLEADORES
     #Muestra la lista de empleadores
     Route::get('/seguimiento/empleadores/lista', function(){ 
@@ -200,7 +212,7 @@ Route::middleware('auth')->group(function () {
         return view('seguimiento.muestra');
     })->name('seguimiento.muestra.show');
     #obtiene los datos
-    Route::post('/seguimiento/egresados', [SeguimientoController::class, 'store'])->name('seguimiento.muestra.store');
+    Route::post('/seguimiento/egresados', [SeguimientoController::class, 'muestra'])->name('seguimiento.muestra.store');
 });
 
 require __DIR__.'/auth.php';

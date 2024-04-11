@@ -18,6 +18,7 @@ class User extends Authenticatable
     const ROLE_ADMEXT = 2;
     const ROLE_TEACHER =3;
     const ROLE_STUDENT = 4;
+    const ROLE_EGRESADO =5;
 
 
     /**

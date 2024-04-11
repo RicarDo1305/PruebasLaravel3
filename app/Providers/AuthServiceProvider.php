@@ -37,6 +37,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('clubs', fn (User $user) =>
             $user->rol == User::ROLE_STUDENT
         );
+        Gate::define('egresados', fn (User $user) =>
+            $user->rol == User::ROLE_EGRESADO
+        );
+
+
+        
         
     }
 }

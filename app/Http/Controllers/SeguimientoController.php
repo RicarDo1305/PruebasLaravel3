@@ -15,7 +15,15 @@ class SeguimientoController extends Controller
         //return view('seguimiento.index');
     
     }
-    public function store(Request $request){
+    
+
+    public function show()
+    {
+        //return view('seguimiento.muestra');
+    }
+
+
+    public function muestra(Request $request){
     
          $validatedData = $request->validate([
             'poblacion' => 'required|numeric|max:999',
@@ -34,11 +42,6 @@ class SeguimientoController extends Controller
 
         return view('seguimiento.muestra', [
             'resultado' => $res]);
-    }
-
-    public function show()
-    {
-        //return view('seguimiento.muestra');
     }
     
 
