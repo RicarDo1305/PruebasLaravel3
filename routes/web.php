@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/extraEscolares/alumnos', [ListaController::class, 'index'])->name('extraEscolares.alumnos');
 
     //ruta para editar clubs
-    Route::get('/extraEscolares/editarclub',[clubsController::class,'index'])->name('club.editar');
+    Route::get('/extraEscolares/editarclub/{id}',[clubsController::class,'index'])->name('club.editar');
     Route::put('/extraEscolares/editarclub/{club}',[clubsController::class,'edit'])->name('club.editform');
 
     //rutas para registrar a clubs

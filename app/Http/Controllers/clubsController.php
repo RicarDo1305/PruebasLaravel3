@@ -8,8 +8,8 @@ use App\Models\User;
 
 class clubsController extends Controller
 {
-    public function index(){
-        $clubs=Clubs::all();
+    public function index($id){
+        $clubs=Clubs::where('id',$id)->get();
         $encargados=User::where('rol','3')->get();
         return view('/extraEscolares/editarclub',['clubs'=>$clubs],['encargados'=>$encargados]);
     }
@@ -18,6 +18,7 @@ class clubsController extends Controller
 
         $request->validate([
             'img' => ['required'],
+            'title'=>['required','string'],
             'incharge' => ['required','string','max:255'],
             'description'=>['required','string','max:255'],
         ]);
@@ -25,12 +26,13 @@ class clubsController extends Controller
         $clubs=Clubs::where('id',$help);
         $clubs->update([
             'img' => $request->input('img'),
+            'title'=>$request->input('title'),
             'incharge' => $request->input('incharge'),
             'description' => $request->input('description'),
         ]);
 
 
-return to_route('club.editar')->with('status', __('Editado exitosamente'));
+return to_route('extraEscolares.index')->with('status', __('Editado exitosamente'));
     }
     public function update(){
         return view('/extraEscolares/editarclub');
