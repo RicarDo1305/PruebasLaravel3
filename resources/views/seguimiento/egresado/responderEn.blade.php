@@ -6,7 +6,7 @@
    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
     
    <div class="ml-2">
-   <x-button-seg name="Regresar" ruta="seguimiento.index"/>
+   <x-button-seg name="Inicio" ruta="dashboard"/>
    </div> 
 
    <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
@@ -25,6 +25,7 @@
              </svg>
                 <div class="flex-1">
                     <p class="mt-0 text-sm md:text-lg text-gray-100">{{ $Pregunta->pregunta }}</p>
+                    <x-input-error class="mt-2" :messages="$errors->get('pregunta_')" />
                       <div class="flex space-x-5">
                       @foreach($Pregunta->opciones as $opcion)
                       <div class="mt-4">
