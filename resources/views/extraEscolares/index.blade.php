@@ -8,7 +8,7 @@
         @foreach($tarjetas as $club)
         <article class="flex flex-col">
     <div class="p-5 space-x-3 flex-1">
-        <x-tarjet-ex img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}" id="{{$club->id}}"/>
+        <x-tarjet-exadm img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}" id="{{$club->id}}"/>
         </div>
         </article>
         @endforeach

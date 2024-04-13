@@ -8,8 +8,8 @@
     {{ __('Registrar club') }}
 </x-responsive-nav-link>
 
-<x-responsive-nav-link :href="route('club.editar')" :active="request()->routeIs('dashboard')">
-    {{ __('Editar club') }}
+<x-responsive-nav-link :href="route('agregarclub')" :active="request()->routeIs('dashboard')">
+    {{ __('Clubs') }}
 </x-responsive-nav-link>
        
 <x-responsive-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.*')">
