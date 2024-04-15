@@ -18,6 +18,9 @@
             <x-dropdown-link :href="route('/extraEscolares/admextraescolares')">
                 {{ __('Registrar encargado') }}
             </x-dropdown-link>
+            <x-dropdown-link :href="route('extraEscolares.encargados')">
+                {{ __('Encargados') }}
+            </x-dropdown-link>
         </x-slot>
     </x-dropdown>
 </div>

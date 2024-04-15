@@ -65,7 +65,7 @@
         <div class="flex items-center justify-end mt-4">
 
             <x-primary-button class="ms-3 bg-green-900 text-white hover:bg-green-700">
-                {{ __('Register') }}
+                {{ ('Registrar') }}
             </x-primary-button>
         </div>
     </form>
