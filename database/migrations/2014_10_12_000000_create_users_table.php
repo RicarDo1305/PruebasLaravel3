@@ -26,6 +26,16 @@ return new class extends Migration
             $table->string('semestre')->nullable();
             $table->string('club')->nullable();
             $table->string('nss')->nullable();
+            $table->string('curp')->nullable();
+            $table->string('fechaingreso')->nullable();
+            $table->string('tiposangre')->nullable();
+            $table->string('nombretutor')->nullable();
+            $table->string('telefonotutor')->nullable();
+            $table->string('padecimiento')->nullable();
+            $table->string('parentesco')->nullable();
+            $table->string('telefonoparticular')->nullable();
+            $table->string('estatura')->nullable();
+            $table->string('peso')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

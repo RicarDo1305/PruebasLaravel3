@@ -37,5 +37,10 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
     public function update(){
         return view('/extraEscolares/editarclub');
     }
+    public function delete(Clubs $id){
+
+        $id->delete();
+        return to_route('extraEscolares.index')->with('status', __('Eliminado exitosamente'));
+    }
 
 }

@@ -62,12 +62,21 @@ Route::middleware('auth')->group(function () {
         return view('/extraEscolares/agregarclub');
     })->name('/extraEscolares/agregarclub');
 
-
+    //ruta para lista de alumnos
     Route::get('/extraEscolares/alumnos', [ListaController::class, 'index'])->name('extraEscolares.alumnos');
+
+    //ruta para lista de encargados
+    Route::get('/extraEscolares/encargados', [ListaController::class, 'encargados'])->name('extraEscolares.encargados');
+
+    //rutas para editar encargados
+    Route::get('/extraEscolares/editarencargado/{id}',[ListaController::class,'indexen'])->name('encargado.editar');
+    Route::get('/extraEscolares/editarencargado',[ListaController::class,'edit'])->name('encargado.editform');
+    Route::get('/extraEscolares/{id}/editarencargado',[ListaController::class,'delete'])->name('encargado.eliminar');
 
     //ruta para editar clubs
     Route::get('/extraEscolares/editarclub/{id}',[clubsController::class,'index'])->name('club.editar');
     Route::put('/extraEscolares/editarclub/{club}',[clubsController::class,'edit'])->name('club.editform');
+    Route::get('/extraEscolaress/editarclub/{id}',[clubsController::class,'delete'])->name('club.eliminar');
 
     //rutas para registrar a clubs
 

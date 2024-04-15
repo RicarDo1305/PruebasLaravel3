@@ -21,7 +21,7 @@
                 &nbsp; 
                 &nbsp; 
             <x-primary-button class="mt-4 bg-red-500 text-white hover:bg-red-400">
-                <a href="">Eliminar</a>
+                <a href="{{route('club.eliminar',$id)}}">Eliminar</a>
                 </x-primary-button>
             </div>
     </div>
