@@ -36,7 +36,6 @@ class RespuestasController extends Controller
     public function store(Request $request){
         $respuestas = $request->input();
 
-
         array_shift($respuestas);
 
         $user = Auth::user();

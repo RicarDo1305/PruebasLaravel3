@@ -13,8 +13,41 @@
     Encuesta a egresados
    </h2>
 
-<form action="{{ route('seguimiento.responder.encuesta.store') }}" method="POST">
+   <script>
+      function validarFormulario() {
+    var erroresDiv = document.getElementById('errores');
+    erroresDiv.innerHTML = '';
+
+    var preguntas = document.querySelectorAll('[name^="pregunta_"]');
+    
+    preguntas.forEach(function(pregunta) {
+        var preguntaId = pregunta.value;
+        var opciones = document.querySelectorAll('[name="opcion_' + preguntaId + '"]');
+        var opcionSeleccionada = Array.from(opciones).some(opcion => opcion.checked);
+        
+        // Verificar si ya hay un mensaje de error para esta pregunta
+        var mensajeErrorExistente = erroresDiv.querySelector('.error-pregunta-' + preguntaId);
+        
+        if (!opcionSeleccionada && !mensajeErrorExistente) {
+            var mensajeError = document.createElement('p');
+            mensajeError.innerHTML = 'Por favor, selecciona al menos una opción para la pregunta ' + preguntaId;
+            mensajeError.classList.add('error-pregunta-' + preguntaId); // Agregar una clase única al mensaje de error
+            erroresDiv.appendChild(mensajeError);
+        }
+    });
+
+    return !erroresDiv.hasChildNodes(); // Permitir el envío del formulario si no hay errores
+}
+
+
+   </script>
+
+
+<form action="{{ route('seguimiento.responder.encuesta.store') }}" method="POST" onsubmit="return validarFormulario()">
     @csrf
+
+    <div id="errores" class="text-white bg-red-700 mt-4 rounded-md text-center
+    max-w-7xl mx-auto sm:px-6 lg:px-8"></div>
    <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y
             divide-gray-900  m-2">
           
@@ -40,12 +73,14 @@
             @endforeach
             
         </div>
-        <x-primary-button class="mt-4 ml-2 bg-green-900 text-white hover:bg-green-700">
+        <x-primary-button id="boton" class="mt-4 ml-2 bg-green-900 text-white hover:bg-green-700">
                 Enviar
         </x-primary-button>
      </form>
    </div>
 </div>
-      
+   
+
+<!--<script src="{{ asset('js/validarform.js') }}"></script>-->
 
 </x-app-layout>
