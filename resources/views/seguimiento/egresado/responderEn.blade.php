@@ -16,7 +16,6 @@
 
 <form id="miFormulario" action="{{ route('seguimiento.responder.encuesta.store') }}" method="POST">
     @csrf
-
     <div id="errores" class="text-white bg-red-700 mt-4 rounded-md text-center
     max-w-7xl mx-auto sm:px-6 lg:px-8"></div>
     

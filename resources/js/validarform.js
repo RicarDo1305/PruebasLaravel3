@@ -1,5 +1,4 @@
 document.getElementById('miFormulario').addEventListener('submit', function(event) {
-   console.log('La función validarFormulario ha sido llamada.');
     event.preventDefault();
     var erroresDiv = document.getElementById('errores');
     erroresDiv.innerHTML = '';
@@ -28,10 +27,9 @@ document.getElementById('miFormulario').addEventListener('submit', function(even
         var mensajeError = document.createElement('p');
         mensajeError.innerHTML = 'Algunas preguntas no han sido contestadas';
         erroresDiv.appendChild(mensajeError);
+    } else {
+        // Si no hay preguntas sin contestar, permitir el envío del formulario
+        event.target.submit();
     }
-
-    return !hayPreguntaSinContestar; // Permitir el envío del formulario si no hay preguntas sin contestar
-
 });
-
 
