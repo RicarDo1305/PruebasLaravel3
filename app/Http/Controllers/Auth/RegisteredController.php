@@ -32,18 +32,28 @@ class RegisteredController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'apaterno' => ['required', 'string', 'max:255'],
+            'amaterno' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'noControl'=>['required','string','max:255'],
+            'curp' => ['required', 'string', 'max:255'],
+            'nss' => ['required', 'string', 'max:255'],
             'rol'=> ['required','int'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'apaterno' => $request->apaterno,
+            'amaterno' => $request->amaterno,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'noControl'=>$request->noControl,
             'rol'=> $request->rol,
+            'nss' => $request->nss,
+            'curp' => $request->curp,
+            
+            
         ]);
 
         return to_route('/extraEscolares/admextraescolares')->with('status', __('Registrado exitosamente'));

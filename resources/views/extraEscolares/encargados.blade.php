@@ -23,6 +23,8 @@
         <tr class="bg-green-900 text-white">
             <th class="px-4 py-2 border border-gray-400">NoControl</th>
             <th class="px-4 py-2 border border-gray-400">Nombre</th>
+            <th class="px-4 py-2 border border-gray-400">Apellido paterno</th>
+            <th class="px-4 py-2 border border-gray-400">Apellido Materno</th>
             <th class="px-4 py-2 border border-gray-400">Curp</th>
             <th class="px-4 py-2 border border-gray-400">Nss</th>
             <th class="px-4 py-2 border border-gray-400">Editar</th>
@@ -34,7 +36,9 @@
         <tr class="bg-white">
             <td class="px-4 py-2 border border-gray-400">{{$alumno->noControl}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->name}}</td>
-            <td class="px-4 py-2 border border-gray-400">{{$alumno->carrera}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->apaterno}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->amaterno}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->curp}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->nss}}</td>
             <td class="px-4 py-2 border border-gray-400"><x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-400">
                 <a href="{{route('encargado.editar',$alumno->id)}}">Editar</a>
