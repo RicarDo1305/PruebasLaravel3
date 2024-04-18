@@ -17,6 +17,9 @@
                         <x-dropdown-link href="{{ route($rutaEncuestaLista) }}">
                           Ver encuesta
                         </x-dropdown-link>
+                        <x-dropdown-link href="{{ route($rutaRespuestas) }}">
+                          Ver respuestas
+                        </x-dropdown-link>
                     </x-slot>
         </x-dropdown>
     </div>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chirp;
+use App\Models\Opcion;
+use App\Models\Pregunta;
+use App\Models\Respuesta;
 use Illuminate\Auth\Access\Gate;
 use Illuminate\Http\Request;
 
@@ -11,9 +14,19 @@ class SeguimientoController extends Controller
 {
     public function index()
     {
-    
-        //return view('seguimiento.index');
-    
+      $preguntas = Pregunta::with('user')->where('tipo', 1)->latest()->get();
+
+        // Obtener las opciones relacionadas con las preguntas
+        $opciones = [];
+        foreach ($preguntas as $pregunta) {
+            $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
+        }
+
+      $respuestas = Respuesta::all();
+      return view('seguimiento.egresadoRespuestas',[
+        'preguntas' => $preguntas,
+        'respuestas' => $respuestas
+      ]);    
     }
     
 

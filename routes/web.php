@@ -224,6 +224,16 @@ Route::middleware('auth')->group(function () {
     })->name('seguimiento.muestra.show');
     #obtiene los datos
     Route::post('/seguimiento/egresados', [SeguimientoController::class, 'muestra'])->name('seguimiento.muestra.store');
+    
+    #RUTAS PARA VER RESPUESTAS A LAS ENCUESTAS
+    #Egresados
+    Route::get('/seguimiento/egresados/respuestas', function(){ 
+        Gate::authorize('see-all');
+        $seguimientoController = new SeguimientoController();
+        return $seguimientoController->index();
+    })->name('seguimiento.respuestasEg.index');
+    #Empleadores
+
 });
 
 require __DIR__.'/auth.php';

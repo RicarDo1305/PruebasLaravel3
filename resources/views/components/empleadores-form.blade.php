@@ -8,6 +8,7 @@
     rutaLista="seguimiento.listaEm.show"
     rutaEncuesta="seguimiento.encuestaEm.index"
     rutaEncuestaLista="seguimiento.encuestaEm.show"
+    rutaRespuestas="dashboard"
     />
   </div>
 </div>
