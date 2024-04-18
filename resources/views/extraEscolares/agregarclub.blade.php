@@ -12,6 +12,7 @@
                 <div class="space-y-2">
                     <label for="img">Imagen:</label>
                     <input type="file" name="img">
+                    <x-input-error :messages="$errors->get('img')" class="mt-2" />
                     <x-text-area name="title" placeholder="Titulo" textAreaDev=""/>
                     <label for="">Seleccione un encargado:</label>
                     <select name="incharge" class="text-black">

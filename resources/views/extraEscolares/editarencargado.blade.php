@@ -15,6 +15,12 @@
                 <label for="">Nombre:</label>
                 <x-text-area name="name" Placeholder="{{$encargado->name}}" textAreaDev="{{$encargado->name}}"/>
                     <br>
+                    <label for="">Apellido paterno:</label>
+                <x-text-area name="apaterno" Placeholder="{{$encargado->apaterno}}" textAreaDev="{{$encargado->apaterno}}"/>
+                    <br>
+                    <label for="">Apellido materno:</label>
+                <x-text-area name="amaterno" Placeholder="{{$encargado->amaterno}}" textAreaDev="{{$encargado->amaterno}}"/>
+                    <br>
                     <label for="">Correo:</label>
                 <x-text-area name="email" Placeholder="{{$encargado->email}}" textAreaDev="{{$encargado->email}}"/>
                     <br>
@@ -24,6 +30,8 @@
                 <label for="">Numero de seguro social:</label>
                 <x-text-area name="nss" Placeholder="{{$encargado->nss}}" textAreaDev="{{$encargado->nss}}"/>
                     <br>
+                    <x-button-seg name="Regresar" ruta="{{'extraEscolares.encargados'}}"/>
+                        &nbsp;
             <button type="submit" class="mt-4 bg-green-900 text-white hover:bg-green-700 inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition ease-in-out duration-150">
                 Editar
             </button>

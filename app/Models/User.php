@@ -39,6 +39,7 @@ class User extends Authenticatable
         'semestre',
         'club',
         'nss',
+        'curp',
     ];
 
     /**

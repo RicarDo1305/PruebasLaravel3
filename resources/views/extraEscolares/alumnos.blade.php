@@ -17,14 +17,28 @@
     <br>
 </div>
 </div>
-<div class="flex justify-center items-center">
-    <table class=" mx-5">
+<div class="max-w-7xl mx-auto overflow-scroll">
+    <table class="">
         <thead>
         <tr class="bg-green-900 text-white">
             <th class="px-4 py-2 border border-gray-400">NoControl</th>
             <th class="px-4 py-2 border border-gray-400">Nombre</th>
+            <th class="px-4 py-2 border border-gray-400">Apellido paterno</th>
+            <th class="px-4 py-2 border border-gray-400">Apellido materno</th>
             <th class="px-4 py-2 border border-gray-400">Carrera</th>
             <th class="px-4 py-2 border border-gray-400">Semestre</th>
+            <th class="px-4 py-2 border border-gray-400">Fecha de ingreso</th>
+            <th class="px-4 py-2 border border-gray-400">Tipo de sangre</th>
+            <th class="px-4 py-2 border border-gray-400">Nss</th>
+            <th class="px-4 py-2 border border-gray-400">Curp</th>
+            <th class="px-4 py-2 border border-gray-400">Correo</th>
+            <th class="px-4 py-2 border border-gray-400">Nombre del tutor</th>
+            <th class="px-4 py-2 border border-gray-400">Telefono del tutor</th>
+            <th class="px-4 py-2 border border-gray-400">Padecimiento</th>
+            <th class="px-4 py-2 border border-gray-400">Parentesco</th>
+            <th class="px-4 py-2 border border-gray-400">Telefono particular</th>
+            <th class="px-4 py-2 border border-gray-400">Estatura</th>
+            <th class="px-4 py-2 border border-gray-400">Peso</th>
         </tr>
         </thead>
         <tbody>
@@ -32,8 +46,22 @@
         <tr class="bg-white">
             <td class="px-4 py-2 border border-gray-400">{{$alumno->noControl}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->name}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->apaterno}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->amaterno}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->carrera}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->semestre}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->fechaingreso}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->tiposangre}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->nss}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->curp}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->email}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->nombretutor}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->telefonotutor}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->padecimiento}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->parentesco}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->telefonoparticular}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->estatura}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->peso}}</td>
         </tr>
         @endforeach
         </tbody>
