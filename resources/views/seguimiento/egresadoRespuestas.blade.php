@@ -44,60 +44,13 @@
                 </div>
             </div>
             @endforeach
+            @foreach($preguntas as $Pregunta)
+            <div class="max-w-4xl mx-auto">
+               <canvas id="grafico_{{$Pregunta->id}}" class="grafico"></canvas>
+            </div>
+            @endforeach
         </div>
-@foreach($preguntas as $Pregunta)
-    <canvas class="" id="grafico_{{$Pregunta->id}}" class="grafico"></canvas>
-@endforeach
 
- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    var preguntas = document.querySelectorAll('.p-6');
-    
-    preguntas.forEach(function(pregunta) {
-        var preguntaId = pregunta.id.split('_')[1];
-        var preguntaTexto = pregunta.querySelector('p').textContent; // Obtener el texto de la pregunta
-        var elementos = pregunta.querySelectorAll('.respuesta');
-
-        var data = {
-            labels: [],
-            datasets: [{
-                label: 'Respuestas',
-                data: [],
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        };
-
-        elementos.forEach(function(elemento) {
-            var opcion = elemento.getAttribute('data-opcion');
-            var res = parseInt(elemento.getAttribute('data-res'));
-
-            data.labels.push(opcion);
-            data.datasets[0].data.push(res);
-        });
-
-        var ctx = document.getElementById('grafico_' + preguntaId).getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    title: {
-                        display: true,
-                        text: preguntaTexto // Mostrar el texto de la pregunta como título del gráfico
-                    }
-                }
-            }
-        });
-    });
-});
-</script>
+@vite('resources/js/crearGrafico.js')
 
 </x-app-layout>
