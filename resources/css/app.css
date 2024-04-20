@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.canvas-estilo {
+    width: 90%; /* El canvas ocupará el 90% del ancho de la ventana */
+    height: 50vh; /* El canvas ocupará la mitad de la altura de la ventana */
+}

@@ -44,9 +44,10 @@
                 </div>
             </div>
             @endforeach
+            <hr>
             @foreach($preguntas as $Pregunta)
-            <div class="max-w-4xl mx-auto">
-               <canvas id="grafico_{{$Pregunta->id}}" class="grafico"></canvas>
+            <div class="max-w-4xl mx-auto border border-gray-400 rounded-t-md rounded-b-lg mt-4">
+               <canvas id="grafico_{{$Pregunta->id}}" class="grafico canvas-estilo"></canvas>
             </div>
             @endforeach
         </div>

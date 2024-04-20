@@ -2,6 +2,7 @@ import Chart from 'chart.js/auto';
 
 document.addEventListener("DOMContentLoaded", function() {
     var preguntas = document.querySelectorAll('.p-6');
+    var charts = [];
     
     preguntas.forEach(function(pregunta) {
         var preguntaId = pregunta.id.split('_')[1];
@@ -47,6 +48,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         });
+        charts.push(myChart);
     });
-}
-);
+
+    window.addEventListener('resize', function() {
+        charts.forEach(function(chart) {
+            chart.resize(); // Redimensionar cada gráfico
+        });
+    });
+     
+});
+
+ 
+
