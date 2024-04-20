@@ -18,7 +18,7 @@
 @endcan
 
 @can('see-clubs')
-<x-responsive-nav-link :href="route('/extraEscolares/paselista')" :active="request()->routeIs('/extraEscolares/paselista')">
+<x-responsive-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.index')">
     {{ __('Listas') }}
 </x-responsive-nav-link>
 @endcan

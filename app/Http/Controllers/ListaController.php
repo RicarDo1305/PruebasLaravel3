@@ -81,7 +81,6 @@ class ListaController extends Controller
 
 return to_route('extraEscolares.encargados')->with('status', __('Editado exitosamente'));
     }
-
     
 
     public function delete(User $id){

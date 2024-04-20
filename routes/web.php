@@ -11,6 +11,7 @@ use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\FormularioclubController;
+use App\Http\Controllers\listaclubsController;
 use App\Http\Controllers\ListaController;
 use App\Http\Controllers\RespuestasController;
 use App\Models\Egresado;
@@ -65,6 +66,9 @@ Route::middleware('auth')->group(function () {
     //ruta para lista de alumnos
     Route::get('/extraEscolares/alumnos', [ListaController::class, 'index'])->name('extraEscolares.alumnos');
 
+    //ruta para lista de alumnos en los clubs
+    Route::get('/extraEscolares/paselista/{id}', [listaclubsController::class, 'index'])->name('extraEscolares.club');
+
     //ruta para lista de encargados
     Route::get('/extraEscolares/encargados', [ListaController::class, 'encargados'])->name('extraEscolares.encargados');
 
@@ -84,13 +88,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/extraEscolares/registroaclub',[FormularioclubController::class,'store'])->name('registroaclub.store');
 
     Route::post('/extraEscolares/registroaclub',[FormularioclubController::class,'store'])->name('registroaclub.store');
-
-
-    Route::get('/extraEscolares/paselista', function () {
-        Gate::authorize('see-clubs');
-
-        return view('/extraEscolares/paselista');
-    })->name('/extraEscolares/paselista');
 
     Route::get('/extraEscolares', [RegistroclubsController::class, 'index'])->name('extraEscolares.index');
 

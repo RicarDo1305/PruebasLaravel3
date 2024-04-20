@@ -20,10 +20,10 @@ class RegistroclubsController extends Controller
 {
     public function index()
     {
-        return view('extraEscolares.index', [
-            'tarjetas' => Clubs::all(),
-        ]);
-        return view('extraEscolares.index');
+        $clubs=Clubs::all();
+        $user=auth()->user()->name;
+        $listas=Clubs::where('incharge',$user)->get();
+        return view('extraEscolares.index',['tarjetas'=>$clubs],['clubs'=>$listas]);
     }
 
     public function create(){
