@@ -44,13 +44,13 @@ class SeguimientoController extends Controller
 
         $n = 0;
         $N = $validatedData['poblacion'];
-        $Z = 1.96;
-        $p = 0.5;
+        $Z = 1.65;
+        $p = 0.95;
         $q = (1-$p);
-        $E = 0.09;
+        $E = 0.05;
 
         $up = $N*($Z*$Z)*$p*$q;
-        $down =($N-1)*($E*$E)+($Z*$Z)*$p*$q;
+        $down =(0.1*0.1)*($N-1)+($Z*$Z)*$p*$q;
         $res = ceil($up/$down);
 
         return view('seguimiento.muestra', [
