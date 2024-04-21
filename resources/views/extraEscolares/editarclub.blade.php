@@ -9,7 +9,7 @@
     <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-10 text-gray-100">
             @foreach($clubs as $club)
-            <form action="{{route('club.editform',$club->id)}}" method="POST">
+            <form action="{{route('club.editform',$club->id)}}" method="POST" enctype="multipart/form-data">
                 @endforeach
                 @csrf
                 @method("PUT")

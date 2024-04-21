@@ -22,10 +22,17 @@ class clubsController extends Controller
             'incharge' => ['required','string','max:255'],
             'description'=>['required','string','max:255'],
         ]);
+
+        if($request->hasFile('img')){
+            $file = $request->file('img');
+            $destinationPath = 'img/';
+            $filename = $file->getClientOriginalName();
+            $uploadsucces = $request->file('img')->move($destinationPath,$filename);
+
         $help=$request->input('id');
         $clubs=Clubs::where('id',$help);
         $clubs->update([
-            'img' => $request->input('img'),
+            'img' => $filename,
             'title'=>$request->input('title'),
             'incharge' => $request->input('incharge'),
             'description' => $request->input('description'),
@@ -33,6 +40,7 @@ class clubsController extends Controller
 
 
 return to_route('extraEscolares.index')->with('status', __('Editado exitosamente'));
+    }
     }
     public function update(){
         return view('/extraEscolares/editarclub');
