@@ -27,7 +27,8 @@ class listaclubsController extends Controller
         ->get();
         return view('/extraEscolares/paselista', [
             'alumnos'=> $alumnos,
-            'texto'=>$texto    
+            'texto'=>$texto,
+            'titulo'=>$campo    
         ]);
         return view('extraEscolares.club'); 
     }

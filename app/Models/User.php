@@ -40,6 +40,15 @@ class User extends Authenticatable
         'club',
         'nss',
         'curp',
+        'fechaingreso',
+        'tiposangre',
+        'nombretutor',
+        'telefonotutor',
+        'padecimiento',
+        'parentesco',
+        'telefonoparticular',
+        'estatura',
+        'peso',
     ];
 
     /**

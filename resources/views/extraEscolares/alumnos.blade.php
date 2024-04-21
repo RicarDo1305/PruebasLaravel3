@@ -25,6 +25,7 @@
             <th class="px-4 py-2 border border-gray-400">Nombre</th>
             <th class="px-4 py-2 border border-gray-400">Apellido paterno</th>
             <th class="px-4 py-2 border border-gray-400">Apellido materno</th>
+            <th class="px-4 py-2 border border-gray-400">Sexo</th>
             <th class="px-4 py-2 border border-gray-400">Carrera</th>
             <th class="px-4 py-2 border border-gray-400">Semestre</th>
             <th class="px-4 py-2 border border-gray-400">Fecha de ingreso</th>
@@ -48,6 +49,7 @@
             <td class="px-4 py-2 border border-gray-400">{{$alumno->name}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->apaterno}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->amaterno}}</td>
+            <td class="px-4 py-2 border border-gray-400">{{$alumno->sexo}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->carrera}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->semestre}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->fechaingreso}}</td>
