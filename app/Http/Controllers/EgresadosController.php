@@ -15,6 +15,7 @@ class EgresadosController extends Controller
     $validatedData = $request->validate([
         'nombre' => 'required|string|max:255',
         'email' => 'required|string|max:255',
+        'carrera' => 'required|string|max:255',
         'noControl' => 'required|string|max:255',
     ]);
 
@@ -23,6 +24,7 @@ class EgresadosController extends Controller
     User::create([
         'name' => $validatedData['nombre'],
         'email' => $validatedData['email'],
+        'carrera' => $validatedData['carrera'],
         'password' => $validatedData['noControl'],
         'noControl' => $validatedData['noControl'],
         'rol' => '5',
@@ -59,12 +61,14 @@ class EgresadosController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'email' => 'required|string|max:255',
+            'carrera' => 'required|string|max:255',
             'noControl' => 'required|string|max:255', 
         ]);
 
         $egresado->update([
             'name' => $validatedData['nombre'],
             'email' => $validatedData['email'],
+            'carrera' => $validatedData['carrera'],
             'noControl' => $validatedData['noControl'],
         ]);
 

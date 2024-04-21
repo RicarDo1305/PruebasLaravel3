@@ -9,7 +9,7 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <span class="text-gray-200">
-                                {{ $empleador->nombre }}
+                                {{ $empleador->name }}
                             </span>
                             <small class="ml-2 text-xs md:text-sm text-gray-400">{{ $empleador->created_at->format('j M Y, g:i a') }}</small>
                             @if($empleador->created_at != $empleador->updated_at)
@@ -19,7 +19,6 @@
                     </div>
                     <p class="mt-4  text-sm md:text-lg text-gray-100">{{ $empleador->ubicacion }}</p>
                 </div>
-                @can('update', $empleador)
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button>
@@ -41,7 +40,6 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-                @endcan
             </div>
             @endforeach
             </div>

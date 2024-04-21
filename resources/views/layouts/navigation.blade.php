@@ -19,7 +19,7 @@
                         {{ __('Inicio') }}
                     </x-nav-link>
 
-                    @include('layouts.partials.links-extraescolares');
+                    @include('layouts.partials.links-extraescolares')
 
                    @can('see-all')                   
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
@@ -86,7 +86,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            @include('layouts.partials.links-extraescolares-responsive');
+            @include('layouts.partials.links-extraescolares-responsive')
             @can('see-all')
             <x-responsive-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                 {{ __('Egresados y empleadores') }}

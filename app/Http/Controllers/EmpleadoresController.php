@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Empleador;
-use App\Models\Pregunta;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,14 +14,18 @@ class EmpleadoresController extends Controller
     $validatedData = $request->validate([
         'nombreEm' => 'required|string|max:255',
         'ubicacion' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
     ]);
 
     $user = Auth::user();
     // Crear la pregunta
-    Empleador::create([
-        'nombre' => $validatedData['nombreEm'],
+    User::create([
+        'name' => $validatedData['nombreEm'],
+        'email' => $validatedData['email'],
         'ubicacion' => $validatedData['ubicacion'],
-        'user_id' => $user->id,
+        'noControl' => $validatedData['nombreEm'],
+        'password' => $validatedData['nombreEm'],
+        'rol' => '6',
     ]);
 
      return to_route('seguimiento.index')->with('status', __('Empleador agregado'));// Redireccionar o devolver alguna respuesta
@@ -30,25 +33,25 @@ class EmpleadoresController extends Controller
     }
 
     public function show(){
-        $empleadores = Empleador::with('user')->latest()->get();
+        $empleadores = User::where('rol', 6)->latest()->get();
 
         return view('seguimiento.showEm', [
         'empleadores' => $empleadores,
         ]);
      }
 
-      public function edit(Empleador $empleador)
-    {
-        $this->authorize('update', $empleador);
+      public function edit(User $empleador)
+    { 
+        //$this->authorize('update', $empleador);
 
        return view('seguimiento.empleadorEditar', [
             'empleador' => $empleador
        ]);
     }
 
-    public function update(Request $request, Empleador $empleador)
+    public function update(Request $request, User $empleador)
     {
-        $this->authorize('update', $empleador);
+        //$this->authorize('update', $empleador);
     
         $validate = $request->validate([
             'nombreEm' => 'required|string|max:255',
@@ -56,20 +59,20 @@ class EmpleadoresController extends Controller
         ]);
 
         $empleador->update([
-            'nombre' => $validate['nombreEm'],
+            'name' => $validate['nombreEm'],
             'ubicacion' => $validate['ubicacion'],
         ]);
 
         return to_route('seguimiento.listaEm.show')->with('status', __('Empleador Editado exitosamente'));
     }
 
-    public function destroy(Empleador $empleador)
+    public function destroy(User $empleador)
     {
         //$this->authorize('delete', $pregunta);
 
         $empleador->delete();
 
-        return to_route('seguimiento.listaEm.show')->with('status', __('Empleador elimindado exitosamente'));
+        return to_route('seguimiento.listaEm.show')->with('status', __('Empleador eliminado exitosamente'));
     }
 
 

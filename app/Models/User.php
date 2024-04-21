@@ -19,6 +19,7 @@ class User extends Authenticatable
     const ROLE_TEACHER =3;
     const ROLE_STUDENT = 4;
     const ROLE_EGRESADO =5;
+    const ROLE_EMPLEADOR =6;
 
 
     /**
@@ -40,6 +41,7 @@ class User extends Authenticatable
         'club',
         'nss',
         'curp',
+        'ubicacion',
     ];
 
     /**
@@ -71,9 +73,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pregunta::class);
     }
-    public function Empleadors(): HasMany
-    {
-        return $this->hasMany(Empleador::class);
-    }
+    
     
 }

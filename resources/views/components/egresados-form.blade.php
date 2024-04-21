@@ -22,7 +22,7 @@
                 <div class="space-y-2">
                     <x-text-area name="nombre" placeholder="Nombre" textAreaDev="{{$egresado->name ?? null}}"/>
                     <x-text-area name="email" placeholder="email" textAreaDev="{{$egresado->email ?? null}}"/>
-                    <x-text-area name="carrera" placeholder="carrera" textAreaDev=""/>
+                    <x-text-area name="carrera" placeholder="carrera" textAreaDev="{{$egresado->carrera ?? null}}"/>
                     <x-text-area name="noControl" placeholder="numero de control" textAreaDev="{{$egresado->noControl ?? null}}"/>
                 </div>
             </x-formSeg>

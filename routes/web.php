@@ -170,7 +170,7 @@ Route::middleware('auth')->group(function () {
         return $empleadoresController->show();
     })->name('seguimiento.listaEm.show');
     #Ruta que lleva al formulario para editar los datos de un empleador
-    Route::get('/seguimiento/empleadores/{empleador}/editar', function(Empleador $empleador){ 
+    Route::get('/seguimiento/empleadores/{empleador}/editar', function(User $empleador){ 
         Gate::authorize('see-all');
         $EmpleadoresController = new EmpleadoresController();
         return $EmpleadoresController->edit($empleador);

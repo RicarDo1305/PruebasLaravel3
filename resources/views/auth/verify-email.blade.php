@@ -14,9 +14,10 @@
             @csrf
 
             <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
+            <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
+                {{ __('Resend Verification Email') }}
+            </x-primary-button>
+        </div>
             </div>
         </form>
 

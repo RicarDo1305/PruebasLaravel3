@@ -36,6 +36,7 @@ return new class extends Migration
             $table->string('telefonoparticular')->nullable();
             $table->string('estatura')->nullable();
             $table->string('peso')->nullable();
+            $table->string('ubicacion')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -19,7 +19,7 @@
         </div>
 
         <div class="flex justify-end mt-4">
-            <x-primary-button>
+            <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
                 {{ __('Confirm') }}
             </x-primary-button>
         </div>

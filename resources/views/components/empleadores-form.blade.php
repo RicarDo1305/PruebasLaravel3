@@ -22,8 +22,9 @@
 
             <x-formSeg route="{{ $ruta }}" :pregunta=$empleador nameButton="{{$button}}" method="{{$metodo}}">
                 <div class="space-y-2">
-                <x-text-area name="nombreEm" placeholder="Nombre de la empresa" textAreaDev="{{$empleador->nombre ?? null}}"/>
+                <x-text-area name="nombreEm" placeholder="Nombre de la empresa" textAreaDev="{{$empleador->name ?? null}}"/>
                 <x-text-area name="ubicacion" placeholder="Ubicacion" textAreaDev="{{$empleador->ubicacion ?? null}}"/>
+                <x-text-area name="email" placeholder="Email" textAreaDev="{{$empleador->email ?? null}}"/>  
                 </div>
             </x-formSeg>
 
