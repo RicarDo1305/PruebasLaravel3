@@ -39,10 +39,8 @@
             <td class="px-4 py-2 border border-gray-400">{{$alumno->amaterno}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->curp}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->nss}}</td>
-            @php
-                $asistencia =$asistencias->where('name',$alumno->name)->count();
-            @endphp
-             <td class="px-4 py-2 border border-gray-400">{{$asistencia}}</td>
+            <form action="{{route('registro.asistencia')}}" method="GET">
+            <td class="px-4 py-2 border border-gray-400"><input type="checkbox"  value="{{$alumno->name}}" name="name[]"></td>
         </tr>
         @endforeach
         </tbody>
@@ -53,7 +51,8 @@
         <button class="ms-3 bg-green-900 text-white hover:bg-green-700 'inline-flex items-center 
         px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
         text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
-        focus:ring-offset-gray-800 transition ease-in-out duration-150'"><a href="{{route('extraEscolares.asistencia',$id)}}">Pase de lista</a></button>
+        focus:ring-offset-gray-800 transition ease-in-out duration-150'" type="submit">Asistencia</button>
+    </form>
     </div>
 </div>
     

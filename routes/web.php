@@ -68,6 +68,10 @@ Route::middleware('auth')->group(function () {
 
     //ruta para lista de alumnos en los clubs
     Route::get('/extraEscolares/paselista/{id}', [listaclubsController::class, 'index'])->name('extraEscolares.club');
+    Route::get('/extraEscolares/asistencia/{id}', [listaclubsController::class, 'lista'])->name('extraEscolares.asistencia');
+
+    //ruta para registrar la asistencia
+    Route::get('/extraEscolares/asistencia',[listaclubsController::class,'asistencia'])->name('registro.asistencia');
 
     //ruta para lista de encargados
     Route::get('/extraEscolares/encargados', [ListaController::class, 'encargados'])->name('extraEscolares.encargados');
@@ -91,8 +95,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/extraEscolares', [RegistroclubsController::class, 'index'])->name('extraEscolares.index');
 
-    Route::get('/extraEscolares/agregarclub', [RegistroclubsController::class, 'create'])
-    ->name('agregarclub');
+    Route::get('/extraEscolares/agregarclub', [RegistroclubsController::class, 'create'])->name('agregarclub');
 
     Route::post('/extraEscolares/agregarclub', [RegistroclubsController::class, 'store'])->name('agregarclub.store');
 
