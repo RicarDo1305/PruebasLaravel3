@@ -40,6 +40,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('egresados', fn (User $user) =>
             $user->rol == User::ROLE_EGRESADO
         );
+        Gate::define('empleadores', fn (User $user) =>
+            $user->rol == User::ROLE_EMPLEADOR
+        );
+
 
 
         

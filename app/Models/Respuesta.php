@@ -11,6 +11,7 @@ class Respuesta extends Model
         'pregunta_id',
         'opcion_id',
         'user_id',
+        'tipo',
     ];
 
 }

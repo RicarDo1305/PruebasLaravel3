@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('pregunta_id');
             $table->unsignedBigInteger('opcion_id');
             $table->unsignedBigInteger('user_id');
+            $table->integer('tipo');
             $table->timestamps();
 
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade');
