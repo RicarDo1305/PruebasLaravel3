@@ -31,6 +31,11 @@
                         {{ __('Encuesta') }}
                     </x-nav-link>
                     @endcan
+                    @can('empleadores')
+                    <x-nav-link :href="route('seguimiento.responder.encuestaEm.index')" :active="request()->routeIs('seguimiento.*')">
+                        {{ __('Encuesta') }}
+                    </x-nav-link>
+                    @endcan
                 </div>
             </div>
 
@@ -94,6 +99,11 @@
             @endcan
             @can('egresados')
             <x-responsive-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.*')">
+                {{ __('Encuesta') }}
+            </x-responsive-nav-link>
+            @endcan
+            @can('empleadores')
+            <x-responsive-nav-link :href="route('seguimiento.responder.encuestaEm.index')" :active="request()->routeIs('seguimiento.*')">
                 {{ __('Encuesta') }}
             </x-responsive-nav-link>
             @endcan

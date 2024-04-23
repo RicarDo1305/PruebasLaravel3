@@ -14,6 +14,7 @@ use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\listaclubsController;
 use App\Http\Controllers\ListaController;
 use App\Http\Controllers\RespuestasController;
+use App\Http\Controllers\RespuestasEmpleadoresController;
 use App\Models\Egresado;
 use App\Models\Empleador;
 use App\Models\Pregunta;
@@ -212,6 +213,17 @@ Route::middleware('auth')->group(function () {
     Route::put('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'update'])->name('seguimiento.encuestaEm.update');
     #Elimina una pregunta de la base de datos
     Route::delete('/seguimiento/encuesta/empleadores/{pregunta}', [EncuestaEmpleadoresController::class, 'destroy'])->name('seguimiento.encuestaEm.destroy');
+    
+    #RUTAS QUE PUEDE USAR UN EMPLEADOR
+    #Muestra la encuesta
+    Route::get('/seguimiento/empleador/encuesta', function(){ 
+         Gate::authorize('empleadores');
+         $RespuestasEmpleadoresController = new RespuestasEmpleadoresController();
+        return $RespuestasEmpleadoresController->index();
+    })->name('seguimiento.responder.encuestaEm.index');
+    #Realiza la accion de almacenar en BD
+    #Almacena las preguntas y opciones en la base de datos
+    Route::post('/seguimiento/egresado/encuestaEm/enviar', [RespuestasEmpleadoresController::class, 'store'])->name('seguimiento.responder.encuestaEm.store');
 
     #RUTAS PARA MUESTRAS
     #Lleva a la vista donde se crea la muestra para egresados
@@ -230,6 +242,11 @@ Route::middleware('auth')->group(function () {
         return $seguimientoController->index();
     })->name('seguimiento.respuestasEg.index');
     #Empleadores
+    Route::get('/seguimiento/empleadores/respuestas', function(){ 
+        Gate::authorize('see-all');
+        $seguimientoController = new SeguimientoController();
+        return $seguimientoController->show();
+    })->name('seguimiento.respuestasEm.index');
 
 });
 

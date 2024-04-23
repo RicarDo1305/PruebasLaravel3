@@ -10,7 +10,7 @@
    </div> 
 
    <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
-    Estadisticas de la encuesta a egresados
+    {{ $titulo }}
    </h2>
 
    <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y

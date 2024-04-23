@@ -29,13 +29,13 @@
                     </x-slot>
                     <x-slot name="content">
                         <x-dropdown-link :href="route($rutaEdit, $empleador)">
-                            {{ __('Editar empleador') }}
+                            {{ __('Edit') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route($rutaDestroy, $empleador) }}">
                             @csrf @method('DELETE')
                             <x-dropdown-link :href="route($rutaDestroy, $empleador)" onclick="event.preventDefault();
                             this.closest('form').submit();">
-                            {{ __('Borrar empleador') }}
+                            {{ __('Delete') }}
                         </x-dropdown-link>
                         </form>
                     </x-slot>

@@ -8,10 +8,9 @@ use App\Models\Respuesta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RespuestasController extends Controller
+class RespuestasEmpleadoresController extends Controller
 {
-
-    public function index(){
+     public function index(){
         $user = Auth::user();
         if (Respuesta::where('user_id', $user->id)->exists()) {
 
@@ -19,7 +18,7 @@ class RespuestasController extends Controller
 
         }else{
 
-        $preguntas = Pregunta::with('user')->where('tipo', 1)->latest()->get();
+        $preguntas = Pregunta::with('user')->where('tipo', 2)->latest()->get();
 
         // Obtener las opciones relacionadas con las preguntas
         $opciones = [];
@@ -27,13 +26,14 @@ class RespuestasController extends Controller
             $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
         }
     
-        return view('seguimiento.egresado.responderEn', [
+        return view('seguimiento.empleador.responderEnEm', [
         'preguntas' => $preguntas,
         ]);
         }
 
     }
-    public function store(Request $request){
+
+     public function store(Request $request){
         $respuestas = $request->input();
 
         array_shift($respuestas);
@@ -51,7 +51,7 @@ class RespuestasController extends Controller
             'pregunta_id' => $preguntaId,
             'opcion_id' => $valor,
             'user_id' => $user->id,
-            'tipo' =>1,
+            'tipo' => 2,
             ]);
             }
         
@@ -61,6 +61,4 @@ class RespuestasController extends Controller
     
     
 }
-
 }
-

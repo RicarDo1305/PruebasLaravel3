@@ -22,17 +22,32 @@ class SeguimientoController extends Controller
             $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
         }
 
-      $respuestas = Respuesta::all();
-      return view('seguimiento.egresadoRespuestas',[
+        $respuestas = Respuesta::where('tipo', 1)->get();
+      return view('seguimiento.graficosRespuestas',[
         'preguntas' => $preguntas,
-        'respuestas' => $respuestas
+        'respuestas' => $respuestas,
+        'titulo' => "Estadisticas de la encuesta a egresados"
       ]);    
     }
     
 
     public function show()
     {
-        //return view('seguimiento.muestra');
+       $preguntas = Pregunta::with('user')->where('tipo', 2)->latest()->get();
+
+        // Obtener las opciones relacionadas con las preguntas
+        $opciones = [];
+        foreach ($preguntas as $pregunta) {
+            $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
+        }
+
+        $respuestas = Respuesta::where('tipo', 2)->get();
+      return view('seguimiento.graficosRespuestas',[
+        'preguntas' => $preguntas,
+        'respuestas' => $respuestas,
+        'titulo' => "Estadisticas de la encuesta a empleadores"
+      ]);    
+        
     }
 
 
