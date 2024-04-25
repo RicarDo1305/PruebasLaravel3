@@ -33,15 +33,10 @@ use Illuminate\Support\Facades\Gate;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-#ruta de inicio, pagina welcome
+
+#ruta de inicio, pagina para iniciar sesion 
 Route::view('/', 'auth.login')->name('welcome');
 
-#Route::get('/chirps/{chirp}', function($chirp){
-#    if ($chirp == '2'){
-#        return to_route('chirps.index');
-#    }
-#    return 'Chirp detail '.$chirp;
-#});
 
 Route::middleware('auth')->group(function () {
  
