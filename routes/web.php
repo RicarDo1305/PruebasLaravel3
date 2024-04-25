@@ -95,6 +95,28 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/extraEscolares/agregarclub', [RegistroclubsController::class, 'store'])->name('agregarclub.store');
 
+    //ruta para la descarga
+    Route::get('/descarga',function(){
+        try{
+            $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Tarjeta de Seguimiento y Verificación.docx');
+            $template->setValue(search:'name',replace:auth()->user()->name);
+            $template->setValue(search:'carrera',replace:auth()->user()->carrera);
+            $template->setValue(search:'nocontrol',replace:auth()->user()->noControl);
+
+            $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+            $template->saveAs($tempFile);
+
+            $headers = [
+                "Content-Type: aplication/octet-stream",
+            ];
+            return response()->download($tempFile, 'Tarjeta de seguimiento.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
+
+        }catch(\PhpOffice\PhpWord\Exception\Exception $e){
+            return back($e->getCode());
+        }
+
+    });
+
     #RUTAS PARA LISTAS DE EGRESADOS
 
     #retorna la vista de agregar nuevos egresados y empleadores
