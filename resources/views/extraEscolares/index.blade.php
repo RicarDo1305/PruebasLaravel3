@@ -32,6 +32,12 @@
 
 @can('clubs')
 <main class="p-4">
+    <div class="flex flex-col items-center">
+        <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-700">
+            <a href="/descarga" download="Tarjeta  de seguimiento">Tarjeta de seguimiento</a>
+        </x-primary-button>
+        
+    </div>
 <div class="mx-auto mt-4 max-w-6xl grid md:grid-cols-2 gap-2 md:gap-4 lg:grid-cols-3">
     @foreach($tarjetas as $club)
     <article class="flex flex-col">
