@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Asistencias extends Model
+class Escolta extends Model
 {
     use HasFactory;
+    protected $table = 'escolta';
     protected $fillable = [
-        'name',
-        'club',
+        'noControl',
     ];
 }

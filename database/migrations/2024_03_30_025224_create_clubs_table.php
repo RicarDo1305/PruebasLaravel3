@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('incharge');
             $table->string('description');
+            $table->string('state');
             $table->timestamps();
         });
     }

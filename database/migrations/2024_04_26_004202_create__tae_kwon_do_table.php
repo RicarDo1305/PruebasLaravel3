@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('asistencias', function (Blueprint $table) {
+        Schema::create('tae_kwon_do', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('club');
+            $table->string('noControl');
             $table->timestamps();
         });
     }
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('asistencias');
+        Schema::dropIfExists('_tae_kwon_do');
     }
 };
