@@ -19,24 +19,24 @@
                     <table id="tabla_{{ $pregunta->id }}" class="graficos min-w-full divide-y divide-gray-200 mb-4">
                         <thead class="bg-gray-50">
                             <tr class="bg-green-900 text-white">
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Pregunta</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Opción</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Respuestas</th>
+                                <th scope="col" class="px-1 py-1 md:px-6 md:py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Pregunta</th>
+                                <th scope="col" class="px-1 py-1 md:px-6 md:py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Opción</th>
+                                <th scope="col" class="px-1 py-1 md:px-6 md:py-3 text-left text-xs font-medium text-white uppercase tracking-wider border border-gray-400">Respuestas</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach($pregunta->opciones as $index => $opcion)
                             <tr class="bg-white">
                                 @if($loop->first)
-                                <td class="px-6 py-4 whitespace-normal md:whitespace-nowrap border border-gray-400" rowspan="{{ count($pregunta->opciones) }}">
+                                <td class="px-6 py-4 text-xs md:text-base whitespace-normal md:whitespace-nowrap border border-gray-400" rowspan="{{ count($pregunta->opciones) }}">
                                     {{ $pregunta->pregunta }}
                                 </td>
                                 @else
                                 <td class="hidden px-6 py-4 whitespace-nowrap border border-gray-400" rowspan="{{ count($pregunta->opciones) }}">
                                 </td>
                                 @endif
-                                <td class="px-6 py-4 whitespace-normal md:whitespace-nowrap border border-gray-400">{{ $opcion->opcion }}</td>
-                                <td class="px-6 py-4 whitespace-normal md:whitespace-nowrap border border-gray-400">
+                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base whitespace-normal md:whitespace-nowrap border border-gray-400">{{ $opcion->opcion }}</td>
+                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base whitespace-normal md:whitespace-nowrap border border-gray-400">
                                     @php $noRes = 0; @endphp
                                     @foreach($respuestas as $respuesta)
                                     @if($respuesta->opcion_id == $opcion->id)
@@ -54,11 +54,13 @@
 
             </div>
 
+            <div class="p-2">
             @foreach($preguntas as $Pregunta)
-            <div class="max-w-md mx-auto border border-gray-400 rounded-t-md rounded-b-lg mt-4 p-2">
+            <div class="max-w-md mx-auto border border-gray-400 rounded-t-md rounded-b-lg mt-4 p-1">
                 <canvas id="grafico_{{$Pregunta->id}}" class="grafico canvas-estilo"></canvas>
             </div>
             @endforeach
+            </div>
         </div>
     </div>
     </div>

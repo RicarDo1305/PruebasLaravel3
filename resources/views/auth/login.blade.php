@@ -1,7 +1,7 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-    <div class="-mt-5 p-3 md:p-4">
+    <div class="-mt-5 p-0 md:p-4">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -14,8 +14,7 @@
                           name="noControl" 
                           :value="old('noControl')" 
                           required autofocus autocomplete="username" />
-
-            <x-input-error :messages="$errors->get('noControl')" class="mt-2" />
+            <x-input-error :messages="$errors->get('noControl')" class="mt-1" />
         </div>
 
         <!-- Password -->
@@ -27,7 +26,7 @@
                             name="password"
                             required autocomplete="current-password" />
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-1" />
         </div>
 
         <!-- Remember Me -->
