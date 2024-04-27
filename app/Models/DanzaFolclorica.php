@@ -11,5 +11,8 @@ class DanzaFolclorica extends Model
     protected $table = 'danza_folclorica';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

@@ -11,5 +11,8 @@ class Voleibol extends Model
     protected $table = 'voleibol';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

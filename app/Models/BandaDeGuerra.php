@@ -11,5 +11,8 @@ class BandadeGuerra extends Model
     protected $table = 'bandade_guerra';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

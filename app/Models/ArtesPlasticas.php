@@ -10,5 +10,8 @@ class ArtesPlasticas extends Model
     use HasFactory;
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

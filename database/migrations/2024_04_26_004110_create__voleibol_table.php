@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('voleibol', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('noControl');
+            $table->string('carrera');
+            $table->string('semestre');
             $table->timestamps();
         });
     }

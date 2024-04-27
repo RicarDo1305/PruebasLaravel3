@@ -12,5 +12,8 @@ class Ajedrez extends Model
     protected $table = 'ajedrez';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }
