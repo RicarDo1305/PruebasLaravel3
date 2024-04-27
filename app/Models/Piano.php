@@ -11,5 +11,8 @@ class Piano extends Model
     protected $table = 'piano';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

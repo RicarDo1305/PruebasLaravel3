@@ -11,5 +11,8 @@ class Natacion extends Model
     protected $table = 'natacion';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/extraEscolares/asistencia',[listaclubsController::class,'asistencia'])->name('registro.asistencia');
 
     //ruta para lista de encargados
-    Route::get('/extraEscolares/encargados', [ListaController::class, 'encargados'])->name('extraEscolares.encargados');
+    Route::get('/extraEscolares/encargados}', [ListaController::class, 'encargados'])->name('extraEscolares.encargados');
 
     //rutas para editar encargados
     Route::get('/extraEscolares/editarencargado/{id}',[ListaController::class,'indexen'])->name('encargado.editar');

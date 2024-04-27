@@ -58,66 +58,105 @@ class FormularioclubController extends Controller
             case 'Atletismo':
                 $club = Atletismo::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'DanzaFolclorica':
                 $club = DanzaFolclorica::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'ArtesPlasticas':
                 $club = ArtesPlasticas::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Musica':
                 $club = Musica::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Piano':
                 $club = Piano::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Escolta':
                 $club = Escolta::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'BandaDeGuerra':
                 $club = BandadeGuerra::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Futbol':
                 $club = Futbol::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Voleibol':
                 $club = Voleibol::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Basquetbol':
                 $club = Basquetbol::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Ajedrez':
                 $club = Ajedrez::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'TaeKwonDo':
                 $club = Taekwondo::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
             case 'Natacion':
                 $club = Natacion::Create([
                     'noControl' => auth()->user()->noControl,
+                    'carrera' => $request->input('carrera'),
+                    'semestre' => $request->input('semestre'),
+                    'name'=>auth()->user()->name
                 ]);
                 break;
         }

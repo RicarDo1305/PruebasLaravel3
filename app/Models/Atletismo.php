@@ -11,5 +11,8 @@ class Atletismo extends Model
     protected $table = 'atletismo';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

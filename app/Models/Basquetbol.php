@@ -11,5 +11,8 @@ class Basquetbol extends Model
     protected $table = 'basquetbol';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

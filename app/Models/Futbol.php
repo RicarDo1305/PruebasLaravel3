@@ -11,5 +11,8 @@ class Futbol extends Model
     protected $table = 'futbol';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

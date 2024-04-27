@@ -11,5 +11,8 @@ class Musica extends Model
     protected $table = 'musica';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

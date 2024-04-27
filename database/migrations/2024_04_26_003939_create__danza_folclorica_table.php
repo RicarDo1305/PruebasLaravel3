@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('danza_folclorica', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('noControl');
+            $table->string('carrera');
+            $table->string('semestre');
             $table->timestamps();
         });
     }

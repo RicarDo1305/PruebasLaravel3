@@ -11,5 +11,8 @@ class Escolta extends Model
     protected $table = 'escolta';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }

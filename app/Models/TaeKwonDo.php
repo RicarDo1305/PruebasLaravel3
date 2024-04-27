@@ -11,5 +11,8 @@ class Taekwondo extends Model
     protected $table = 'tae_kwon_do';
     protected $fillable = [
         'noControl',
+        'name',
+        'carrera',
+        'semestre',
     ];
 }
