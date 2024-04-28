@@ -7,6 +7,12 @@
 <br>
 <br>
 <div class="py-12">
+    <div class="flex flex-col items-center">
+        <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-700">
+            <a href="/descarga2" download="">Lista de asistencia de {{$titulo}}</a>
+        </x-primary-button>
+    </div>
+    <br>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="pt-5">
         <form action="{{route('extraEscolares.club',$id)}}" method="get">
