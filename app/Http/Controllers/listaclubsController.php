@@ -449,4 +449,5 @@ class listaclubsController extends Controller
         return to_route('extraEscolares.index')->with('status', __('Lista tomada'));
 
     }
+
 }

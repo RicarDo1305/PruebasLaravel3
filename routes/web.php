@@ -15,6 +15,8 @@ use App\Http\Controllers\listaclubsController;
 use App\Http\Controllers\ListaController;
 use App\Http\Controllers\RespuestasController;
 use App\Http\Controllers\RespuestasEmpleadoresController;
+use App\Models\Asistencias;
+use App\Models\Atletismo;
 use App\Models\Egresado;
 use App\Models\Empleador;
 use App\Models\Pregunta;
@@ -22,6 +24,7 @@ use App\Models\User;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,6 +113,55 @@ Route::middleware('auth')->group(function () {
                 "Content-Type: aplication/octet-stream",
             ];
             return response()->download($tempFile, 'Tarjeta de seguimiento.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
+
+        }catch(\PhpOffice\PhpWord\Exception\Exception $e){
+            return back($e->getCode());
+        }
+
+    });
+
+    //ruta para descargar lista de asistencias
+    Route::get('/descarga2',function(){
+        $dt="SELECT * FROM atletismo";
+        $datos = DB::select($dt);
+        foreach ($datos as $dato) {
+            $name=$dato->name;
+            $noControl=$dato->noControl;
+        
+        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
+        $variables_tabla=[['name' => $name,'noControl'=>$noControl]];
+        }
+        $template->cloneRowAndSetValues('noControl',$variables_tabla);
+        $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+        $template->saveAs($tempFile);
+
+        $headers = [
+            "Content-Type: aplication/octet-stream",
+        ];
+        return response()->download($tempFile, 'Registro.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
+    });
+    Route::get('/descarga22',function(){
+        try{
+                    $dt="SELECT * FROM datos_atletismo";
+                    $datos = DB::select($dt);
+                    foreach ($datos as $dato) {
+                        $name=$dato->name;
+                        $noControl=$dato->noControl;
+                    }
+                    $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
+
+                    $variables_tabla=[['name' => 1,'noControl'=>2]];
+                
+                            $template->cloneRowAndSetValues('name', $variables_tabla);
+                
+                
+                            $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+                            $template->saveAs($tempFile);
+                
+                            $headers = [
+                                "Content-Type: aplication/octet-stream",
+                            ];
+                            return response()->download($tempFile, 'Registro.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
 
         }catch(\PhpOffice\PhpWord\Exception\Exception $e){
             return back($e->getCode());
