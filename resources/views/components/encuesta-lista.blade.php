@@ -14,17 +14,8 @@
                             <small class="text-xs md:text-sm text-gray-400"> &middot; {{ __('Edited') }}</small>
                             @endif
                         </div>
-                    </div>
-                    <p class="mt-4 text-sm md:text-lg text-gray-100">{{ $Pregunta->pregunta }}</p>
-                      <div class="flex space-x-5">
-                      @foreach($Pregunta->opciones as $opcion)
-                         <div>
-                         <p class="mt-4 text-xs md:text-lg text-gray-100">{{ $opcion->opcion }}</p>
-                         </div>
-                      @endforeach
-                      </div>
-                </div>
                 @can('update', $Pregunta)
+                <div class="inline-block">
                 <x-dropdown>
                     <x-slot name="trigger">
                         <button>
@@ -46,7 +37,19 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                </div>
                 @endcan
+                    </div>
+                    <p class="mt-4 text-sm md:text-lg text-gray-100">{{ $Pregunta->pregunta }}</p>
+                      <div class="flex space-x-5">
+                      @foreach($Pregunta->opciones as $opcion)
+                         <div>
+                         <p class="mt-4 text-xs md:text-lg text-gray-100">{{ $opcion->opcion }}</p>
+                         </div>
+                      @endforeach
+                      </div>
+                </div>
+               
             </div>
             @endforeach
             </div>

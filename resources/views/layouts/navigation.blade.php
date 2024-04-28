@@ -1,5 +1,5 @@
 @if(session('status'))
-<div class="bg-green-500 text-green-100 text-center text-lg font-bold p-2">{{ session('status') }}</div>
+<div class="bg-green-500 text-green-100 text-center text-sm md:text-lg font-bold p-1 md:p-2">{{ session('status') }}</div>
 @endif
 <nav x-data="{ open: false }" class="bg-gray-800 border-b border-gray-700">
     <!-- Primary Navigation Menu -->
