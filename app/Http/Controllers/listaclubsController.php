@@ -94,21 +94,22 @@ class listaclubsController extends Controller
                     'asistencias'=>$asistencias    
                 ]);
                 break;
-            case 'Piano':
-                $alumnos = Piano::
-                where(function($query) use ($texto) {
-                    $query->where('name', 'LIKE', '%' . $texto . '%')
-                          ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
-                })
-                ->get();
-                $asistencias=Asistencias::all();
-                return view('/extraEscolares/paselista', [
-                    'alumnos'=> $alumnos,
-                    'id'=>$id,
-                    'titulo'=>$campo,
-                    'asistencias'=>$asistencias    
-                ]);
-                break;
+                case 'Piano':
+                    $alumnos = Piano::
+                    where(function($query) use ($texto) {
+                        $query->where('name', 'LIKE', '%' . $texto . '%')
+                              ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+                    })
+                    ->get();
+                    $asistencias=Asistencias::all();
+                    return view('/extraEscolares/paselista', [
+                        'alumnos'=> $alumnos,
+                        'texto'=>$texto,
+                        'id'=>$id,
+                        'titulo'=>$campo,
+                        'asistencias'=>$asistencias    
+                    ]);
+                    break;
             case 'Escolta':
                 $alumnos = Escolta::
                 where(function($query) use ($texto) {

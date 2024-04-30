@@ -7,11 +7,15 @@
 <br>
 <br>
 <div class="py-12">
-    <div class="flex flex-col items-center">
+    @foreach ($alumnos as $alumno)
+    <div class="flex flex-col items-center  {{ $alumno->name == null ? 'hidden' : '' }}">
         <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-700">
-            <a href="/descarga2" download="">Lista de asistencia de {{$titulo}}</a>
+            <a href="{{route('descarga2',$titulo)}}" download="">Lista de asistencia de {{$titulo}}</a>
         </x-primary-button>
     </div>
+    @break;
+    @endforeach
+    
     <br>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="pt-5">

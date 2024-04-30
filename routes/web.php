@@ -121,17 +121,26 @@ Route::middleware('auth')->group(function () {
     });
 
     //ruta para descargar lista de asistencias
-    Route::get('/descarga2',function(){
-        $dt="SELECT * FROM atletismo";
+    Route::get('/descarga2/{titulo}',function($titulo){
+        $dt="SELECT * FROM $titulo";
         $datos = DB::select($dt);
-        foreach ($datos as $dato) {
-            $name=$dato->name;
-            $noControl=$dato->noControl;
-        
-        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
-        $variables_tabla=[['name' => $name,'noControl'=>$noControl]];
+        if($datos==null){
+            dd('No hay nada');
         }
-        $template->cloneRowAndSetValues('noControl',$variables_tabla);
+        $arraydatos[]=null;
+        $i=0;
+        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
+        foreach($datos as $dato){
+            $arraydatos[$i]=$dato;
+            $i=$i+1;
+        }
+        //dd($variables_tabla);
+        
+            
+            $template->cloneRowAndSetValues('id',$arraydatos);
+        
+        
+       
         $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
         $template->saveAs($tempFile);
 
@@ -139,7 +148,7 @@ Route::middleware('auth')->group(function () {
             "Content-Type: aplication/octet-stream",
         ];
         return response()->download($tempFile, 'Registro.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
-    });
+    })->name('descarga2');
     Route::get('/descarga22',function(){
         try{
                     $dt="SELECT * FROM datos_atletismo";
