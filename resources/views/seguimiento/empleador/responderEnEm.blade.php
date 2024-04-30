@@ -16,8 +16,8 @@
 
          <form id="miFormulario" action="{{ route('seguimiento.responder.encuestaEm.store') }}" method="POST">
             @csrf
-            <div id="errores" class="text-white bg-red-700 mt-4 rounded-md text-center
-    max-w-7xl mx-auto sm:px-6 lg:px-8"></div>
+            <div id="errores" class="text-white text-sm md:text-lg bg-red-700 mt-4 rounded-md text-center
+            max-w-2xl md:max-w-7xl mx-auto px-0 sm:px-6 lg:px-8"></div>
 
             <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y
             divide-gray-900  m-2">
@@ -32,7 +32,7 @@
                      <x-input-error class="mt-2" :messages="$errors->get('pregunta_')" />
                      <div class="flex space-x-5">
                         @foreach($Pregunta->opciones as $opcion)
-                        <div class="mt-4">
+                        <div class="mt-4 flex flex-col items-start space-x-0 md:flex-none md:flex-row md:items-center md:space-x-1">
                            <input type="hidden" name="pregunta_{{$Pregunta->id}}" value="{{ $Pregunta->id }}">
                            <input type="radio" id="opcion_{{ $opcion->id }}" name="opcion_{{$Pregunta->id}}" data-pregunta-id="{{ $Pregunta->id }}" value="{{ $opcion->id }}">
                            <label for="{{ $opcion->id }}" class="text-xs md:text-lg text-gray-100">{{ $opcion->opcion }}</label>

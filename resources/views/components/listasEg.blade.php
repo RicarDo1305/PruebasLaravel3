@@ -16,11 +16,7 @@
                             <small class="text-xs md:text-sm text-gray-400"> &middot; {{ __('Edited') }}</small>
                             @endif
                         </div>
-                    </div>
-                    <p class="mt-4 text-sm md:text-lg text-gray-100">{{ $egresado->noControl }}</p>
-                </div>
-                
-                <x-dropdown>
+                        <x-dropdown>
                     <x-slot name="trigger">
                         <button>
                             <svg class="w-5 h-5 text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -41,6 +37,9 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
+                    </div>
+                    <p class="mt-4 text-sm md:text-lg text-gray-100">{{ $egresado->noControl }}</p>
+                </div>
                 
             </div>
             @endforeach

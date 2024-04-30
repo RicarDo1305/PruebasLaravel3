@@ -35,8 +35,8 @@
                                 <td class="hidden px-6 py-4 whitespace-nowrap border border-gray-400" rowspan="{{ count($pregunta->opciones) }}">
                                 </td>
                                 @endif
-                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base whitespace-normal md:whitespace-nowrap border border-gray-400">{{ $opcion->opcion }}</td>
-                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base whitespace-normal md:whitespace-nowrap border border-gray-400">
+                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base text-center md:text-left whitespace-normal md:whitespace-nowrap border border-gray-400">{{ $opcion->opcion }}</td>
+                                <td class="px-2 py-1 md:px-6 md:py-4 text-xs md:text-base text-center md:text-left whitespace-normal md:whitespace-nowrap border border-gray-400">
                                     @php $noRes = 0; @endphp
                                     @foreach($respuestas as $respuesta)
                                     @if($respuesta->opcion_id == $opcion->id)
