@@ -7,6 +7,12 @@
 
             <div class="ml-2">
                 <x-button-seg name="Regresar" ruta="seguimiento.index" />
+                <form method="POST" action="#"> <!-- Poner un route('ruta') para usarlo -->
+                    @csrf @method('DELETE')
+                    <x-primary-button class="mt-4 bg-red-600 text-white hover:bg-red-800">
+                            {{ __('Borrar todas las respuestas') }}
+                    </x-primary-button>
+                </form>
             </div>
 
             <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
