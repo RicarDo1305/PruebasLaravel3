@@ -629,5 +629,70 @@ class listaclubsController extends Controller
         return view('registro.especial');
 
     }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function descargaespecial(Request $request,$titulo){
+        $name=request()->name;
+        $where= "'[";
+        foreach ($name as $valor){
+            $where = $where .$valor."']";
+        }
+        $arr=json_decode($where,TRUE);
+        dd($arr);
+        switch ($titulo) {
+            case 'Atletismo':
+                    $datos = DB::table($titulo)
+                    ->select('name','noControl','semestre','carrera','id')
+                    ->where($where)
+                    ->first();
+        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Participantes de Actividades Culturales Deportivas.docx');
+        $template->cloneRowAndSetValues('id',$datos);        
+        $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+            $template->saveAs($tempFile);
+            $headers = [
+                "Content-Type: aplication/octet-stream",
+            ];
+            return response()->download($tempFile, 'Listaespecial.docx', $headers)->deleteFileAfterSend($shouldDelete = true);  
+                
+                break;
+            case 'DanzaFolclorica':
+               
+                break;
+            case 'ArtesPlasticas':
+                
+                break;
+            case 'Musica':
+               
+                break;
+            case 'Piano':
+                
+                break;
+            case 'Escolta':
+               
+                break;
+            case 'BandaDeGuerra':
+                
+                break;
+            case 'Futbol':
+               
+                break;
+            case 'Voleibol':
+                
+                break;
+            case 'Basquetbol':
+                
+                break;
+            case 'Ajedrez':
+                
+                break;
+            case 'TaeKwonDo':
+                
+                break;
+            case 'Natacion':
+                
+                break;
+        }
+
+        
+    }
 
 }
