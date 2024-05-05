@@ -14,10 +14,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
          User::create([
-        'name' => 'Celfia Itzel Duarte Casarez',
+        'name' => 'Nombre del encargado',
         'email' => 'celfia@gmail.com',
         'noControl' => '01',
-        'password' => ' 12345678',
+        'password' => '12345678',
         'rol' => '1',
         ]);
 
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         'name' => 'José Luis Urquiza Flores',
         'email' => 'urquiza@gmail.com',
         'noControl' => '02',
-        'password' => ' 12345678',
+        'password' => '12345678',
         'rol' => '2',
         ]);
     }
