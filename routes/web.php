@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function () {
             $arraydatos[$i]=$dato;
             $i=$i+1;
         }
-        //dd($variables_tabla);
+        //dd($arraydatos);
         
             
             $template->cloneRowAndSetValues('id',$arraydatos);
@@ -155,17 +155,7 @@ Route::middleware('auth')->group(function () {
     })->name('descarga2');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    Route::get('/descargaespecial}',function(){
-        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Participantes de Actividades Culturales Deportivas.docx');
-        $template->setValue(search:'name',replace:auth()->user()->name);
-        $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
-            $template->saveAs($tempFile);
-            $headers = [
-                "Content-Type: aplication/octet-stream",
-            ];
-            return response()->download($tempFile, 'Listaespecial.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
-
-    })->name("descarga.especial");
+    Route::get('/descargaespecial/{titulo}}',[listaclubsController::class,"descargaespecial"])->name("descarga.especial");
 
     #RUTAS PARA LISTAS DE EGRESADOS
 

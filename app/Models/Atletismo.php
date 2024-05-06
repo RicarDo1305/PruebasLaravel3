@@ -14,5 +14,6 @@ class Atletismo extends Model
         'name',
         'carrera',
         'semestre',
+        'estado',
     ];
 }
