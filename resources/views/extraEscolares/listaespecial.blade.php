@@ -36,7 +36,7 @@
             <td class="px-4 py-2 border border-gray-400">{{$alumno->carrera}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->semestre}}</td>
             <form action="{{route('descarga.especial',$id)}}" method="GET">
-            <td class="px-4 py-2 border border-gray-400"><input type="checkbox"  value="{{$alumno->name}}" name="name[]"></td>
+            <td class="px-4 py-2 border border-gray-400"><input type="checkbox"  value="{{$alumno}}" name="name[]"></td>
         </tr>
         @endforeach
         </tbody>

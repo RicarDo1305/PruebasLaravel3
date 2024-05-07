@@ -630,22 +630,25 @@ class listaclubsController extends Controller
 
     }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function descargaespecial(Request $request,$titulo){
+    public function descargaespecial($titulo){
         $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Participantes de Actividades Culturales Deportivas.docx');
-        $name=request()->name;
+        $names=request()->name;
         $i=0;
         $where[]= null;
+        $p[]=null;
+        $a=1;
         switch ($titulo) {
             case 'Atletismo':
-                foreach($name as $names){
-                    $dt="SELECT * FROM $titulo WHERE name='$names'";
-                    $datos = DB::select($dt);
-                   // $d=DB::select("SELECT * FROM $titulo");
-                    $where[$i]=$datos;
+                foreach($names as $name){
+                    $arr=json_decode($name,TRUE);
+                    $p[$i]=$arr;
                     $i=$i+1;
-                    //dd($datos);   
                 }
-            $template->cloneRowAndSetValues('id',$datos);
+            $template->cloneRowAndSetValues('name',$p);
+            foreach($names as $aa){
+                $template->setValue('num#'.$a,$a);
+                $a=$a+1;
+            }
             $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
             $template->saveAs($tempFile);
             $headers = [
