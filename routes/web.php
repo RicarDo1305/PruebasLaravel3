@@ -138,7 +138,7 @@ Route::middleware('auth')->group(function () {
             $arraydatos[$i]=$dato;
             $i=$i+1;
         }
-        //dd($arraydatos);
+        dd($arraydatos);
         
             
             $template->cloneRowAndSetValues('id',$arraydatos);
