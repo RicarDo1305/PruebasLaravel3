@@ -301,12 +301,25 @@ Route::middleware('auth')->group(function () {
         $seguimientoController = new SeguimientoController();
         return $seguimientoController->index();
     })->name('seguimiento.respuestasEg.index');
+    #eliminar todos los registros
+    Route::delete('/seguimiento/egresados/respuestas/{tipo}', function($tipo, Request $request){ 
+        Gate::authorize('see-all');
+        $seguimientoController = new SeguimientoController();
+        return $seguimientoController->destroy($tipo, $request);
+    })->name('seguimiento.respuestasEgDelete.index');
+
     #Empleadores
     Route::get('/seguimiento/empleadores/respuestas', function(){ 
         Gate::authorize('see-all');
         $seguimientoController = new SeguimientoController();
         return $seguimientoController->show();
     })->name('seguimiento.respuestasEm.index');
+    #eliminar todos los registros
+    Route::delete('/seguimiento/empleadores/respuestas/{tipo}', function($tipo, Request $request){ 
+        Gate::authorize('see-all');
+        $seguimientoController = new SeguimientoController();
+        return $seguimientoController->destroy($tipo, $request);
+    })->name('seguimiento.respuestasEmDelete.index');
 
 });
 

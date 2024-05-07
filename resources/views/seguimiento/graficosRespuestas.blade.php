@@ -2,18 +2,47 @@
 
     <x-header-seg hidden="hidden" titulo="Seguimiento a egresados" />
 
+    
+@if(session('error'))
+<div class="bg-red-800 text-red-200 text-center text-sm md:text-lg font-bold p-1 md:p-2">{{ session('error') }}</div>
+@endif
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             <div class="ml-2">
                 <x-button-seg name="Regresar" ruta="seguimiento.index" />
-                <form method="POST" action="#"> <!-- Poner un route('ruta') para usarlo -->
+                <div>
                     @csrf @method('DELETE')
-                    <x-primary-button class="mt-4 bg-red-600 text-white hover:bg-red-800">
+                    <x-primary-button id="boton-borrar" class="mt-4 bg-red-600 text-white hover:bg-red-800">
                             {{ __('Borrar todas las respuestas') }}
                     </x-primary-button>
-                </form>
-            </div>
+                </div>
+<div id="modal" class="fixed inset-0 z-10 overflow-y-auto hidden">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="fixed inset-0 bg-black opacity-50"></div>
+        <div class="relative bg-slate-800 rounded-lg p-8 max-w-md">
+            <h2 class="text-lg mb-4 text-white">¿Estás seguro que deseas borrar todas las respuestas?</h2>
+            <form id="formEliminar" method="POST" action="{{ route($rutaEliminar, $tipo) }}">
+                @csrf
+                @method('DELETE')
+                <div class="mb-4">
+                    <label for="password" class="text-white">Contraseña:</label>
+                    <input type="password" id="password" name="password" class="block w-full px-4 py-2 mt-1 bg-gray-700 text-white rounded-md focus:outline-none focus:ring focus:ring-indigo-400" required>
+                    <x-input-error class="mt-2" :messages="$errors->get('password')" />
+                </div>
+                <div class="flex justify-end">
+                    <button id="cancelar" class="text-gray-500 hover:text-gray-700 mr-4">Cancelar</button>
+                    <x-primary-button class="bg-red-600 text-white hover:bg-red-800">
+                            {{ __('Borrar') }}
+                    </x-primary-button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
 
             <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
                 {{ $titulo }}
@@ -72,5 +101,6 @@
     </div>
 
     @vite('resources/js/crearGrafico.js')
+    @vite('resources/js/ventanaEmergente.js')
 
 </x-app-layout>
