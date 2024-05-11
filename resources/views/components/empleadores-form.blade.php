@@ -9,7 +9,6 @@
     rutaEncuesta="seguimiento.encuestaEm.index"
     rutaEncuestaLista="seguimiento.encuestaEm.show"
     rutaRespuestas="seguimiento.respuestasEm.index"
-    rutaSubirReporte="dashboard"
     />
   </div>
 </div>

@@ -20,9 +20,6 @@
                         <x-dropdown-link href="{{ route($rutaRespuestas) }}">
                           Ver respuestas
                         </x-dropdown-link>
-                        <x-dropdown-link href="{{ route($rutaSubirReporte) }}">
-                          Subir reporte
-                        </x-dropdown-link>
                     </x-slot>
         </x-dropdown>
     </div>

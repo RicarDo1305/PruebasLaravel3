@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-header-seg hidden="hidden" titulo="Seguimiento a egresados" />
+<x-header-seg hidden="hidden" titulo="Seguimiento a egresados" />
 
     
 @if(session('error'))

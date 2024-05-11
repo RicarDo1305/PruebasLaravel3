@@ -25,6 +25,9 @@
                     <x-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                         {{ __('Egresados y empleadores') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('reportes.index')" :active="request()->routeIs('reportes*')">
+                        {{ __('Reportes') }}
+                    </x-nav-link>
                     @endcan
                     @can('egresados')
                     <x-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.*')">

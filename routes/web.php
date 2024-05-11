@@ -13,6 +13,7 @@ use App\Http\Controllers\EncuestaEmpleadoresController;
 use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\listaclubsController;
 use App\Http\Controllers\ListaController;
+use App\Http\Controllers\ReportesController;
 use App\Http\Controllers\RespuestasController;
 use App\Http\Controllers\RespuestasEmpleadoresController;
 use App\Models\Asistencias;
@@ -20,6 +21,7 @@ use App\Models\Atletismo;
 use App\Models\Egresado;
 use App\Models\Empleador;
 use App\Models\Pregunta;
+use App\Models\Reporte;
 use App\Models\User;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
@@ -314,12 +316,39 @@ Route::middleware('auth')->group(function () {
         $seguimientoController = new SeguimientoController();
         return $seguimientoController->show();
     })->name('seguimiento.respuestasEm.index');
-    #eliminar todos los registros
+    #eliminar todos los registros de los graficos y tablas de preguntas y respuestas
     Route::delete('/seguimiento/empleadores/respuestas/{tipo}', function($tipo, Request $request){ 
         Gate::authorize('see-all');
         $seguimientoController = new SeguimientoController();
         return $seguimientoController->destroy($tipo, $request);
     })->name('seguimiento.respuestasEmDelete.index');
+
+    #RUTA PARA LOS INFORMES
+    #Mostrar le index de reportes
+    Route::get('/seguimiento/reportes', function(){ 
+        Gate::authorize('see-all');
+        $ReportesController = new ReportesController();
+        return $ReportesController->index();
+    })->name('reportes.index');
+    #subir un reporte
+    Route::post('/seguimiento/reportes', function(Request $request){ 
+        Gate::authorize('see-all');
+        $ReportesController = new ReportesController();
+        return $ReportesController->store($request);
+    })->name('reportes.store');
+    #Eliminar reporte
+    Route::delete('/seguimiento/reportes/{reporte}', function(Reporte $reporte){ 
+        Gate::authorize('see-all');
+        $ReportesController = new ReportesController();
+        return $ReportesController->destroy($reporte);
+    })->name('reportes.destroy');
+    #descargar reporte
+    Route::post('/seguimiento/reportes/{reporte}', function(Reporte $reporte){ 
+        Gate::authorize('see-all');
+        $ReportesController = new ReportesController();
+        return $ReportesController->descargar($reporte);
+    })->name('reportes.descargar');
+    
 
 });
 
