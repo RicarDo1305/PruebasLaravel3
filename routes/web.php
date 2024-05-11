@@ -135,18 +135,17 @@ Route::middleware('auth')->group(function () {
         }
         $arraydatos[]=null;
         $i=0;
+        $a=1;
         $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
         foreach($datos as $dato){
             $arraydatos[$i]=$dato;
             $i=$i+1;
         }
-        //dd($arraydatos);
-        
-            
-            $template->cloneRowAndSetValues('id',$arraydatos);
-        
-        
-       
+        $template->cloneRowAndSetValues('name',$arraydatos);
+        foreach($datos as $dato){
+            $template->setValue('num#'.$a,$a);
+                $a=$a+1;
+        }
         $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
         $template->saveAs($tempFile);
 
