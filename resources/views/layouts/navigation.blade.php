@@ -99,6 +99,9 @@
             <x-responsive-nav-link :href="route('seguimiento.index')" :active="request()->routeIs('seguimiento.*')">
                 {{ __('Egresados y empleadores') }}
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('reportes.index')" :active="request()->routeIs('reportes.*')">
+                {{ __('Reportes') }}
+            </x-responsive-nav-link>
             @endcan
             @can('egresados')
             <x-responsive-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.*')">

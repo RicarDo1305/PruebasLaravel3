@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reporte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class ReportesController extends Controller
 {
@@ -40,10 +41,17 @@ class ReportesController extends Controller
 
     public function destroy(Reporte $reporte)
     {
+        // Obtener la ruta del archivo a eliminar
+        $filePath = 'reportes/' . $reporte->reporte;
 
-        dd("dame dame");
+        // Verificar si el archivo existe antes de eliminarlo
+        if (file_exists($filePath)) {
+            // Eliminar el archivo
+            unlink($filePath);
+        }
 
-        //$reporte->delete();
+        // Eliminar la entrada del reporte de la base de datos
+        $reporte->delete();
 
         return to_route('reportes.index')->with('status', __('Reporte descargado exitosamente'));
     }
@@ -51,11 +59,13 @@ class ReportesController extends Controller
 
     public function descargar(Reporte $reporte)
     {
+        // Obtener la ruta del archivo a descargar
+        $filePath = 'reportes/' . $reporte->reporte;
 
-        dd("dame dame descargado");
-
-        //$reporte->delete();
-
-        return to_route('reportes.index')->with('status', __('Reporte elimindado exitosamente'));
+        // Verificar si el archivo existe antes de descargarlo
+        if (file_exists($filePath)) {
+            // Crear una respuesta de descarga
+            return Response::download($filePath, $reporte->reporte);
+        }
     }
 }
