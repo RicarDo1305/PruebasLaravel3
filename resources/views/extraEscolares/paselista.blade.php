@@ -49,19 +49,30 @@
             <th class="px-4 py-2 border border-gray-400">Carrera</th>
             <th class="px-4 py-2 border border-gray-400">Semestre</th>
             <th class="px-4 py-2 border border-gray-400">Asistencias</th>
+            <th class="px-4 py-2 border border-gray-400">Historial</th>
         </tr>
         </thead>
         <tbody>
         @foreach($alumnos as $alumno)
+        @php
+        $asistencia =$asistencias->where('name',$alumno->name)->where('club',$titulo)->count();
+        $historial= $asistencias->where('name',$alumno->name)->where('club',$titulo);
+        @endphp
         <tr class="bg-white">
-            <td class="px-4 py-2 border border-gray-400">{{$alumno->noControl}}</td>
-            <td class="px-4 py-2 border border-gray-400">{{$alumno->name}}</td>
-            <td class="px-4 py-2 border border-gray-400">{{$alumno->carrera}}</td>
-            <td class="px-4 py-2 border border-gray-400">{{$alumno->semestre}}</td>
-            @php
-                $asistencia =$asistencias->where('name',$alumno->name)->where('club',$titulo)->count();
-            @endphp
-             <td class="px-4 py-2 border border-gray-400">{{$asistencia}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">{{$alumno->noControl}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">{{$alumno->name}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">{{$alumno->carrera}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">{{$alumno->semestre}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">{{$asistencia}}</td>
+            <td class="px-4 py-2 border border-gray-400 text-center">
+                @foreach ($historial as $his)
+                @php
+                $a=substr($his->created_at, 0, -9);
+                @endphp
+                {{$a}}
+                <br>
+             @endforeach
+            </td>
         </tr>
         @endforeach
         </tbody>
