@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('estatura')->nullable();
             $table->string('peso')->nullable();
             $table->string('ubicacion')->nullable();
+            $table->string('horas')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

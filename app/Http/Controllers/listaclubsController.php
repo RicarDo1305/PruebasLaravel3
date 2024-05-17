@@ -20,6 +20,8 @@ use App\Models\Escolta;
 use App\Models\Taekwondo;
 use App\Models\Asistencias;
 use Illuminate\Support\Facades\DB;
+use LaravelLang\Publisher\Console\Update;
+use Symfony\Component\Console\Input\Input;
 
 class listaclubsController extends Controller
 {
@@ -637,65 +639,37 @@ class listaclubsController extends Controller
         $where[]= null;
         $p[]=null;
         $a=1;
-        switch ($titulo) {
-            case 'Atletismo':
-                foreach($names as $name){
-                    $arr=json_decode($name,TRUE);
-                    $p[$i]=$arr;
-                    $i=$i+1;
-                }
-            $template->cloneRowAndSetValues('name',$p);
-            foreach($names as $aa){
-                $template->setValue('num#'.$a,$a);
-                $a=$a+1;
-            }
-            $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
-            $template->saveAs($tempFile);
-            $headers = [
-                "Content-Type: aplication/octet-stream",
-            ];
-            return response()->download($tempFile, 'Listaespecial.docx', $headers)->deleteFileAfterSend($shouldDelete = true);  
-                
-                break;
-            case 'DanzaFolclorica':
-               
-                break;
-            case 'ArtesPlasticas':
-                
-                break;
-            case 'Musica':
-               
-                break;
-            case 'Piano':
-                
-                break;
-            case 'Escolta':
-               
-                break;
-            case 'BandaDeGuerra':
-                
-                break;
-            case 'Futbol':
-               
-                break;
-            case 'Voleibol':
-                
-                break;
-            case 'Basquetbol':
-                
-                break;
-            case 'Ajedrez':
-                
-                break;
-            case 'TaeKwonDo':
-                
-                break;
-            case 'Natacion':
-                
-                break;
+        foreach($names as $name){
+            $arr=json_decode($name,TRUE);
+            $p[$i]=$arr;
+            $i=$i+1;
         }
-
+    $template->cloneRowAndSetValues('name',$p);
+    foreach($names as $aa){
+        $template->setValue('num#'.$a,$a);
+        $a=$a+1;
+    }
+    $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+    $template->saveAs($tempFile);
+    $headers = [
+        "Content-Type: aplication/octet-stream",
+    ];
+    return response()->download($tempFile, 'Listaespecial.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
         
     }
-
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public function HorasA($alumno,Request $request){
+        $request->validate([
+            'horas' => ['required'],
+        ]);
+        $hora=$request->input('horas');
+        $club=$request->input('club');
+        $usuario = User::where('noControl', $alumno)->first();
+        $ho=$usuario->horas;
+        $horastotal=$hora+$ho;
+        $horas=User::where('noControl', $alumno)
+        ->update(['horas' => $horastotal]);
+        $asistencias=Asistencias::where('name',$usuario->name)->where('club',$club)->delete();
+        return to_route('extraEscolares.index');
+    }
 }

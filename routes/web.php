@@ -157,6 +157,7 @@ Route::middleware('auth')->group(function () {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Route::get('/descargaespecial/{titulo}}',[listaclubsController::class,"descargaespecial"])->name("descarga.especial");
+    Route::get('/horas/{control}',[listaclubsController::class,"HorasA"])->name("agregar.horas");
 
     #RUTAS PARA LISTAS DE EGRESADOS
 
