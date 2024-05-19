@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clubs;
 use App\Models\User;
+use DragonCode\Contracts\Cashier\Auth\Auth;
+use PhpParser\Node\Expr\FuncCall;
 
 class clubsController extends Controller
 {
@@ -49,6 +51,22 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
 
         $id->delete();
         return to_route('extraEscolares.index')->with('status', __('Eliminado exitosamente'));
+    }
+
+    public function editarinfo(){
+        return view('/extraEscolares/editarperfil', []);
+    }
+    public function updateinfo(Request $request){
+        $info=User::where('name', auth()->user()->name)
+        ->update(['carrera' => $request->input('carrera'),
+        'telefonoparticular'=> $request->input('telefonoparticular'),
+        'estatura' => $request->input('estatura'),
+        'peso' => $request->input('peso'),
+        'padecimiento' => $request->input('padecimiento'),
+        'nombretutor' => $request->input('nombretutor'),
+        'parentesco' => $request->input('parentesco'),
+        'telefonotutor' => $request->input('telefonotutor'),]);
+        return to_route('edit.info');
     }
 
 }

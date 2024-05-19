@@ -64,4 +64,7 @@
 <x-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.*')">
     {{ __('Clubs') }}
 </x-nav-link>
+<x-nav-link :href="route('edit.info')" :active="request()->routeIs('edit.info')">
+    {{ __('Editar informacion') }}
+</x-nav-link>
 @endcan
