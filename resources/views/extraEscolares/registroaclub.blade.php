@@ -15,7 +15,7 @@
                 <option value="ISIC">ISIC</option>
                 <option value="IGEM">IGEM</option>
                 <option value="IIAL">IIAL</option>
-                <option value="INDUSTRIAL">IIND</option>
+                <option value="IIDN">IIND</option>
             </select>
             <label for="">Seleccione su semestre:</label>
             <select name="semestre" class="text-black">

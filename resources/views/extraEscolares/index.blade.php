@@ -8,7 +8,7 @@
         @foreach($tarjetas as $club)
         <article class="flex flex-col">
     <div class="p-5 space-x-3 flex-1">
-        <x-tarjet-exadm img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}" id="{{$club->id}}"/>
+        <x-tarjet-exadm img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}" id="{{$club->id}}" club="{{$club->state}}"/>
         </div>
         </article>
         @endforeach
@@ -39,11 +39,13 @@
     </div>
 <div class="mx-auto mt-4 max-w-6xl grid md:grid-cols-2 gap-2 md:gap-4 lg:grid-cols-3">
     @foreach($tarjetas as $club)
+    @if($club->state == 1)
     <article class="flex flex-col">
 <div class="p-5 space-x-3 flex-1">
     <x-tarjet-ex img="{{$club->img}}" title="{{$club->title}}" incharge="{{$club->incharge}}" description="{{$club->description}}" id="{{$club->id}}"/>
     </div>
     </article>
+    @endif
     @endforeach
 </div>
 </main>

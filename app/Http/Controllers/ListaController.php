@@ -20,6 +20,7 @@ class ListaController extends Controller
                   ->orWhere('apaterno', 'LIKE', '%' . $texto . '%')
                   ->orWhere('amaterno', 'LIKE', '%' . $texto . '%')
                   ->orWhere('carrera', 'LIKE', '%' . $texto . '%')
+                  ->orWhere('sexo', 'LIKE', '%' . $texto . '%')
                   ->orWhere('semestre', 'LIKE', '%' . $texto . '%');
         })
         ->where('rol', '4')

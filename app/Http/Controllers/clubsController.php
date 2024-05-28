@@ -69,4 +69,16 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
         return to_route('edit.info');
     }
 
+    public function tarjetas($id){
+        $club = Clubs::where('id', $id)->first();
+        if($club && $club->state == 1){
+            // Lógica de actualización aquí
+             $state = $club->update(['state' => 0]);
+        }elseif($club && $club->state == 0){
+            $state = $club->update(['state' => 1]);
+
+        }
+        return to_route('extraEscolares.index');
+    }
+
 }

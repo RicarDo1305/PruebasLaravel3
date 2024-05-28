@@ -14,6 +14,12 @@
             {{ $description }}
         </p>
         <br>
+        @if($club == 0)
+        <label class="text-white" for="">Estado: Deshabilitado</label>
+        @else
+        <label class="text-white" for="">Estado: Habilitado</label>
+        @endif
+        
         <div style="display: inline-flex">
             <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-400">
                 <a href="{{route('club.editar',$id)}}">Editar</a>
@@ -23,6 +29,11 @@
             <x-primary-button class="mt-4 bg-red-500 text-white hover:bg-red-400">
                 <a href="{{route('club.eliminar',$id)}}">Eliminar</a>
                 </x-primary-button>
+                &nbsp;
+                &nbsp;
+                <x-primary-button class="mt-4 bg-blue-500 text-white hover:bg-blue-400">
+                    <a href="{{route('estado.tarjetas',$id)}}">Cambiar Estado</a>
+                    </x-primary-button>
             </div>
     </div>
 </article>
