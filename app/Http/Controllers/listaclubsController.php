@@ -48,7 +48,7 @@ class listaclubsController extends Controller
                     'asistencias'=>$asistencias    
                 ]);
                 break;
-            case 'DanzaFolclorica':
+            case 'Danza Folclorica':
                 $alumnos = DanzaFolclorica::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -64,7 +64,7 @@ class listaclubsController extends Controller
                     'asistencias'=>$asistencias    
                 ]);
                 break;
-            case 'ArtesPlasticas':
+            case 'Artes Plasticas':
                 $alumnos = ArtesPlasticas::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -128,7 +128,7 @@ class listaclubsController extends Controller
                     'asistencias'=>$asistencias    
                 ]);
                 break;
-            case 'BandaDeGuerra':
+            case 'Banda De Guerra':
                 $alumnos = BandadeGuerra::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -264,7 +264,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo    
                 ]);
                 break;
-            case 'DanzaFolclorica':
+            case 'Danza Folclorica':
                 $alumnos = DanzaFolclorica::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -278,7 +278,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo    
                 ]);
                 break;
-            case 'ArtesPlasticas':
+            case 'Artes Plasticas':
                 $alumnos = ArtesPlasticas::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -334,7 +334,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo    
                 ]);
                 break;
-            case 'BandaDeGuerra':
+            case 'Banda De Guerra':
                 $alumnos = BandadeGuerra::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -470,7 +470,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo   
                 ]);
                 break;
-            case 'DanzaFolclorica':
+            case 'Danza Folclorica':
                 $alumnos = DanzaFolclorica::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -483,7 +483,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo   
                 ]);
                 break;
-            case 'ArtesPlasticas':
+            case 'Artes Plasticas':
                 $alumnos = ArtesPlasticas::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
@@ -535,7 +535,7 @@ class listaclubsController extends Controller
                     'id'=>$titulo  
                 ]);
                 break;
-            case 'BandaDeGuerra':
+            case 'Banda De Guerra':
                 $alumnos = BandadeGuerra::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')

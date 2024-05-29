@@ -63,7 +63,7 @@ class FormularioclubController extends Controller
                     'name'=>auth()->user()->name
                 ]);
                 break;
-            case 'DanzaFolclorica':
+            case 'Danza Folclorica':
                 $club = DanzaFolclorica::Create([
                     'noControl' => auth()->user()->noControl,
                     'carrera' => $request->input('carrera'),
@@ -71,7 +71,7 @@ class FormularioclubController extends Controller
                     'name'=>auth()->user()->name
                 ]);
                 break;
-            case 'ArtesPlasticas':
+            case 'Artes Plasticas':
                 $club = ArtesPlasticas::Create([
                     'noControl' => auth()->user()->noControl,
                     'carrera' => $request->input('carrera'),
@@ -103,7 +103,7 @@ class FormularioclubController extends Controller
                     'name'=>auth()->user()->name
                 ]);
                 break;
-            case 'BandaDeGuerra':
+            case 'Banda De Guerra':
                 $club = BandadeGuerra::Create([
                     'noControl' => auth()->user()->noControl,
                     'carrera' => $request->input('carrera'),

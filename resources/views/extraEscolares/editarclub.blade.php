@@ -14,7 +14,8 @@
                 @csrf
                 @method("PUT")
                 @foreach($clubs as $club)
-                <x-text-area name="title" Placeholder="{{$club->title}}" textAreaDev="{{$club->title}}"/>
+                    <label for="">Club:</label>
+                    <input type="text"  name="title" value="{{$club->title}}" readonly class="text-black">
                     <input type="text" name="id" value="{{$club->id}}" style="display: none">
                 
             <br>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class DanzaFolclorica extends Model
 {
     use HasFactory;
-    protected $table = 'danza_folclorica';
+    protected $table = 'danzafolclorica';
     protected $fillable = [
         'noControl',
         'name',
