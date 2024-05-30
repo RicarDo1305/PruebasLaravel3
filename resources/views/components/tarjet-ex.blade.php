@@ -26,7 +26,7 @@
                     </x-primary-button>
                     @else
                     <x-primary-button class="mt-4 bg-red-900 text-white hover:bg-red-700">
-                        <a href="">Salir</a>
+                        <a href="{{route('club.salir',$title)}}">Salir</a>
                     </x-primary-button>
                 @endif
                 

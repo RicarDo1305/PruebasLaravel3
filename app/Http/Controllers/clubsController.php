@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Clubs;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use DragonCode\Contracts\Cashier\Auth\Auth;
 use PhpParser\Node\Expr\FuncCall;
 
@@ -81,4 +82,10 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
         return to_route('extraEscolares.index');
     }
 
+    public function salirclub($title){
+        $titulo = preg_replace('([^A-Za-z])', '', $title);
+
+        $salir=DB::table($titulo)->where('name',auth()->user()->name)->delete();
+        return back();
+    }
 }
