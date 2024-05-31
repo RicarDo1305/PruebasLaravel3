@@ -31,7 +31,7 @@
                 </x-primary-button>
                 &nbsp;
                 &nbsp;
-                <x-primary-button class="mt-4 bg-blue-600 text-white hover:bg-blue-400">
+                <x-primary-button class="mt-4 bg-green-600 text-white hover:bg-green-400">
                     <a href="{{route('estado.tarjetas',$id)}}">Cambiar Estado</a>
                     </x-primary-button>
             </div>

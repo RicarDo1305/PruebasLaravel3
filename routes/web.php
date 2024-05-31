@@ -10,6 +10,7 @@ use App\Http\Controllers\SeguimientoEmpleadoresController;
 use App\Http\Controllers\EncuestaController;
 use App\Http\Controllers\RegistroclubsController;
 use App\Http\Controllers\EncuestaEmpleadoresController;
+use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\FormularioclubController;
 use App\Http\Controllers\listaclubsController;
 use App\Http\Controllers\ListaController;
@@ -71,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/extraEscolares/editarperfil',[clubsController::class,'editarinfo'])->name('edit.info');
     Route::post('/extraEscolares/editarperfill',[clubsController::class,'updateinfo'])->name('update.info');
     Route::get('/salirclub/{title}',[clubsController::class,'salirclub'])->name('club.salir');
+    Route::get('/extraEscolares/estadisticas',[EstadisticaController::class,'index'])->name('extraEscolares.estadistica');
 
     //ruta para lista de alumnos en los clubs
     Route::get('/extraEscolares/paselista/{id}', [listaclubsController::class, 'index'])->name('extraEscolares.club');

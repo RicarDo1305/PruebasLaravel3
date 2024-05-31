@@ -40,9 +40,6 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-dropdown-link :href="route('agregarclub')">
-                {{ __('Registrar club') }}
-            </x-dropdown-link>
             <x-dropdown-link :href="route('extraEscolares.index')">
                 {{ __('Clubs') }}
             </x-dropdown-link>
@@ -51,6 +48,9 @@
 </div>
 <x-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.alumnos')">
     {{ __('Alumnos') }}
+</x-nav-link>
+<x-nav-link :href="route('extraEscolares.estadistica')" :active="request()->routeIs('extraEscolares.estadistica')">
+    {{ __('Estadisticas') }}
 </x-nav-link>
 @endcan
 
