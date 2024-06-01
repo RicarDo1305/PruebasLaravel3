@@ -7,25 +7,22 @@
 <br>
 <br>
 <div class="py-12">
-    @foreach ($alumnos as $alumno)
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-hidden shadow-sm sm:rounded-lg">
         <x-button-seg name="Regresar" ruta="{{'extraEscolares.index'}}"/>
         <button class="ms-3 bg-green-900 text-white hover:bg-green-700 'inline-flex items-center 
         px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
         text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
-        focus:ring-offset-gray-800 transition ease-in-out duration-150'{{ $alumno->name == null ? 'hidden' : '' }}">
+        focus:ring-offset-gray-800 transition ease-in-out duration-150'">
         <a href="{{route('extraEscolares.asistencia',$titulo)}}">Pase de lista</a></button>
         <button class="ms-3 bg-green-900 text-white hover:bg-green-700 'inline-flex items-center 
         px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
         text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
-        focus:ring-offset-gray-800 transition ease-in-out duration-150' {{ $alumno->name == null ? 'hidden' : '' }}">
+        focus:ring-offset-gray-800 transition ease-in-out duration-150'">
         <a href="{{route('registro.especial',$titulo)}}">Lista especial</a></button>
         &nbsp;
-        <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-700 {{ $alumno->name == null ? 'hidden' : '' }}">
+        <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-700">
             <a href="{{route('descarga2',$titulo)}}" download="">Lista de {{$titulo}}</a>
         </x-primary-button>
-    @break;
-    @endforeach
     </div>
     
     
@@ -51,7 +48,7 @@
             <th class="px-4 py-2 border border-gray-400">Asistencias</th>
             <th class="px-4 py-2 border border-gray-400">Historial</th>
             <th class="px-4 py-2 border border-gray-400">Cantidad de horas</th>
-            <th class="px-4 py-2 border border-gray-400"></th>
+            <th class="px-4 py-2 border border-gray-400">Liberar horas</th>
         </tr>
         </thead>
         <tbody>
@@ -87,9 +84,5 @@
         @endforeach
         </tbody>
     </table>
-</div>
-<div class="py-12">
-    
-</div>
-    
+</div>    
 </x-app-layout>

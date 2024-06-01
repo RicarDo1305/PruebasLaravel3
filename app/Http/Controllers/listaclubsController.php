@@ -19,6 +19,7 @@ use App\Models\Piano;
 use App\Models\Escolta;
 use App\Models\Taekwondo;
 use App\Models\Asistencias;
+use App\Models\Historial;
 use Illuminate\Support\Facades\DB;
 use LaravelLang\Publisher\Console\Update;
 use Symfony\Component\Console\Input\Input;
@@ -667,6 +668,14 @@ class listaclubsController extends Controller
         $usuario = User::where('noControl', $alumno)->first();
         $ho=$usuario->horas;
         $horastotal=$hora+$ho;
+        $historial=Historial::Create([
+            'name' => $usuario->name,
+            'carrera' => $usuario->carrera,
+            'semestre' => $usuario->semestre,
+            'noControl' => $usuario->noControl,
+            'horas'=>$hora,
+            'club'=>$club
+        ]);;
         $horas=User::where('noControl', $alumno)
         ->update(['horas' => $horastotal]);
         $asistencias=Asistencias::where('name',$usuario->name)->where('club',$club)->delete();

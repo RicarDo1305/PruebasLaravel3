@@ -73,6 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/extraEscolares/editarperfill',[clubsController::class,'updateinfo'])->name('update.info');
     Route::get('/salirclub/{title}',[clubsController::class,'salirclub'])->name('club.salir');
     Route::get('/extraEscolares/estadisticas',[EstadisticaController::class,'index'])->name('extraEscolares.estadistica');
+    Route::get('/extraEscolares/historial/{num}',[clubsController::class,'historiala'])->name('alumnos.historial');
 
     //ruta para lista de alumnos en los clubs
     Route::get('/extraEscolares/paselista/{id}', [listaclubsController::class, 'index'])->name('extraEscolares.club');

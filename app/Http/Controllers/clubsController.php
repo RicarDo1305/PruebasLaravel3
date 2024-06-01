@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Clubs;
+use App\Models\Historial;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use DragonCode\Contracts\Cashier\Auth\Auth;
@@ -87,5 +88,12 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
 
         $salir=DB::table($titulo)->where('name',auth()->user()->name)->delete();
         return back();
+    }
+
+    public function historiala($numcontrol){
+        $history=Historial::where('noControl',$numcontrol)->get();
+        return view('/extraEscolares/historial', [
+            'historial'=> $history,   
+        ]);
     }
 }
