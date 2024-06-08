@@ -21,7 +21,7 @@
             <br>
             <br>
             <label for="">Imagen:</label>
-            <input type="file" name="img">
+            <input type="file" name="img" accept="image/*">
             <x-input-error :messages="$errors->get('img')" class="mt-2" />
             <br>
             <br>

@@ -15,6 +15,13 @@
                      <progress max="500" value="{{$horas}}"></progress>
                      {{$horas}} horas liberadas de 250
                     @endcan
+                    @can('see-clubs')
+                    <x-formSeg route="encargado.subir" chirp="" nameButton="Subir" method="">
+                    <label for="">Plan de trabajo: </label>
+                    <input type="file" name="plan" accept=".pdf">
+                    <x-input-error :messages="$errors->get('plan')" class="mt-2" />
+                    </x-formSeg>
+                    @endcan
                 </div>
             </div>
         </div>

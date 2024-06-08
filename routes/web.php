@@ -92,6 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/extraEscolares/editarencargado/{id}',[ListaController::class,'indexen'])->name('encargado.editar');
     Route::get('/extraEscolares/editarencargado',[ListaController::class,'edit'])->name('encargado.editform');
     Route::get('/extraEscolares/{id}/editarencargado',[ListaController::class,'delete'])->name('encargado.eliminar');
+    Route::post('/subirplan',[RegistroclubsController::class,'subirplan'])->name('encargado.subir');
 
     //ruta para editar clubs
     Route::get('/extraEscolares/editarclub/{id}',[clubsController::class,'index'])->name('club.editar');

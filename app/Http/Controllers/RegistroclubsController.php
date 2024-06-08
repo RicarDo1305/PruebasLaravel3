@@ -9,6 +9,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -60,11 +61,13 @@ class RegistroclubsController extends Controller
             return to_route('agregarclub.store')->with('status', __('Creado exitosamente'));
         }
         
-
-       
-
-
-        
+    }
+    public function subirplan(Request $request){
+        $file=$request->file('plan');
+        $destinationPath = 'files/';
+        $filename = auth()->user()->name.'.pdf';
+        $uploadsucces = $request->file('plan')->move($destinationPath,$filename);
+        return to_route('dashboard')->with('status', __('Subido exitosamente'));
     }
 
 }
