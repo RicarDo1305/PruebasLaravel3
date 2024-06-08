@@ -15,6 +15,9 @@
 <x-responsive-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.alumnos')">
     {{ __('Alumnos') }}
 </x-responsive-nav-link>
+<x-responsive-nav-link :href="route('extraEscolares.estadistica')" :active="request()->routeIs('extraEscolares.estadistica')">
+    {{ __('Estadisticas') }}
+</x-responsive-nav-link>
 @endcan
 
 @can('see-clubs')
@@ -24,7 +27,10 @@
 @endcan
 
 @can('clubs')
-<x-responsive-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.*')">
+<x-responsive-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.index')">
     {{ __('Clubs') }}
+</x-responsive-nav-link>
+<x-responsive-nav-link :href="route('edit.info')" :active="request()->routeIs('edit,info')">
+    {{ __('Editar informacion') }}
 </x-responsive-nav-link>
 @endcan
