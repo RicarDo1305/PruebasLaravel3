@@ -16,7 +16,11 @@ class SeguimientoController extends Controller
 {
     public function index()
     {
-      $preguntas = Pregunta::with('user')->where('tipo', 1)->latest()->get();
+      $preguntas = Pregunta::with('user')
+            ->where('tipo', 1)
+            ->where('carrera', 'General')
+            ->latest()
+            ->get();
 
         // Obtener las opciones relacionadas con las preguntas
         $opciones = [];
@@ -28,10 +32,37 @@ class SeguimientoController extends Controller
       return view('seguimiento.graficosRespuestas',[
         'preguntas' => $preguntas,
         'respuestas' => $respuestas,
-        'titulo' => "Estadisticas de la encuesta a egresados",
+        'titulo' => "Estadisticas de la encuesta a egresados (General)",
         'rutaEliminar' => "seguimiento.respuestasEgDelete.index",
-        'tipo' => 1
+        'tipo' => 1,
+        'Hidden' => ''
       ]);    
+    }
+
+    public function filtroCarrera($carrera)
+    {
+       $preguntas = Pregunta::with('user')
+            ->where('tipo', 1)
+            ->where('carrera', $carrera)
+            ->latest()
+            ->get();
+
+        // Obtener las opciones relacionadas con las preguntas
+        $opciones = [];
+        foreach ($preguntas as $pregunta) {
+            $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
+        }
+
+      $respuestas = Respuesta::where('tipo', 2)->get();
+      return view('seguimiento.graficosRespuestas',[
+        'preguntas' => $preguntas,
+        'respuestas' => $respuestas,
+        'titulo' => "Estadisticas de la encuesta a egresados "."(".$carrera.")",
+        'rutaEliminar' => "seguimiento.respuestasEgDelete.index",
+        'tipo' => 1,
+        'Hidden' => ''
+      ]);    
+        
     }
     
 
@@ -51,10 +82,13 @@ class SeguimientoController extends Controller
         'respuestas' => $respuestas,
         'titulo' => "Estadisticas de la encuesta a empleadores",
         'rutaEliminar' => "seguimiento.respuestasEmDelete.index",
-        'tipo' => 2
+        'tipo' => 2,
+        'Hidden' => 'hidden'
       ]);    
         
     }
+    
+   
 
     public function destroy(int $tipo, Request $request)
     {

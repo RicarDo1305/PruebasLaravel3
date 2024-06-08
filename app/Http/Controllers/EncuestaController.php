@@ -23,13 +23,15 @@ class EncuestaController extends Controller
         'Opcion1' => 'required|string|max:255',
         'Opcion2' => 'required|string|max:255', 
         'Opcion3' => 'max:255', 
-        'Opcion4' => 'max:255',  
+        'Opcion4' => 'max:255',
+        'carrera' => 'required', 
     ]);
 
     $user = Auth::user();
     // Crear la pregunta
     $pregunta = Pregunta::create([
         'pregunta' => $validatedData['Pregunta'],
+        'carrera' => $validatedData['carrera'],
         'user_id' => $user->id,
         'tipo' => 1,
     ]);
@@ -61,7 +63,11 @@ class EncuestaController extends Controller
 }
 
     public function show(){
-        $preguntas = Pregunta::with('user')->where('tipo', 1)->latest()->get();
+        $preguntas = Pregunta::with('user')
+            ->where('tipo', 1)
+            ->where('carrera', 'General')
+            ->latest()
+            ->get();
 
         // Obtener las opciones relacionadas con las preguntas
         $opciones = [];
@@ -71,6 +77,28 @@ class EncuestaController extends Controller
     
         return view('seguimiento.encuestaLista', [
         'preguntas' => $preguntas,
+        'carrera' => "General",
+        ]);
+       
+
+     }
+
+      public function filtroCarrera($carrera){
+        $preguntas = Pregunta::with('user')
+            ->where('tipo', 1)
+            ->where('carrera', $carrera)
+            ->latest()
+            ->get();
+
+        // Obtener las opciones relacionadas con las preguntas
+        $opciones = [];
+        foreach ($preguntas as $pregunta) {
+            $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
+        }
+    
+        return view('seguimiento.encuestaLista', [
+        'preguntas' => $preguntas,
+        'carrera' => $carrera,
         ]);
        
 
@@ -94,11 +122,13 @@ class EncuestaController extends Controller
             'Opcion1' => 'required|string|max:255',
             'Opcion3' => 'required|string|max:255', 
             'Opcion5' => 'max:255', 
-            'Opcion7' => 'max:255',  
+            'Opcion7' => 'max:255',
+            'carrera' => 'required',  
         ]);
 
         $pregunta->update([
             'pregunta' => $validatedData['Pregunta'],
+            'carrera' => $validatedData['carrera'],
         ]);
 
         $i=1;

@@ -10,6 +10,7 @@ class Pregunta extends Model
 {
     protected $fillable = [
         'pregunta',
+        'carrera',
         'tipo',
         'user_id',
     ];

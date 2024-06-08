@@ -208,6 +208,12 @@ Route::middleware('auth')->group(function () {
         $encuestaController = new EncuestaController();
         return $encuestaController->show();
     })->name('seguimiento.encuesta.show');
+    #filtrar por carrera
+    Route::get('/seguimiento/encuesta/egresados/mostrar/{carrera}', function($carrera){ 
+        Gate::authorize('see-all');
+        $encuestaController = new EncuestaController();
+        return $encuestaController->filtroCarrera($carrera);
+    })->name('seguimiento.encuesta.filtro.show');
     #Editar una pregunta
     Route::get('/seguimiento/encuesta/egresados/{pregunta}/editar', function(Pregunta $pregunta){ 
         Gate::authorize('see-all');
@@ -311,6 +317,12 @@ Route::middleware('auth')->group(function () {
         $seguimientoController = new SeguimientoController();
         return $seguimientoController->index();
     })->name('seguimiento.respuestasEg.index');
+    #filtrar por carrera
+    Route::get('/seguimiento/egresados/respuestas/{carrera}', function($carrera){ 
+        Gate::authorize('see-all');
+        $seguimientoController = new SeguimientoController();
+        return $seguimientoController->filtroCarrera($carrera);
+    })->name('seguimiento.respuestasEg.filtro.show');
     #eliminar todos los registros
     Route::delete('/seguimiento/egresados/respuestas/{tipo}', function($tipo, Request $request){ 
         Gate::authorize('see-all');
