@@ -64,6 +64,7 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
         'telefonoparticular'=> $request->input('telefonoparticular'),
         'estatura' => $request->input('estatura'),
         'peso' => $request->input('peso'),
+        'semestre' => $request->input('semestre'),
         'padecimiento' => $request->input('padecimiento'),
         'nombretutor' => $request->input('nombretutor'),
         'parentesco' => $request->input('parentesco'),

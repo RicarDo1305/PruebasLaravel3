@@ -6,9 +6,6 @@
                 alt="Imagen de referencia">
             </div>
             <div class="p-5 space-x-3 flex-1">
-                @php
-                    $titulo=preg_replace('([^A-Za-z])', '', $title);
-                @endphp
                 <h3 class="p-3 text-xl font-semibold text-sky-500">{{$title}}</h3>
                 <h2 class="text-lg font-semibold text-white leading-tight">
                     Encargado: {{  $incharge }}
@@ -18,7 +15,9 @@
                 </p>
                 <br>
                 @php
-                $club=DB::table($titulo)->where('name',auth()->user()->name)->first();
+                $titulo=preg_replace('([^A-Za-z])', '', $title);
+                $str = strtolower($titulo);
+                $club=DB::table($str)->where('name',auth()->user()->name)->first();
                 @endphp
                 @if (empty($club)== true)
                     <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
