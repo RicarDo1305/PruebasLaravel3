@@ -8,6 +8,7 @@
         <x-button-seg name="Regresar" ruta="seguimiento.index" />
       </div>
 
+
       <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
         Encuesta Empleadores
       </h2>

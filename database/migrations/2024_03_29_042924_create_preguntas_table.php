@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('preguntas', function (Blueprint $table) {
             $table->id();
             $table->string('pregunta');
+            $table->string('carrera');
             $table->unsignedBigInteger('user_id');
             $table->integer('tipo');
             $table->timestamps();
