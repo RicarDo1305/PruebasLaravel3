@@ -18,6 +18,7 @@ use App\Models\Ajedrez;
 use App\Models\Atletismo;
 use App\Models\Taekwondo;
 use App\Models\Natacion;
+use Illuminate\Support\Facades\DB;
 
 
 class FormularioclubController extends Controller
@@ -54,112 +55,12 @@ class FormularioclubController extends Controller
         ]);
 
         $nombrec = $request->club;
-        switch ($nombrec) {
-            case 'Atletismo':
-                $club = Atletismo::Create([
-                    'noControl' => auth()->user()->noControl,
+        $prueba=DB::table($nombrec)->insert(['noControl' => auth()->user()->noControl,
                     'carrera' => $request->input('carrera'),
                     'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Danza Folclorica':
-                $club = DanzaFolclorica::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Artes Plasticas':
-                $club = ArtesPlasticas::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Musica':
-                $club = Musica::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Piano':
-                $club = Piano::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Escolta':
-                $club = Escolta::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Banda De Guerra':
-                $club = BandadeGuerra::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Futbol':
-                $club = Futbol::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Voleibol':
-                $club = Voleibol::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Basquetbol':
-                $club = Basquetbol::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Ajedrez':
-                $club = Ajedrez::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'TaeKwonDo':
-                $club = Taekwondo::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-            case 'Natacion':
-                $club = Natacion::Create([
-                    'noControl' => auth()->user()->noControl,
-                    'carrera' => $request->input('carrera'),
-                    'semestre' => $request->input('semestre'),
-                    'name'=>auth()->user()->name
-                ]);
-                break;
-        }
+                    'name'=>auth()->user()->name]);
+        
+        
 
 
         $clubs = Clubs::all();
