@@ -30,8 +30,13 @@
                     </x-nav-link>
                     @endcan
                     @can('egresados')
-                    <x-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.*')">
-                        {{ __('Encuesta') }}
+                    <x-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.responder.encuesta.index')">
+                        {{ __('Encuesta General') }}
+                    </x-nav-link>
+                    @endcan
+                    @can('egresados')
+                    <x-nav-link :href="route('seguimiento.responder.encuesta.carrera.index')" :active="request()->routeIs('seguimiento.responder.encuesta.carrera.index')">
+                        {{ __('Encuesta '.Auth::user()->carrera) }}
                     </x-nav-link>
                     @endcan
                     @can('empleadores')
@@ -105,7 +110,7 @@
             @endcan
             @can('egresados')
             <x-responsive-nav-link :href="route('seguimiento.responder.encuesta.index')" :active="request()->routeIs('seguimiento.*')">
-                {{ __('Encuesta') }}
+                {{ __('Encuesta General') }}
             </x-responsive-nav-link>
             @endcan
             @can('empleadores')

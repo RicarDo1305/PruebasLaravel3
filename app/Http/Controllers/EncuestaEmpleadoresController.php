@@ -30,6 +30,7 @@ class EncuestaEmpleadoresController extends Controller
     // Crear la pregunta
     $pregunta = Pregunta::create([
         'pregunta' => $validatedData['Pregunta'],
+        'carrera' => "Empresa",
         'user_id' => $user->id,
         'tipo' => 2,
     ]);
@@ -57,7 +58,7 @@ class EncuestaEmpleadoresController extends Controller
 
    
 
-    return to_route('seguimiento.encuesta.index')->with('status', __('Pregunta agregada'));// Redireccionar o devolver alguna respuesta
+    return to_route('seguimiento.encuestaEm.index')->with('status', __('Pregunta agregada'));// Redireccionar o devolver alguna respuesta
 }
   public function show(){
         $preguntas = Pregunta::with('user')->where('tipo', 2)->latest()->get();

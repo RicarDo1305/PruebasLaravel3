@@ -8,10 +8,10 @@
             Crear encuesta para empleadores
          </h2>
 
-         <x-crear-encuesta ruta="questionsEm.store" />
+         <x-crear-encuesta ruta="questionsEm.store" hidden="hidden" />
 
          <div class="ml-2 md:ml-0">
-            <x-button-seg name="Regresar" ruta="seguimiento.index" />
+            <x-button-seg name="Regresar" ruta="seguimiento.index"/>
          </div>
       </div>
    </div>

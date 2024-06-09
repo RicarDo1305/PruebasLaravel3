@@ -10,7 +10,7 @@
          </div>
 
          <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
-            Encuesta a egresados
+            Encuesta a egresados {{$carrera}}
          </h2>
 
          <form id="miFormulario" action="{{ route('seguimiento.responder.encuesta.store') }}" method="POST">

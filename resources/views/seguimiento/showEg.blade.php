@@ -9,8 +9,15 @@
             </div>
 
             <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
-                Lista de egresados
+                Lista de egresados ({{$carrera}})
             </h2>
+            <h2 class="mt-5 md:mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
+                Total de egresados: ({{$noEgresados}})
+            </h2>
+
+            <div class="mt-5">
+                <x-seleccion-encuesta ruta="seguimiento.lista.filtro.show" carrera={{$carrera}}/>
+            </div>
 
             <x-listasEg :egresados=$egresados rutaEdit="seguimiento.lista.edit" rutaDestroy="seguimiento.lista.destroy" />
 

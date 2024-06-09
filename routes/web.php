@@ -183,6 +183,12 @@ Route::middleware('auth')->group(function () {
         $egresadosController = new EgresadosController();
         return $egresadosController->show();
     })->name('seguimiento.lista.show');
+    #filtrar listas de alumnos por carrera
+    Route::get('/seguimiento/egresados/lista/{carrera}', function($carrera){ 
+        Gate::authorize('see-all');
+        $egresadosController = new EgresadosController();
+        return $egresadosController->filtroCarrera($carrera);
+    })->name('seguimiento.lista.filtro.show');
     #Recupera los datos del agresado a editar
     Route::get('/seguimiento/egresados/{egresado}/editar', function(User $egresado){ 
         Gate::authorize('see-all');
@@ -209,7 +215,7 @@ Route::middleware('auth')->group(function () {
         $encuestaController = new EncuestaController();
         return $encuestaController->show();
     })->name('seguimiento.encuesta.show');
-    #filtrar por carrera
+    #filtrar preguntas de la encuesta por carrera
     Route::get('/seguimiento/encuesta/egresados/mostrar/{carrera}', function($carrera){ 
         Gate::authorize('see-all');
         $encuestaController = new EncuestaController();
@@ -227,12 +233,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/seguimiento/encuesta/egresados/{pregunta}', [EncuestaController::class, 'destroy'])->name('seguimiento.encuesta.destroy');
     
     #RUTAS QUE PUEDE USAR UN AGRESADO
-    #Muestra la encuesta
+    #Muestra la encuesta general
     Route::get('/seguimiento/egresado/encuesta', function(){ 
          Gate::authorize('egresados');
          $RespuestasController = new RespuestasController();
         return $RespuestasController->index();
     })->name('seguimiento.responder.encuesta.index');
+     #Muestra la encuesta por carrera
+    Route::get('/seguimiento/egresado/encuesta/carrera', function(){ 
+         Gate::authorize('egresados');
+         $RespuestasController = new RespuestasController();
+        return $RespuestasController->filtroCarrera();
+    })->name('seguimiento.responder.encuesta.carrera.index');
     #Realiza la accion de almacenar en BD
     #Almacena las preguntas y opciones en la base de datos
     Route::post('/seguimiento/egresado/encuesta/enviar', [RespuestasController::class, 'store'])->name('seguimiento.responder.encuesta.store');

@@ -5,7 +5,7 @@
         <x-text-area name="Opcion2" placeholder="Opcion 2" textAreaDev="" />
         <x-text-area name="Opcion3" placeholder="Opcion 3" textAreaDev="" />
         <x-text-area name="Opcion4" placeholder="Opcion 4" textAreaDev="" />
-        <div>
+        <div class="{{$hidden}}">
             <label for="carrera">Selecciona una carrera:</label>
             <select class="text-black" name="carrera" id="carrera">
                 <option value="General" selected>General</option>

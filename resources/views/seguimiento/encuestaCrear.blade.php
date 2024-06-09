@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
 
-            <x-crear-encuesta ruta="questions.store" />
+            <x-crear-encuesta ruta="questions.store" hidden="" />
 
             <div class="ml-2 md:ml-0">
-                <x-button-seg name="Regresar" ruta="seguimiento.index" />
+                <x-button-seg name="Regresar" ruta="seguimiento.index"/>
             </div>
         </div>
     </div>

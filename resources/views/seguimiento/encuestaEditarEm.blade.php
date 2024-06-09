@@ -8,7 +8,7 @@
         Editar pregunta
       </h2>
 
-      <x-editar-encuesta ruta="seguimiento.encuestaEm.update" :pregunta=$pregunta />
+      <x-editar-encuesta ruta="seguimiento.encuestaEm.update" :pregunta=$pregunta hidden="hidden"/>
 
       <div class="ml-2 md:ml-0">
         <x-button-seg name="Regresar" ruta="seguimiento.encuestaEm.show" />

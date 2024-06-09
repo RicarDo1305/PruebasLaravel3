@@ -12,46 +12,68 @@ class EgresadosController extends Controller
     public function store(Request $request)
     {
         // Validar los datos de la pregunta
-    $validatedData = $request->validate([
-        'nombre' => 'required|string|max:255',
-        'email' => 'required|string|max:255',
-        'carrera' => 'required|string|max:255',
-        'noControl' => 'required|string|max:255',
-    ]);
+        $validatedData = $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'carrera' => 'required|string|max:255',
+            'noControl' => 'required|string|max:255',
+        ]);
 
-    //$user = Auth::user(); //Esto se usa para obtener los datos del usuario autentificado
-    
-    User::create([
-        'name' => $validatedData['nombre'],
-        'email' => $validatedData['email'],
-        'carrera' => $validatedData['carrera'],
-        'password' => $validatedData['noControl'],
-        'noControl' => $validatedData['noControl'],
-        'rol' => '5',
-    ]);
+        //$user = Auth::user(); //Esto se usa para obtener los datos del usuario autentificado
+
+        User::create([
+            'name' => $validatedData['nombre'],
+            'email' => $validatedData['email'],
+            'carrera' => $validatedData['carrera'],
+            'password' => $validatedData['noControl'],
+            'noControl' => $validatedData['noControl'],
+            'rol' => '5',
+        ]);
 
 
-   
 
-    return to_route('seguimiento.index')->with('status', __('Egresado agregado exitosamente'));// Redireccionar a la vista de inicio (de seguimiento)
-}
 
- public function show(){
+        return to_route('seguimiento.index')->with('status', __('Egresado agregado exitosamente')); // Redireccionar a la vista de inicio (de seguimiento)
+    }
+
+    public function show()
+    {
         $egresados = User::where('rol', 5)->latest()->get();
 
+        $noEgresados = $egresados->count();
+
         return view('seguimiento.showEg', [
-        'egresados' => $egresados,
+            'egresados' => $egresados,
+            'carrera' => 'General',
+            'noEgresados' => $noEgresados,
         ]);
-       
+    }
+    public function filtroCarrera($carrera)
+    {
+        if ($carrera == 'General') {
+            $egresados = User::where('rol', 5)->latest()->get();
+        } else {
+            $egresados = User::where('rol', 5)
+                ->where('carrera', $carrera)
+                ->latest()
+                ->get();
+        }
 
-     }
+        $noEgresados = $egresados->count();
 
-      public function edit(User $egresado)
-      {
+        return view('seguimiento.showEg', [
+            'egresados' => $egresados,
+            'carrera' => $carrera,
+            'noEgresados' => $noEgresados,
+        ]);
+    }
 
-       return view('seguimiento.egresadoEditar', [
+    public function edit(User $egresado)
+    {
+
+        return view('seguimiento.egresadoEditar', [
             'egresado' => $egresado,
-       ]);
+        ]);
     }
 
     public function update(Request $request, User $egresado)
@@ -62,7 +84,7 @@ class EgresadosController extends Controller
             'nombre' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'carrera' => 'required|string|max:255',
-            'noControl' => 'required|string|max:255', 
+            'noControl' => 'required|string|max:255',
         ]);
 
         $egresado->update([
@@ -84,5 +106,4 @@ class EgresadosController extends Controller
 
         return to_route('seguimiento.lista.show')->with('status', __('Egresado elimindado exitosamente'));
     }
-
 }

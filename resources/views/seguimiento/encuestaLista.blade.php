@@ -10,11 +10,15 @@
         <x-button-seg name="Regresar" ruta="seguimiento.index" />
       </div>
 
-      <x-seleccion-encuesta ruta="seguimiento.encuesta.filtro.show" />
+      
 
       <h2 class="mt-3 -mb-4 text-center font-semibold text-sm md:text-lg text-gray-200 leading-tight">
         Encuesta Egresados ({{$carrera}})
       </h2>
+
+      <div class="mt-5">
+      <x-seleccion-encuesta ruta="seguimiento.encuesta.filtro.show" carrera={{$carrera}}/>
+      </div>
 
       <x-encuesta-lista rutaEdit="seguimiento.encuesta.edit" rutaDestroy="seguimiento.encuesta.destroy" :preguntas=$preguntas />
 

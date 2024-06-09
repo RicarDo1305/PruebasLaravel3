@@ -49,7 +49,7 @@
             </h2>
 
             <div class="mt-5 {{$Hidden}}">
-                <x-seleccion-encuesta ruta="seguimiento.respuestasEg.filtro.show"/>
+                <x-seleccion-encuesta ruta="seguimiento.respuestasEg.filtro.show" carrera={{$carrera}}/>
             </div>
             <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y divide-gray-900 m-2 overflow-x-auto">
                 <div class="m-4">

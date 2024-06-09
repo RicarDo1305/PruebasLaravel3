@@ -33,11 +33,13 @@ class SeguimientoController extends Controller
         'preguntas' => $preguntas,
         'respuestas' => $respuestas,
         'titulo' => "Estadisticas de la encuesta a egresados (General)",
+        'carrera' => "General",
         'rutaEliminar' => "seguimiento.respuestasEgDelete.index",
         'tipo' => 1,
         'Hidden' => ''
       ]);    
     }
+    
 
     public function filtroCarrera($carrera)
     {
@@ -53,11 +55,12 @@ class SeguimientoController extends Controller
             $opciones[$pregunta->id] = Opcion::where('pregunta_id', $pregunta->id)->latest()->get();
         }
 
-      $respuestas = Respuesta::where('tipo', 2)->get();
+      $respuestas = Respuesta::where('tipo', 1)->get();
       return view('seguimiento.graficosRespuestas',[
         'preguntas' => $preguntas,
         'respuestas' => $respuestas,
         'titulo' => "Estadisticas de la encuesta a egresados "."(".$carrera.")",
+        'carrera' => $carrera,
         'rutaEliminar' => "seguimiento.respuestasEgDelete.index",
         'tipo' => 1,
         'Hidden' => ''
@@ -80,6 +83,7 @@ class SeguimientoController extends Controller
       return view('seguimiento.graficosRespuestas',[
         'preguntas' => $preguntas,
         'respuestas' => $respuestas,
+        'carrera' => "",
         'titulo' => "Estadisticas de la encuesta a empleadores",
         'rutaEliminar' => "seguimiento.respuestasEmDelete.index",
         'tipo' => 2,
