@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('incharge');
             $table->string('description');
-            $table->string('state');
+            $table->string('state')->default('1');
             $table->timestamps();
         });
     }
