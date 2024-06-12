@@ -105,10 +105,10 @@ class SeguimientoController extends Controller
      // Verificar si la contraseña proporcionada coincide con la contraseña del usuario autenticado
      if (Hash::check($request->password, $user->password)) {
         // Si la contraseña coincide, puedes proceder con la eliminación de los registros
-        //$respuestas = Respuesta::where('tipo', $tipo)->get();
-        //foreach ($respuestas as $respuesta) {
-          //$respuesta->delete();
-         //}
+        $respuestas = Respuesta::where('tipo', $tipo)->get();
+        foreach ($respuestas as $respuesta) {
+          $respuesta->delete();
+         }
          return to_route('seguimiento.index')->with('status', __('Los graficos han sido limpiados'));
       } else {
         // Si la contraseña no coincide, puedes redirigir de nuevo al formulario con un mensaje de error

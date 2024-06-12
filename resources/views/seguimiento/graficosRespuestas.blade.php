@@ -22,18 +22,19 @@
                     <div class="flex items-center justify-center min-h-screen">
                         <div class="fixed inset-0 bg-black opacity-50"></div>
                         <div class="relative bg-slate-800 rounded-lg p-8 max-w-md">
-                            <h2 class="text-lg mb-4 text-white">¿Estás seguro que deseas borrar todas las respuestas?</h2>
+                            <h2 class="text-sm md:text-lg mb-4 text-white">¿Estás seguro que deseas borrar todas las respuestas?</h2>
+                            <h3 class="text-sm md:text-lg mb-4 text-white">Esto solo se debe hacer cuando ya esten completos todos los informes</h3>
                             <form id="formEliminar" method="POST" action="{{ route($rutaEliminar, $tipo) }}">
                                 @csrf
                                 @method('DELETE')
                                 <div class="mb-4">
-                                    <label for="password" class="text-white">Contraseña:</label>
-                                    <input type="password" id="password" name="password" class="block w-full px-4 py-2 mt-1 bg-gray-700 text-white rounded-md focus:outline-none focus:ring focus:ring-indigo-400" required>
+                                    <label for="password" class="text-white text-sm md:text-lg">Contraseña:</label>
+                                    <input type="password" id="password" name="password" class="text-sm md:text-lg block w-full px-4 py-2 mt-1 bg-gray-700 text-white rounded-md focus:outline-none focus:ring focus:ring-indigo-400" required>
                                     <x-input-error class="mt-2" :messages="$errors->get('password')" />
                                 </div>
                                 <div class="flex justify-end">
-                                    <button id="cancelar" class="text-gray-500 hover:text-gray-700 mr-4">Cancelar</button>
-                                    <x-primary-button class="bg-red-600 text-white hover:bg-red-800">
+                                    <button id="cancelar" class="text-sm md:text-lg text-gray-500 hover:text-gray-700 mr-4">Cancelar</button>
+                                    <x-primary-button class="text-sm md:text-lg bg-red-600 text-white hover:bg-red-800">
                                         {{ __('Borrar') }}
                                     </x-primary-button>
                                 </div>
@@ -49,7 +50,7 @@
             </h2>
 
             <div class="mt-5 {{$Hidden}}">
-                <x-seleccion-encuesta ruta="seguimiento.respuestasEg.filtro.show" carrera={{$carrera}}/>
+                <x-seleccion-encuesta ruta="seguimiento.respuestasEg.filtro.show" carrera={{$carrera}} />
             </div>
             <div class="mt-6 bg-slate-800 shadow-sm rounded-lg divide-y divide-gray-900 m-2 overflow-x-auto">
                 <div class="m-4">
@@ -87,20 +88,18 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="p-2">
+                        <div class="max-w-md mx-auto border border-gray-400 rounded-t-md rounded-b-lg mt-4 p-1">
+                            <canvas id="grafico_{{$pregunta->id}}" class="grafico canvas-estilo"></canvas>
+                        </div>
+                    </div>
                     @endforeach
                 </div>
 
             </div>
 
-            <div class="p-2">
-                @foreach($preguntas as $Pregunta)
-                <div class="max-w-md mx-auto border border-gray-400 rounded-t-md rounded-b-lg mt-4 p-1">
-                    <canvas id="grafico_{{$Pregunta->id}}" class="grafico canvas-estilo"></canvas>
-                </div>
-                @endforeach
-            </div>
+
         </div>
-    </div>
     </div>
 
     @vite('resources/js/crearGrafico.js')
