@@ -6,6 +6,13 @@
     </x-slot>
 <br>
 <br>
+<div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg text-white pt-4">
+    <label for="">Plantilla de hoja de liberacion: </label>
+    <x-formSeg route="subir.liberacion" chirp="" nameButton="Subir" method="">
+        <input type="file" name="hoja" accept=".docx">
+        <br>
+    </x-formSeg>
+</div>
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="pt-5">
@@ -23,6 +30,7 @@
         <tr class="bg-green-900 text-white">
             <th class="px-4 py-2 border border-gray-400">NoControl</th>
             <th class="px-4 py-2 border border-gray-400">Historial</th>
+            <th class="px-4 py-2 border border-gray-400">Carta de liberacion</th>
             <th class="px-4 py-2 border border-gray-400">Nombre</th>
             <th class="px-4 py-2 border border-gray-400">Apellido paterno</th>
             <th class="px-4 py-2 border border-gray-400">Apellido materno</th>
@@ -49,6 +57,8 @@
             <td class="px-4 py-2 border border-gray-400">{{$alumno->noControl}}</td>
             <td class="px-4 py-2 border border-gray-400"><button type="submit" class="mt-4 bg-gray-900 text-white hover:bg-gray-700 inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition ease-in-out duration-150">
                 <a href="{{route('alumnos.historial',$alumno->noControl)}}">Historial</a></button></td>
+                <td class="px-4 py-2 border border-gray-400"><button type="submit" class="mt-4 bg-green-900 text-white hover:bg-green-700 inline-flex items-center px-4 py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-gray-800 transition ease-in-out duration-150">
+                    <a href="{{route('generar.liberacion',$alumno)}}">Generar</a></button></td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->name}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->apaterno}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->amaterno}}</td>

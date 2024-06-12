@@ -167,6 +167,8 @@ Route::middleware('auth')->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     Route::get('/descargaespecial/{titulo}}',[listaclubsController::class,"descargaespecial"])->name("descarga.especial");
     Route::get('/horas/{control}',[listaclubsController::class,"HorasA"])->name("agregar.horas");
+    Route::post('/hojaliberacion',[ListaController::class,"subircarta"])->name('subir.liberacion');
+    Route::get('/generarhoja/{alumno}',[ListaController::class,"generarcarta"])->name("generar.liberacion");
 
     #RUTAS PARA LISTAS DE EGRESADOS
 

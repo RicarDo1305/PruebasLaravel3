@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class ListaController extends Controller
 {
@@ -88,5 +89,32 @@ return to_route('extraEscolares.encargados')->with('status', __('Editado exitosa
         $id->delete();
         return to_route('extraEscolares.encargados')->with('status', __('Eliminado exitosamente'));
 
+    }
+    public function subircarta(Request $request){
+        $file=$request->file('hoja');
+        $destinationPath = 'files/';
+        $filename = 'HojaLiberacion'.'.docx';
+        $uploadsucces = $request->file('hoja')->move($destinationPath,$filename);
+        return to_route('extraEscolares.alumnos')->with('status', __('Subido exitosamente'));
+    }
+
+    public function generarcarta( Request $request,$alumno){
+        $alumno=DB::table('users')->where('id',$alumno)->first();
+        $encargado=DB::table('users')->where('rol','1')->first();
+        $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/HojaLiberacion.docx');
+        $template->setValue(search:'autor',replace:auth()->user()->name);
+        $template->setValue(search:'name',replace:$alumno->name);
+        $template->setValue(search:'apaterno',replace:$alumno->apaterno);
+        $template->setValue(search:'amaterno',replace:$alumno->amaterno);
+        $template->setValue(search:'noControl',replace:$alumno->noControl);
+        $template->setValue(search:'carrera',replace:$alumno->carrera);
+        $template->setValue(search:'encargado',replace:$encargado->name);
+        $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
+        $template->saveAs($tempFile);
+
+        $headers = [
+            "Content-Type: aplication/octet-stream",
+        ];
+        return response()->download($tempFile, 'Carta de Liberacion '.$alumno->noControl.'.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
     }
 }

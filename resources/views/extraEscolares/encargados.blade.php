@@ -42,7 +42,7 @@
             <td class="px-4 py-2 border border-gray-400">{{$alumno->curp}}</td>
             <td class="px-4 py-2 border border-gray-400">{{$alumno->nss}}</td>
             <td class="px-4 py-2 border border-gray-400">
-                <button class="mt-4 bg-blue-500 text-white hover:bg-blue-400 inline-flex items-center 
+                <button class="mt-4 bg-green-800 text-white hover:bg-green-600 inline-flex items-center 
                 px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
                 text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
                 focus:ring-offset-gray-800 transition ease-in-out duration-150"  
