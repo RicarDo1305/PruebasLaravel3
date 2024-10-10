@@ -9,7 +9,7 @@
 </x-responsive-nav-link>
 
 <x-responsive-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.index')">
-    {{ __('Clubs') }}
+    {{ __('Clubes') }}
 </x-responsive-nav-link>
        
 <x-responsive-nav-link :href="route('extraEscolares.alumnos')" :active="request()->routeIs('extraEscolares.alumnos')">
@@ -28,7 +28,7 @@
 
 @can('clubs')
 <x-responsive-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.index')">
-    {{ __('Clubs') }}
+    {{ __('Clubes') }}
 </x-responsive-nav-link>
 <x-responsive-nav-link :href="route('edit.info')" :active="request()->routeIs('edit,info')">
     {{ __('Editar informacion') }}

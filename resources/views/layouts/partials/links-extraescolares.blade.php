@@ -29,7 +29,7 @@
     <x-dropdown align="right" width="48">
         <x-slot name="trigger">
             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-400 bg-gray-800 hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                <div>Clubs</div>
+                <div>Clubes</div>
 
                 <div class="ms-1">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -41,7 +41,7 @@
 
         <x-slot name="content">
             <x-dropdown-link :href="route('extraEscolares.index')">
-                {{ __('Clubs') }}
+                {{ __('Clubes') }}
             </x-dropdown-link>
         </x-slot>
     </x-dropdown>
@@ -62,7 +62,7 @@
 
 @can('clubs')
 <x-nav-link :href="route('extraEscolares.index')" :active="request()->routeIs('extraEscolares.*')">
-    {{ __('Clubs') }}
+    {{ __('Clubes') }}
 </x-nav-link>
 <x-nav-link :href="route('edit.info')" :active="request()->routeIs('edit.info')">
     {{ __('Editar informacion') }}
