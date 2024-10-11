@@ -19,6 +19,7 @@ use App\Models\Piano;
 use App\Models\Escolta;
 use App\Models\Taekwondo;
 use App\Models\Asistencias;
+use App\Models\Desfile;
 use App\Models\Historial;
 use Illuminate\Support\Facades\DB;
 use LaravelLang\Publisher\Console\Update;
@@ -30,8 +31,9 @@ class listaclubsController extends Controller
         $texto=trim($request->get('search'));
         $clubs= Clubs::where('id',$id)->first();
         $campo =$clubs->title;
+        $cadena =str_replace(' ', '', $campo);
         
-        $alumnos = DB::table($campo)->
+        $alumnos = DB::table($cadena)->
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
                           ->orWhere('noControl', 'LIKE', '%' . $texto . '%')
@@ -52,9 +54,10 @@ class listaclubsController extends Controller
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function lista(Request $request,$titulo){
+        $cadena =str_replace(' ', '', $titulo);
         $texto=trim($request->get('search'));
 
-        $alumnos = DB::table($titulo)->
+        $alumnos = DB::table($cadena)->
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
                           ->orWhere('noControl', 'LIKE', '%' . $texto . '%')
@@ -87,26 +90,198 @@ class listaclubsController extends Controller
 
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public function listaespecial(Request $request,$titulo){
-        $texto=trim($request->get('search'));
-
-        $alumnos = DB::table($titulo)->
+public function listaespecial(Request $request,$titulo){
+    $cadena =str_replace(' ', '', $titulo);
+    $cadena = strtolower($cadena);
+    $texto=trim($request->get('search'));
+    switch ($cadena) {
+        case 'atletismo':
+            $alumnos = Atletismo::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo   
+            ]);
+            break;
+        case 'danzafolclorica':
+            $alumnos = DanzaFolclorica::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo   
+            ]);
+            break;
+        case 'artesplasticas':
+            $alumnos = ArtesPlasticas::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo   
+            ]);
+            break;
+        case 'musica':
+            $alumnos = Musica::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo   
+            ]);
+            break;
+        case 'piano':
+            $alumnos = Piano::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo  
+            ]);
+            break;
+        case 'escolta':
+            $alumnos = Escolta::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo  
+            ]);
+            break;
+        case 'bandadeguerra':
+            $alumnos = BandadeGuerra::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo    
+            ]);
+            break;
+        case 'futbol':
+            $alumnos = Futbol::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo     
+            ]);
+            break;
+        case 'voleibol':
+            $alumnos = Voleibol::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo     
+            ]);
+            break;
+        case 'basquetbol':
+            $alumnos = Basquetbol::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo     
+            ]);
+            break;
+        case 'ajedrez':
+            $alumnos = Ajedrez::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo   
+            ]);
+            break;
+        case 'taekwondo':
+            $alumnos = Taekwondo::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo     
+            ]);
+            break;
+            case 'desfile':
+                $alumnos = Desfile::
                 where(function($query) use ($texto) {
                     $query->where('name', 'LIKE', '%' . $texto . '%')
-                          ->orWhere('noControl', 'LIKE', '%' . $texto . '%')
-                          ->orWhere('semestre', 'LIKE', '%' . $texto . '%')
-                          ->orWhere('carrera', 'LIKE', '%' . $texto . '%');
+                          ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
                 })
                 ->get();
                 return view('/extraEscolares/listaespecial', [
                     'alumnos'=> $alumnos,
                     'texto'=>$texto,
-                    'id'=>$titulo   
+                    'id'=>$titulo     
                 ]);
-        
-        return view('registro.especial');
-
+                break;
+        case 'natacion':
+            $alumnos = Natacion::
+            where(function($query) use ($texto) {
+                $query->where('name', 'LIKE', '%' . $texto . '%')
+                      ->orWhere('noControl', 'LIKE', '%' . $texto . '%');
+            })
+            ->get();
+            return view('/extraEscolares/listaespecial', [
+                'alumnos'=> $alumnos,
+                'texto'=>$texto,
+                'id'=>$titulo    
+            ]);
+            break;
     }
+
+    return view('registro.especial');
+
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function descargaespecial($titulo){
         $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Participantes de Actividades Culturales Deportivas.docx');

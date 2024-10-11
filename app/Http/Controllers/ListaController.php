@@ -24,7 +24,7 @@ class ListaController extends Controller
                   ->orWhere('sexo', 'LIKE', '%' . $texto . '%')
                   ->orWhere('semestre', 'LIKE', '%' . $texto . '%');
         })
-        ->where('rol', '4')
+        ->whereIn('rol', ['4', '5'])
         ->get();
         return view('extraEscolares.alumnos', [
             'alumnos'=> $alumnos,
@@ -99,6 +99,7 @@ return to_route('extraEscolares.encargados')->with('status', __('Editado exitosa
     }
 
     public function generarcarta( Request $request,$alumno){
+
         $alumno=DB::table('users')->where('id',$alumno)->first();
         $encargado=DB::table('users')->where('rol','1')->first();
         $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/HojaLiberacion.docx');
@@ -115,6 +116,11 @@ return to_route('extraEscolares.encargados')->with('status', __('Editado exitosa
         $headers = [
             "Content-Type: aplication/octet-stream",
         ];
+        $egresado=User::where('name',$alumno->name);
+        $egresado->update([
+            'rol' => '5',
+            
+        ]);
         return response()->download($tempFile, 'Carta de Liberacion '.$alumno->noControl.'.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
     }
 }

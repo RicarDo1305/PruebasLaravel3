@@ -46,7 +46,7 @@
 <div class="py-12">
     <div class="flex flex-col items-center">
         <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
-            Crear lista
+            Crear listas
         </x-primary-button>
     </div>
 </div>

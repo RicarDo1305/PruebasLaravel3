@@ -4,52 +4,88 @@
             {{ __('Actualizar datos') }}
         </h2>
     </x-slot>
-    <x-formSeg route="update.info" chirp="" nameButton="Actualizar" method="" enctype="multipart/form-data">
-        <div class="space-y-2">
-            <label for="">Seleccione su carrera:</label>
-            <select name="carrera" class="text-black">
-                <option value="{{Auth::user()->carrera}}">...</option>
-                <option value="ISIC">ISIC</option>
-                <option value="IGEM">IGEM</option>
-                <option value="IIAL">IIAL</option>
-                <option value="IIND">IIND</option>
-            </select>
-            <label for="">Carrera actual: {{Auth::user()->carrera}}</label>
-            &nbsp;
-            &nbsp;
-            &nbsp;
-            <label for="">Semestre :</label>
-            <select name="semestre" class="text-black">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-            <br>
-            <label for="">Telefono particular:</label>
-            <x-text-area name="telefonoparticular" placeholder="" textAreaDev="{{Auth::user()->telefonoparticular}}"/>
-            <label for="">Estatura:</label>
-            <x-text-area name="estatura" placeholder="Estatura" textAreaDev="{{Auth::user()->estatura}}"/>
-            <label for="">Peso:</label>
-            <x-text-area name="peso" placeholder="Peso" textAreaDev="{{Auth::user()->peso}}"/>
-                <label for="">Padecimientos o alergias:</label>
-            <x-text-area name="padecimiento" placeholder="Padecimientos o alergias" textAreaDev="{{Auth::user()->padecimiento}}"/>
-                <label for="">Nombre del tutor:</label>
-            <x-text-area name="nombretutor" placeholder="Nombre del tutor" textAreaDev="{{Auth::user()->nombretutor}}"/>
-                <label for="">Parentesco:</label>
-            <x-text-area name="parentesco" placeholder="Parentesco" textAreaDev="{{Auth::user()->parentesco}}"/>
-                <label for="">Telefono del tutor:</label>
-            <x-text-area name="telefonotutor" placeholder="Telefono del tutor" textAreaDev="{{Auth::user()->telefonotutor}}"/>
+
+    <div class="py-12">
+        <div class="max-w-screen-md mx-auto sm:px-6 lg:px-8">
+            <div class="bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-100">
+                    <x-formSeg route="update.info" chirp="" nameButton="Actualizar" method="" enctype="multipart/form-data">
+                        
+                        <div class="grid grid-cols-2 gap-6">
+
+                            <!-- Selección de carrera -->
+                            <div class="col-span-2">
+                                <label for="">Seleccione su carrera:</label>
+                                <select name="carrera" class="w-full text-black">
+                                    <option value="{{Auth::user()->carrera}}">...</option>
+                                    <option value="ISIC">ISIC</option>
+                                    <option value="IGEM">IGEM</option>
+                                    <option value="IIAL">IIAL</option>
+                                    <option value="IIND">IIND</option>
+                                </select>
+                                <label for="" class="block mt-2">Carrera actual: {{Auth::user()->carrera}}</label>
+                            </div>
+
+                            <!-- Selección de semestre -->
+                            <div>
+                                <label for="">Semestre :</label>
+                                <select name="semestre" class="w-full text-black">
+                                    @for ($i = 1; $i <= 12; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                            </div>
+
+                            <!-- Teléfono particular -->
+                            <div>
+                                <label for="">Teléfono particular:</label>
+                                <x-text-area name="telefonoparticular" placeholder="" textAreaDev="{{Auth::user()->telefonoparticular}}" />
+                            </div>
+
+                            <!-- Estatura -->
+                            <div>
+                                <label for="">Estatura:</label>
+                                <x-text-area name="estatura" placeholder="Estatura" textAreaDev="{{Auth::user()->estatura}}" />
+                            </div>
+
+                            <!-- Peso -->
+                            <div>
+                                <label for="">Peso:</label>
+                                <x-text-area name="peso" placeholder="Peso" textAreaDev="{{Auth::user()->peso}}" />
+                            </div>
+
+                            <!-- Padecimientos o alergias -->
+                            <div class="col-span-2">
+                                <label for="">Padecimientos o alergias:</label>
+                                <x-text-area name="padecimiento" placeholder="Padecimientos o alergias" textAreaDev="{{Auth::user()->padecimiento}}" />
+                            </div>
+
+                            <!-- Nombre del tutor -->
+                            <div>
+                                <label for="">Nombre del tutor:</label>
+                                <x-text-area name="nombretutor" placeholder="Nombre del tutor" textAreaDev="{{Auth::user()->nombretutor}}" />
+                            </div>
+
+                            <!-- Parentesco -->
+                            <div>
+                                <label for="">Parentesco:</label>
+                                <x-text-area name="parentesco" placeholder="Parentesco" textAreaDev="{{Auth::user()->parentesco}}" />
+                            </div>
+
+                            <!-- Teléfono del tutor -->
+                            <div>
+                                <label for="">Teléfono del tutor:</label>
+                                <x-text-area name="telefonotutor" placeholder="Teléfono del tutor" textAreaDev="{{Auth::user()->telefonotutor}}" />
+                            </div>
+
+                        </div>
+                        <div class="flex justify-end">
+                            <x-button-seg name="Regresar" ruta="{{'extraEscolares.index'}}" />
+                        </div>
+
+                    </x-formSeg>
+                </div>
+            </div>
         </div>
-        <x-button-seg name="Regresar" ruta="{{'extraEscolares.index'}}"/>
-                        &nbsp;
-    </x-formSeg>
+    </div>
 </x-app-layout>
