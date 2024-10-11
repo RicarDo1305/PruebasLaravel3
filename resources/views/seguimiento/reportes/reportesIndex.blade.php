@@ -61,21 +61,56 @@
                                             {{ __('Descargar') }}
                                         </x-dropdown-link>
                                     </form>
-                                    <form method="POST" action="{{ route('reportes.destroy', $reporte) }}">
-                                        @csrf @method('DELETE')
-                                        <x-dropdown-link :href="route('reportes.destroy', $reporte)" onclick="event.preventDefault();
-                            this.closest('form').submit();">
-                                            {{ __('Delete') }}
-                                        </x-dropdown-link>
-                                    </form>
+                                    <div class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-300 hover:bg-gray-800 focus:outline-none focus:bg-gray-800 transition duration-150 ease-in-out">
+                                        <div>
+                                            <button id="boton-borrar" class="block w-full text-start text-sm leading-5 text-gray-300 hover:bg-gray-800 hover:text-white focus:outline-none focus:bg-gray-800 transition duration-150 ease-in-out" onclick="openModal()">
+                                                {{ __('Delete') }}
+                                            </button>
+                                        </div>
+                                    </div>
                                 </x-slot>
                             </x-dropdown>
                         </div>
                     </div>
                 </div>
+                <x-comprobar-eliminacion rutaEliminar="reportes.destroy" :tipo=$reporte />
                 @endforeach
             </div>
         </div>
     </div>
+
+    <script>
+    // Mostrar el modal
+    function openModal() {
+        document.getElementById('modal').classList.remove('hidden');
+    }
+
+    // Cerrar el modal
+    function closeModal() {
+        document.getElementById('modal').classList.add('hidden');
+        resetModal();
+    }
+
+    // Resetear los valores dentro del modal
+    function resetModal() {
+        // Aquí puedes restaurar cualquier estado o valor al original si es necesario
+        document.getElementById('password').value = '';
+    }
+
+    // Evento para cerrar el modal cuando se hace clic en el botón "Cancelar"
+    document.getElementById('cancelar').addEventListener('click', function(event) {
+        event.preventDefault();
+        closeModal();
+    });
+
+    // Evento para manejar el cierre del modal y restaurar los estados
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") { // Cerrar con la tecla "Escape"
+            closeModal();
+        }
+    });
+
+    // Opcional: si necesitas revertir otros cambios cuando se cierre el modal, añade más lógica dentro de `resetModal`.
+</script>
 
 </x-app-layout>

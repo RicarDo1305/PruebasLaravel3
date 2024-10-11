@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EgresadosController extends Controller
 {
@@ -98,12 +99,25 @@ class EgresadosController extends Controller
         return to_route('seguimiento.lista.show')->with('status', __('Egresado editado exitosamente'));
     }
 
-    public function destroy(User $egresado)
+    public function destroy(Request $request, User $tipo)
     {
-        //$this->authorize('delete', $pregunta);
+       $user = Auth::user();
 
-        $egresado->delete();
+         $request->validate([
+        'password' => 'required|string',
+        ]);
 
-        return to_route('seguimiento.lista.show')->with('status', __('Egresado elimindado exitosamente'));
+     // Verificar si la contraseña proporcionada coincide con la contraseña del usuario autenticado
+     if (Hash::check($request->password, $user->password)) {
+         $tipo->delete();
+         return to_route('seguimiento.lista.show')->with('status', __('Alumno eliminado'));
+      } else {
+        // Si la contraseña no coincide, puedes redirigir de nuevo al formulario con un mensaje de error
+        
+        return back()->withErrors(['password' => 'La contraseña proporcionada es incorrecta.'])->with('error', __('La contraseña no es correcta'));
+    } 
+
+        
+
     }
 }

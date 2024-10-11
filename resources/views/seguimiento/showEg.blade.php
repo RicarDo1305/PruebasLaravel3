@@ -23,4 +23,6 @@
 
         </div>
     </div>
+
+     @vite('resources/js/ventanaEmergente.js')
 </x-app-layout>

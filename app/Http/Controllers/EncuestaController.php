@@ -6,6 +6,7 @@ use App\Models\Pregunta;
 use App\Models\Opcion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use LaravelLang\Publisher\Console\Update;
 
 class EncuestaController extends Controller
@@ -144,13 +145,28 @@ class EncuestaController extends Controller
         return to_route('seguimiento.encuesta.show')->with('status', __('Pregunta editada exitosamente'));
     }
 
-    public function destroy(Pregunta $pregunta)
+    public function destroy(Request $request, Pregunta $pregunta)
     {
         $this->authorize('delete', $pregunta);
 
-        $pregunta->delete();
+         $user = Auth::user();
 
-        return to_route('seguimiento.encuesta.show')->with('status', __('Pregunta elimindada exitosamente'));
+         $request->validate([
+        'password' => 'required|string',
+        ]);
+
+     // Verificar si la contraseña proporcionada coincide con la contraseña del usuario autenticado
+     if (Hash::check($request->password, $user->password)) {
+         $pregunta->delete();
+         return to_route('seguimiento.encuesta.show')->with('status', __('Pregunta eliminada'));
+      } else {
+        // Si la contraseña no coincide, puedes redirigir de nuevo al formulario con un mensaje de error
+        
+        return back()->withErrors(['password' => 'La contraseña proporcionada es incorrecta.'])->with('error', __('La contraseña no es correcta'));
+    } 
+
+        
+
     }
 
 

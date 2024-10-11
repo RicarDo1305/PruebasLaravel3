@@ -200,7 +200,7 @@ Route::middleware('auth')->group(function () {
     #Actualiza el egresado editado y lo sube a la base de datos
     Route::put('/seguimiento/egresados/{egresado}', [EgresadosController::class, 'update'])->name('seguimiento.lista.update');
     #Ruta que elimina un egresado de la BD
-    Route::delete('/seguimiento/egresados/{egresado}', [EgresadosController::class, 'destroy'])->name('seguimiento.lista.destroy');
+    Route::delete('/seguimiento/egresados/{tipo}', [EgresadosController::class, 'destroy'])->name('seguimiento.lista.destroy');
    
     #A PARTIR DE AQUI SON LAS RUTAS DE LAS ENCUESTAS PARA EGRESADOS
 
@@ -372,10 +372,10 @@ Route::middleware('auth')->group(function () {
         return $ReportesController->store($request);
     })->name('reportes.store');
     #Eliminar reporte
-    Route::delete('/seguimiento/reportes/{reporte}', function(Reporte $reporte){ 
+    Route::delete('/seguimiento/reportes/{reporte}', function(Request $request, Reporte $reporte){ 
         Gate::authorize('see-all');
         $ReportesController = new ReportesController();
-        return $ReportesController->destroy($reporte);
+        return $ReportesController->destroy($request, $reporte);
     })->name('reportes.destroy');
     #descargar reporte
     Route::post('/seguimiento/reportes/{reporte}', function(Reporte $reporte){ 

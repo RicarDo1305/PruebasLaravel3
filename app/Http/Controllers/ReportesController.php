@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Reporte;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 
 class ReportesController extends Controller
@@ -39,8 +41,17 @@ class ReportesController extends Controller
         }
     }
 
-    public function destroy(Reporte $reporte)
+    public function destroy(Request $request, Reporte $reporte)
     {
+
+        $user = Auth::user();
+
+         $request->validate([
+        'password' => 'required|string',
+        ]);
+
+     // Verificar si la contraseña proporcionada coincide con la contraseña del usuario autenticado
+     if (Hash::check($request->password, $user->password)) {
         // Obtener la ruta del archivo a eliminar
         $filePath = 'reportes/' . $reporte->reporte;
 
@@ -53,7 +64,15 @@ class ReportesController extends Controller
         // Eliminar la entrada del reporte de la base de datos
         $reporte->delete();
 
-        return to_route('reportes.index')->with('status', __('Reporte descargado exitosamente'));
+        return to_route('reportes.index')->with('status', __('Reporte eliminado exitosamente'));
+
+      } else {
+        // Si la contraseña no coincide, puedes redirigir de nuevo al formulario con un mensaje de error
+        
+        return back()->withErrors(['password' => 'La contraseña proporcionada es incorrecta.'])->with('error', __('La contraseña no es correcta'));
+    } 
+
+        
     }
 
 
