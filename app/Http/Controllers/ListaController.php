@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ListaController extends Controller
 {
@@ -85,9 +87,23 @@ return to_route('extraEscolares.encargados')->with('status', __('Editado exitosa
     }
     
 
-    public function delete(User $id){
-        $id->delete();
-        return to_route('extraEscolares.encargados')->with('status', __('Eliminado exitosamente'));
+    public function delete(Request $request, User $id){
+        
+        $user = Auth::user();
+
+         $request->validate([
+        'password' => 'required|string',
+        ]);
+
+     // Verificar si la contraseña proporcionada coincide con la contraseña del usuario autenticado
+     if (Hash::check($request->password, $user->password)) {
+         $id->delete();
+         return to_route('extraEscolares.encargados')->with('status', __('Eliminado exitosamente'));
+      } else {
+        // Si la contraseña no coincide, puedes redirigir de nuevo al formulario con un mensaje de error
+        
+        return back()->withErrors(['password' => 'La contraseña proporcionada es incorrecta.'])->with('error', __('La contraseña no es correcta'));
+    } 
 
     }
     public function subircarta(Request $request){

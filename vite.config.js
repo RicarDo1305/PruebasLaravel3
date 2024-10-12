@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/validarform.js',
                 'resources/js/crearGrafico.js',
                 'resources/js/ventanaEmergente.js',
+                'resources/js/mantenerVentana.js',
             ],
             refresh: true,
         }),
