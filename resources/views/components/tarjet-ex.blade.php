@@ -10,24 +10,33 @@
                 <h2 class="text-lg font-semibold text-white leading-tight">
                     Encargado: {{  $incharge }}
                 </h2>
+                @php
+                 $titulo=preg_replace('([^A-Za-z])', '', $title);
+                $str = strtolower($titulo);
+                $club=DB::table($str)->where('name',auth()->user()->name)->first();
+                $actu= DB::table($str)->count();
+                @endphp
+                <label class="text-white">Capacidad: {{$actu}}/{{$cap}}</label>
                 <p class="text-slate-500 text-white">
                     {{ $description }}
                 </p>
                 <br>
-                @php
-                $titulo=preg_replace('([^A-Za-z])', '', $title);
-                $str = strtolower($titulo);
-                $club=DB::table($str)->where('name',auth()->user()->name)->first();
-                @endphp
-                @if (empty($club)== true)
-                    <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
-                        <a href="{{route('registroaclub.index',$id)}}">Registrarme</a>
-                    </x-primary-button>
-                    @else
-                    <x-primary-button class="mt-4 bg-red-900 text-white hover:bg-red-700">
-                        <a href="{{route('club.salir',$title)}}">Salir</a>
-                    </x-primary-button>
-                @endif
+                @if (!empty($club))
+                <x-primary-button class="mt-4 bg-red-900 text-white hover:bg-red-700">
+                    <a href="{{ route('club.salir', $title) }}">Salir</a>
+                </x-primary-button>
+            @elseif ($actu >= $cap)
+                <x-primary-button class="mt-4 bg-slate-700 text-white border-gray-100">
+                    <a>Club lleno</a>
+                </x-primary-button>
+            @elseif (empty($club) == true && $actu < $cap)
+                <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
+                    <a href="{{ route('registroaclub.index', $id) }}">Registrarme</a>
+                </x-primary-button>
+            @endif
+            
+
+                
                 
             </div>
 </article>

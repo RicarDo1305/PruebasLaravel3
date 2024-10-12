@@ -51,9 +51,10 @@
             <td class="px-4 py-2 border border-gray-400"><x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-400">
                 <a href="{{route('encargado.editar',$alumno->id)}}">Editar</a>
                 </x-primary-button></td>
-            <td class="px-4 py-2 border border-gray-400"><x-primary-button class="mt-4 bg-red-500 text-white hover:bg-red-400">
+            <td class="px-4 py-2 border border-gray-400">
+                <x-primary-button class="mt-4 bg-red-500 text-white hover:bg-red-400">
                 <a href="{{route('encargado.eliminar',$alumno->id)}}">Eliminar</a>
-                </x-primary-button></td>
+                </x-primary-button> </td>
         </tr>
         @endforeach
         </tbody>

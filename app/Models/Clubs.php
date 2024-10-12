@@ -27,6 +27,7 @@ class Clubs extends Authenticatable
         'incharge',
         'description',
         'state',
+        'capacidad',
     ];
 
     public function club(): HasMany

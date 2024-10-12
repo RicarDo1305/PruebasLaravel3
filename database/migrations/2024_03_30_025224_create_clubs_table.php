@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('incharge');
             $table->string('description');
             $table->string('state')->default('1');
+            $table->string('capacidad');
             $table->timestamps();
         });
     }

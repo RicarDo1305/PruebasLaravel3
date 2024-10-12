@@ -17,6 +17,10 @@
                     <label for="">Club:</label>
                     <input type="text"  name="title" value="{{$club->title}}" readonly class="text-black">
                     <input type="text" name="id" value="{{$club->id}}" style="display: none">
+                    &nbsp;
+                    &nbsp;
+                    <label > Capacidad:</label>
+                    <input type="text" name="cap" value="{{$club->capacidad}}" class="text-black">
                 
             <br>
             <br>

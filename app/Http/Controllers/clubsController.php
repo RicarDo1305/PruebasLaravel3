@@ -7,8 +7,7 @@ use App\Models\Clubs;
 use App\Models\Historial;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use DragonCode\Contracts\Cashier\Auth\Auth;
-use PhpParser\Node\Expr\FuncCall;
+
 
 class clubsController extends Controller
 {
@@ -25,6 +24,7 @@ class clubsController extends Controller
             'title'=>['required','string'],
             'incharge' => ['required','string','max:255'],
             'description'=>['required','string','max:255'],
+            'cap'=>['required','string'],
         ]);
 
         if($request->hasFile('img')){
@@ -40,6 +40,7 @@ class clubsController extends Controller
             'title'=>$request->input('title'),
             'incharge' => $request->input('incharge'),
             'description' => $request->input('description'),
+            'capacidad'=> $request->input('cap'),
         ]);
 
 

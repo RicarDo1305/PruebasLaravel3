@@ -55,6 +55,9 @@ class FormularioclubController extends Controller
         ]);
 
         $nombrec = $request->club;
+        $nombrec = strtolower($nombrec); // Convierte a minúsculas
+        $nombrec = str_replace(' ', '', $nombrec); // Elimina los espacios
+
         $prueba=DB::table($nombrec)->insert(['noControl' => auth()->user()->noControl,
                     'carrera' => $request->input('carrera'),
                     'semestre' => $request->input('semestre'),

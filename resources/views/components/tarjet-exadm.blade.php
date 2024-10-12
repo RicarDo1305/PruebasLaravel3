@@ -15,21 +15,24 @@
         </p>
         <br>
         @if($club == 0)
-        <label class="text-white" for="">Estado: Deshabilitado</label>
+        <div class="flex items-center">
+            <label class="text-white p-2" for="">Estado:Deshabilitado</label>
+            <div class="w-4 h-4 bg-red-500 ml-2"></div>
+        </div>
         @else
-        <label class="text-white" for="">Estado: Habilitado</label>
-        @endif
+        <div class="flex items-center">
+            <label class="text-white p-2" for="">Estado:Habilitado</label>
+            <div class="w-4 h-4 bg-green-500 ml-2"></div>
+        </div>
         
+        @endif
+        <br>
+        <label class="text-white">Capacidad maxima: {{$cap}}</label>
         <div style="display: inline-flex">
             <x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-400">
                 <a href="{{route('club.editar',$id)}}">Editar</a>
                 </x-primary-button>
                 &nbsp; 
-                &nbsp; 
-            <x-primary-button class="mt-4 bg-red-500 text-white hover:bg-red-400">
-                <a href="{{route('club.eliminar',$id)}}">Eliminar</a>
-                </x-primary-button>
-                &nbsp;
                 &nbsp;
                 <x-primary-button class="mt-4 bg-green-600 text-white hover:bg-green-400">
                     <a href="{{route('estado.tarjetas',$id)}}">Cambiar Estado</a>
