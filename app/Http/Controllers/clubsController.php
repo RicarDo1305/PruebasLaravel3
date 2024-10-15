@@ -94,8 +94,10 @@ return to_route('extraEscolares.index')->with('status', __('Editado exitosamente
 
     public function historiala($numcontrol){
         $history=Historial::where('noControl',$numcontrol)->get();
+        $totalHoras = Historial::where('noControl', $numcontrol)->sum('horas');
         return view('/extraEscolares/historial', [
-            'historial'=> $history,   
+            'historial'=> $history,
+            'horasff'=>$totalHoras,   
         ]);
     }
 }
