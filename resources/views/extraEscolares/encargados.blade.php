@@ -42,10 +42,19 @@
                     <td class="px-4 py-2 border border-gray-400">{{$alumno->curp}}</td>
                     <td class="px-4 py-2 border border-gray-400">{{$alumno->nss}}</td>
                     <td class="px-4 py-2 border border-gray-400">
+                        @if (file_exists(public_path('files/' . $alumno->name . '.pdf')))
                         <button class="mt-4 bg-green-800 text-white hover:bg-green-600 inline-flex items-center 
-                px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
-                text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
-                focus:ring-offset-gray-800 transition ease-in-out duration-150"><a download="Plan  de trabajo de {{$alumno->name}}" href="/files/{{$alumno->name}}.pdf">Descargar</a></button>
+                        px-1 py-1 md:px-2 md:py-2 bg-gray-200 border border-transparent rounded-md font-semibold text-xs md:text-xs 
+                        text-gray-800 uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-indigo-500 
+                        focus:ring-offset-gray-800 transition ease-in-out duration-150"><a download="Plan  de trabajo de {{$alumno->name}}" href="/files/{{$alumno->name}}.pdf">Descargar</a></button>
+                        @else
+                        <span class="bg-red-200 text-red-800 inline-flex items-center px-2 py-1 rounded">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                            No existe el archivo
+                        </span>
+                        @endif
                     </td>
                     <td class="px-4 py-2 border border-gray-400"><x-primary-button class="mt-4 bg-yellow-500 text-white hover:bg-yellow-400">
                             <a href="{{route('encargado.editar',$alumno->id)}}">Editar</a>
