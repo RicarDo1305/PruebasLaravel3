@@ -13,7 +13,7 @@ class EstadisticaController extends Controller
         $usuarios= DB::table('users')->where(function($query) use ($texto) {
             $query->where('carrera', 'LIKE', '%' . $texto . '%');
         })->where('rol','4')->count();
-        $uclub=DB::table('users')->whereNotNull('club')->where(function($query) use ($texto) {
+        $uclub=DB::table('users')->whereNotNull('club')->where('rol','4')->where(function($query) use ($texto) {
             $query->where('carrera', 'LIKE', '%' . $texto . '%');
         })->count();
         return view('/extraEscolares/estadisticas', [

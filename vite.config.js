@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/js/crearGrafico.js',
                 'resources/js/ventanaEmergente.js',
                 'resources/js/mantenerVentana.js',
+                'resources/js/graficoExtraescolares.js',
             ],
             refresh: true,
         }),
