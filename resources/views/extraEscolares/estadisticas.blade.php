@@ -32,7 +32,7 @@
                 @else
                 <label for="">Carrera seleccionada: {{$opcion}} //</label>
                 @endif
-                <label for="">Alumnos totales de la carrera: <span id="alumnosxcarrera">{{$usuarios}}</span></label>
+                <label for="">Alumnos totales de la carrera: <span id="alumnosxcarrera">{{$usuarios}} //</span></label>
                 <br>
                 <x-primary-button class="mt-4 bg-green-900 text-white hover:bg-green-700">
                     Filtrar

@@ -295,6 +295,17 @@ public function listaespecial(Request $request,$titulo){
             $p[$i]=$arr;
             $i=$i+1;
         }
+
+        foreach($p as $item) {
+            Historial::create([
+                'name' => $item['name'],
+                'carrera' => $item['carrera'],
+                'semestre' => $item['semestre'],
+                'noControl' => $item['noControl'],
+                'horas' => '2',
+                'club' => $titulo.' '.'especial'
+            ]);
+        }
     $template->cloneRowAndSetValues('name',$p);
     foreach($names as $aa){
         $template->setValue('num#'.$a,$a);
@@ -305,7 +316,7 @@ public function listaespecial(Request $request,$titulo){
     $headers = [
         "Content-Type: aplication/octet-stream",
     ];
-    return response()->download($tempFile, 'Listaespecial.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
+    return response()->download($tempFile, 'Listaespecial'.$titulo.'.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
         
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

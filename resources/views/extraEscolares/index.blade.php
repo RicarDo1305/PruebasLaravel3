@@ -1,6 +1,6 @@
 <x-app-layout>
 
-<x-header-seg hidden="hidden" titulo="Clubs"/>
+<x-header-seg hidden="hidden" titulo="Clubes"/>
 
 @can('see-extraescolares')
 <main class="p-4">

@@ -142,26 +142,25 @@ Route::middleware('auth')->group(function () {
         if($datos==null){
             dd('No hay nada');
         }
-        $arraydatos[]=null;
+        $arraydatos=[];
         $i=0;
         $a=1;
         $template=new \PhpOffice\PhpWord\TemplateProcessor(documentTemplate:'files/Registro de Asistencia a la Actividad Cultural Deportiva.docx');
-        foreach($datos as $dato){
-            $arraydatos[$i]=$dato;
-            $i=$i+1;
-        }
+        foreach($datos as $dato) { // Obtener el conteo de asistencias para cada alumno 
+            $contadorAsistencias = DB::table('asistencias') 
+            ->where('name', $dato->name)
+            ->where('club', $titulo)
+            ->count(); // Concatenar el conteo de asistencias al arraydatos 
+            $arraydatos[$i] = [ 'num' => $a, 'name' => $dato->name, 'noControl' => $dato->noControl, 'asistencia' => $contadorAsistencias]; 
+            $i++; $a++; }
         $template->cloneRowAndSetValues('name',$arraydatos);
-        foreach($datos as $dato){
-            $template->setValue('num#'.$a,$a);
-                $a=$a+1;
-        }
         $tempFile=tempnam(sys_get_temp_dir(),'PHPWord');
         $template->saveAs($tempFile);
 
         $headers = [
             "Content-Type: aplication/octet-stream",
         ];
-        return response()->download($tempFile, 'ListaAsistencia.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
+        return response()->download($tempFile, 'ListaAsistencia'.$titulo.'.docx', $headers)->deleteFileAfterSend($shouldDelete = true);
     })->name('descarga2');
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
